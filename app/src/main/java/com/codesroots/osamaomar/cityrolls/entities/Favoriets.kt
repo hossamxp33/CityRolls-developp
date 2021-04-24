@@ -1,5 +1,7 @@
 package com.codesroots.osamaomar.cityrolls.entities
 
+import com.google.gson.annotations.SerializedName
+
 class Favoriets {
     var data: List<DataBean>? = null
     class DataBean {
@@ -13,7 +15,9 @@ class Favoriets {
         var id: Int = 0
         var user_id: Int = 0
         var product_id: Int = 0
-        var product: ProductBean? = null
+
+        @SerializedName("item")
+        var product: Items? = null
 
 
     }

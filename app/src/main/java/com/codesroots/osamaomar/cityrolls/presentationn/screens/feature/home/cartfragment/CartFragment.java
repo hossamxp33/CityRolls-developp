@@ -57,17 +57,14 @@ public class CartFragment extends Fragment implements EditCallbacks {
         product_ids = PreferenceHelper.retriveCartItemsValue();
         CartViewModel mViewModel = ViewModelProviders.of(this, getViewModelFactory()).get(CartViewModel.class);
 
-        if (tot_price<PreferenceHelper.getMIM_CHIPPING())
-        {  if (PreferenceHelper.getCOUNTRY_ID() == 1) {
+      //  if (tot_price<PreferenceHelper.getMIM_CHIPPING())
 
-            chargevalue.setText(PreferenceHelper.getIN_OMAN() + " " + getString(R.string.coin));
-            chargrvalue = PreferenceHelper.getIN_OMAN();
-        }
-        else {
-            chargevalue.setText(PreferenceHelper.getOUT_OMAN()*PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
-            chargrvalue = PreferenceHelper.getOUT_OMAN();
-        }
-        }
+        chargrvalue =PreferenceHelper.getCurrencyValue();
+
+            chargevalue.setText(chargrvalue + " " + getString(R.string.coin));
+
+
+
 
         mViewModel.cartItemsMutableLiveData.observe(this, dataBeans -> {
             {
@@ -78,9 +75,9 @@ public class CartFragment extends Fragment implements EditCallbacks {
                 tot_price = 0;
 
                 for (int i = 0; i < products.size(); i++)
-                    tot_price += products.get(i).getCurrent_price()*PreferenceHelper.getCurrencyValue();
+                    tot_price += products.get(i).getCurrent_price();
                 totalvalue.setText(new DecimalFormat("##.##").format(tot_price )+" "+PreferenceHelper.getCurrency());
-                alltotalvalue.setText(new DecimalFormat("##.##").format(tot_price+chargrvalue *PreferenceHelper.getCurrencyValue())+" "+PreferenceHelper.getCurrency());
+                alltotalvalue.setText(new DecimalFormat("##.##").format(tot_price+chargrvalue )+" "+PreferenceHelper.getCurrency());
             }
         });
 
@@ -99,7 +96,7 @@ public class CartFragment extends Fragment implements EditCallbacks {
         sale.setOnClickListener(v -> {
             orderModel.setOrderdetails(cartAdapter.products);
             Intent intent = new Intent(getActivity(), GetUserLocationActivity.class);
-            startActivityForResult(intent, REQUEST_CODE_LOCATION);
+              startActivityForResult(intent, REQUEST_CODE_LOCATION);
         });
         return view;
     }

@@ -1,4 +1,4 @@
-package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productfragment.myorders;
+package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.myorders;
 
 import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.codesroots.osamaomar.cityrolls.R;
 import com.codesroots.osamaomar.cityrolls.helper.PreferenceHelper;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainactivity.MainActivity;
-import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productfragment.myorders.adapters.MyOrdersAdapter;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.myorders.adapters.MyOrdersAdapter;
 
 public class MyOrdersFragment extends Fragment {
 

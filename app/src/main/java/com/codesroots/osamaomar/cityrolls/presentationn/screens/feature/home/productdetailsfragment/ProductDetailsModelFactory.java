@@ -15,9 +15,8 @@ public class ProductDetailsModelFactory implements ViewModelProvider.Factory {
     private Application application;
     private int productid,userid;
 
-    public ProductDetailsModelFactory(Application application1,int id,int user_id) {
+    public ProductDetailsModelFactory(Application application1,int user_id) {
         application = application1;
-        productid = id;
         userid = user_id;
     }
 
@@ -32,7 +31,7 @@ public class ProductDetailsModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
          if (modelClass == ProductDetailsViewModel.class)
         {
-            return (T) new ProductDetailsViewModel(getApiService(),productid,userid);
+            return (T) new ProductDetailsViewModel(getApiService(),userid);
         }
         else   if (modelClass == MenuViewModel.class)
          {

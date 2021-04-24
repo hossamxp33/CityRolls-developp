@@ -6,6 +6,7 @@ import android.os.Handler;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.codesroots.osamaomar.cityrolls.domain.ApiClient;
 import com.codesroots.osamaomar.cityrolls.entities.MainView;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.fragment.app.Fragment;
@@ -50,7 +51,6 @@ public class MainFragment extends Fragment {
         findViewsFromXml(view);
         mViewModel = ViewModelProviders.of(this,getViewModelFactory()).get(MainFragmentViewModel.class);
         mViewModel.mainViewMutableLiveData.observe(this,this::setDatainViews);
-
         mViewModel.throwableMutableLiveData.observe(this,throwable ->
                 {
                     progress.setVisibility(View.GONE);
@@ -78,8 +78,8 @@ public class MainFragment extends Fragment {
 //        PreferenceHelper.setDoller_value(mainView.getCurrency().getValue());
         if (PreferenceHelper.getCurrency() == null) {
             PreferenceHelper.setCURRENCY_VALUE(1);
-            PreferenceHelper.setCURRENCY("OMR");
-            PreferenceHelper.setCURRENCYArabic("عماني");
+            PreferenceHelper.setCURRENCY("L.E");
+            PreferenceHelper.setCURRENCYArabic("جنيه");
 
         }
         init(mainView.getSliders().size());
@@ -93,6 +93,7 @@ public class MainFragment extends Fragment {
 //        morerate_products.setAdapter(new FamousProductsAdapter(getActivity(),mainView.getNewdata()));
         //sales_products.setAdapter(new OffersProductsAdapter(getActivity(),mainView.getItems()));
     //    recommended_products.setAdapter(new RecommendedProductsAdapter(getActivity(),mainView.getProductsbysales()));
+        
         departments.setAdapter(new DepartmentsAdapter(getActivity(),mainView.getItems()));
 
     }

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.codesroots.osamaomar.cityrolls.R;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainactivity.MainActivity;
-import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productfragment.myorders.MyOrdersFragment;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.myorders.MyOrdersFragment;
 import java.util.Objects;
 
 public class FinishOrderFragment extends Fragment {

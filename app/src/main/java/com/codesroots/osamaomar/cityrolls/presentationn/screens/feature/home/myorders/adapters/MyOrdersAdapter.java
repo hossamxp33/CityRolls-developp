@@ -1,4 +1,4 @@
-package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productfragment.myorders.adapters;
+package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.myorders.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -19,7 +19,7 @@ import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.cityrolls.R;
 import com.codesroots.osamaomar.cityrolls.entities.MyOrders;
 import com.codesroots.osamaomar.cityrolls.helper.PreferenceHelper;
-import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productfragment.myorders.productsinsideorder.ProductsInsideorderFragment;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.myorders.productsinsideorder.ProductsInsideorderFragment;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -50,16 +50,7 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        try {
-            Glide.with(context).load(orderdata.get(position).getOrderdetails().
-                    get(0).getProductsize().getProduct().getImg()).
-                    dontAnimate().placeholder(R.drawable.product).into(holder.Image);
-           holder.color.setText(orderdata.get(position).getOrderdetails().get(position).getProduct_color().getColor());
 
-        }
-
-        catch (Exception e) {
-        }
 
 
         try {
@@ -73,16 +64,16 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
             holder.orderdate.setText(getdate(orderdata.get(position).getCreated()));
             holder.ordernum.setText(String.valueOf(orderdata.get(position).getId()));
             holder.payment.setText(orderdata.get(position).getType());
-            holder.productCount.setText(String.valueOf(orderdata.get(position).getOrderdetails().get(position).getAmount()) +" "+ context.getText(R.string.num));
+           // holder.productCount.setText(String.valueOf(orderdata.get(position).getOrderdetails().get(position).getAmount()) +" "+ context.getText(R.string.num));
             holder.productname.setText(orderdata.get(position).getOrderdetails().
-                    get(0).getProductsize().getProduct().getName());
+                    get(0).getProductsize().getName());
+//
+//           holder.ratecount.setText("("+orderdata.get(position).getOrderdetails().
+//                   get(0).getProductsize().getTotal_rating().get(0).getCount()+")");
 
-           holder.ratecount.setText("("+orderdata.get(position).getOrderdetails().
-                   get(0).getProductsize().getProduct().getTotal_rating().get(0).getCount()+")");
-
-           holder.ratingBar.setRating(orderdata.get(position).getOrderdetails().
-                   get(0).getProductsize().getProduct().getTotal_rating().get(0).getStars()/orderdata.get(position).getOrderdetails().
-                   get(0).getProductsize().getProduct().getTotal_rating().get(0).getCount());
+//           holder.ratingBar.setRating(orderdata.get(position).getOrderdetails().
+//                   get(0).getProductsize().getTotal_rating().get(0).getStars()/orderdata.get(position).getOrderdetails().
+//                   get(0).getProductsize().getTotal_rating().get(0).getCount());
 
             if (orderdata.get(position).getOrder_status().matches("2")) {
                 holder.statues2.setTextColor(R.color.white);
@@ -133,11 +124,11 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
         ViewHolder(View view) {
             super(view);
             mView = view;
-            Image = mView.findViewById(R.id.item_img);
+           // Image = mView.findViewById(R.id.item_img);
             statues2 = mView.findViewById(R.id.progress2);
             statues3 = mView.findViewById(R.id.progress3);
             statues4 = mView.findViewById(R.id.progress4);
-            productCount = mView.findViewById(R.id.product_count);
+//            productCount = mView.findViewById(R.id.product_count);
             orderPrice = mView.findViewById(R.id.totalprice);
             orderdate = mView.findViewById(R.id.order_date);
             ordernum = mView.findViewById(R.id.ordernum);
@@ -152,7 +143,7 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
     }
 
     private String getdate(String date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZZZZ");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         try {
             Date dateObj = sdf.parse(date);
             Log.d("newdatein", dateObj.getTime() + "");

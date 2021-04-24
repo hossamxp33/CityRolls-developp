@@ -11,15 +11,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.cityrolls.R;
 import com.codesroots.osamaomar.cityrolls.entities.offers;
+import com.codesroots.osamaomar.cityrolls.helper.AddorRemoveCallbacks;
 import com.codesroots.osamaomar.cityrolls.helper.PreferenceHelper;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.offerfragment.OffersFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsFragment;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsViewModel;
 
 import java.util.List;
 
@@ -30,9 +35,14 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
     private Context context;
     private List<offers.DataBean> offersData;
     private float priceafteroffer = 0;
-    public AllOffersAdapter(Context mcontext, List<offers.DataBean> offers) {
+    public ProductDetailsViewModel mViewModel;
+    boolean productfav;
+public  OffersFragment offersFragments;
+    public AllOffersAdapter(Context mcontext, List<offers.DataBean> offers, ProductDetailsViewModel detailaViewModel, OffersFragment offersFragment) {
         context = mcontext;
         offersData = offers;
+        mViewModel = detailaViewModel;
+        offersFragments = offersFragment;
     }
 
     @NonNull
@@ -49,19 +59,19 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder,final int position) {
 
-        if (offersData.get(position).getProduct().getProductphotos().size()>0)
             Glide.with(context.getApplicationContext())
-                    .load(offersData.get(position).getProduct().getImg()).placeholder(R.drawable.product).dontAnimate()
+                    .load(offersData.get(position).getProduct().getPhoto()).placeholder(R.drawable.product).dontAnimate()
                     .into(holder.Image);
 
             holder.name.setText(offersData.get(position).getProduct().getName());
+        holder.desc.setText(offersData.get(position).getProduct().getDescription());
 
 
 
-        priceafteroffer =Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price())- Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price())*
-                Integer.valueOf(offersData.get(position).getPercentage())/100;
+//        priceafteroffer =Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price())- Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price())*
+//                Integer.valueOf(offersData.get(position).getPercentage())/100;
 
-        holder.discount.setText(context.getText(R.string.disscount)+" "+offersData.get(position).getPercentage()+" "+"%");
+//        holder.discount.setText(context.getText(R.string.disscount)+" "+offersData.get(position).getPercentage()+" "+"%");
 
         if (!offersData.get(position).getPercentage().matches(""))
         {
@@ -70,22 +80,22 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
                         PreferenceHelper.getCurrency())));
 
             else
-                holder.price.setText(String.valueOf(priceafteroffer)+" "+
+                holder.price.setText(String.valueOf(offersData.get(position).getProduct().getPrice())+" "+
                         PreferenceHelper.getCurrency());
 
       }
         else
         {
-            if (PreferenceHelper.getCurrencyValue()>0)
-                holder.price.setText(String.valueOf(Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price())
-                        *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
-            else
-                holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price()+" "+
-                        PreferenceHelper.getCurrency());
+//            if (PreferenceHelper.getCurrencyValue()>0)
+//                holder.price.setText(String.valueOf(Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price())
+//                        *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
+//            else
+//                holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price()+" "+
+//                        PreferenceHelper.getCurrency());
         }
 
-        holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price()+" "+
-                PreferenceHelper.getCurrency());
+//        holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price()+" "+
+             //   PreferenceHelper.getCurrency());
         Fragment fragment = new ProductDetailsFragment();
         Bundle bundle = new Bundle() ;
         bundle.putInt(PRODUCT_ID,offersData.get(position).getProduct_id());
@@ -95,7 +105,58 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
                 .addToBackStack(null).commit());
 
 
+        holder.favortie.setOnClickListener(v ->
+        {
+            holder.favortie.setEnabled(false);
+            if (!productfav) {
+                mViewModel.AddToFav( offersData.get(position).getProduct().getId());
+                productfav = true;
+            } else {
+                mViewModel.DeleteFav(PreferenceHelper.getUserId(), offersData.get(position).getProduct().getId());
+                productfav = false;
+            }
+        });
 
+        mViewModel.addToFavMutableLiveData.observe(offersFragments, aBoolean ->
+        {
+            holder.favortie.setEnabled(true);
+            holder.favortie.setImageResource(R.drawable.favoried);
+            productfav = true;
+
+        });
+
+        mViewModel.deleteToFavMutableLiveData.observe(offersFragments, aBoolean ->
+        {
+            holder.favortie.setEnabled(true);
+            holder.favortie.setImageResource(R.drawable.like);
+        });
+
+        mViewModel.throwablefav.observe(offersFragments, throwable ->
+        {
+            holder.favortie.setEnabled(false);
+            Toast.makeText(context,context.getText(R.string.error_tryagani), Toast.LENGTH_SHORT).show();
+        });
+
+        holder.addcart.setOnClickListener(v -> {
+            if (PreferenceHelper.getUserId() > 0) {
+                if (PreferenceHelper.retriveCartItemsValue() != null) {
+                    if (!PreferenceHelper.retriveCartItemsValue().contains(offersData.get(position).getProduct().getId())) {
+                        PreferenceHelper.addItemtoCart(offersData.get(position).getProduct().getId());
+
+                        ((AddorRemoveCallbacks) context).onAddProduct();
+                        Toast.makeText(context, context.getText(R.string.addtocartsuccess), Toast.LENGTH_SHORT).show();
+                    } else
+                        Toast.makeText(context, context.getText(R.string.aleady_exists), Toast.LENGTH_SHORT).show();
+                } else {
+                    PreferenceHelper.addItemtoCart(offersData.get(position).getProduct().getId());
+
+                    ((AddorRemoveCallbacks) context).onAddProduct();
+                    Toast.makeText(context,context.getText(R.string.addtocartsuccess), Toast.LENGTH_SHORT).show();
+                }
+            } else
+                Toast.makeText(context, context.getText(R.string.loginfirst), Toast.LENGTH_SHORT).show();
+
+        });
     }
 
     @Override
@@ -107,9 +168,10 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
     class ViewHolder extends RecyclerView.ViewHolder {
 
         final View mView;
-        private ImageView Image;
-        private TextView name,rateCount,amount,price,oldprice,discount,del_favorite;
+        private ImageView Image, favortie;
+        private TextView name,rateCount,amount,addcart,price,desc,discount;
         private RatingBar ratingBar;
+
         ViewHolder(View view) {
             super(view);
             mView = view;
@@ -119,9 +181,14 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
             amount = mView.findViewById(R.id.quentity);
             rateCount = mView.findViewById(R.id.rate_count);
             ratingBar = mView.findViewById(R.id.rates);
+            desc = mView.findViewById(R.id.item_desc);
+
             discount = mView.findViewById(R.id.discount);
-            oldprice = mView.findViewById(R.id.old_price);
-            oldprice.setPaintFlags(oldprice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+          //  oldprice = mView.findViewById(R.id.old_price);
+            favortie = mView.findViewById(R.id.favorite);
+            addcart = mView.findViewById(R.id.add_to_cart);
+
+//            oldprice.setPaintFlags(oldprice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
     }
 }

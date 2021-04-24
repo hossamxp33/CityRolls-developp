@@ -112,14 +112,14 @@ public interface ServerGateway {
     @POST("Favourites/addfavourite.json")
         Observable<AddToFavModel> addToFave(
             @Field("user_id") int user_id,
-            @Field("product_id") int product_id
+            @Field("item_id") int product_id
     );
 
     @FormUrlEncoded
     @POST("Favourites/addfavourite.json")
     Observable<AddToFavModel> DeleteFav(
             @Field("user_id") int user_id,
-            @Field("product_id") int product_id
+            @Field("item_id") int product_id
     );
 
 
@@ -130,15 +130,15 @@ public interface ServerGateway {
 
 
     @FormUrlEncoded
-    @POST("Products/viewproduct.json")
+    @POST("Items/viewproduct.json")
     Observable<CartItems> getCartProducts(
             @Field("arrayofid[]") ArrayList<Integer> ids
     );
 
 
-    @GET("orders/getuserorder/{userid}.json")
+    @GET("orders/getuserorder.json")
     Observable<MyOrders> retrieveUserOrders(
-            @Path("userid") int userid
+
     );
 
 
@@ -154,7 +154,7 @@ public interface ServerGateway {
     @POST("Productrates/addrate.json")
     Observable<DefaultAdd> addProductRate(
             @Field("user_id") int user_id,
-            @Field("product_id") int product_id,
+            @Field("item_id") int product_id,
             @Field("rate") float rate,
             @Field("comment") String comment
     );
@@ -239,7 +239,7 @@ public interface ServerGateway {
 
 
 
-    @GET("countries.json")
+    @GET("areas.json")
     Observable<Countries> getCountriesData();
 
 

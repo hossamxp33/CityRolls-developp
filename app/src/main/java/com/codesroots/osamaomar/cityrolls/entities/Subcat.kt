@@ -2,6 +2,7 @@ package com.codesroots.osamaomar.cityrolls.entities
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import java.util.*
 
 @Parcelize
 data class Items(
@@ -10,8 +11,13 @@ data class Items(
     val id: Int,
     val modified: String,
     val name: String,
-    val price: Int,
-    val photo: String
+    val description: String,
+
+    val price: Float,
+    val photo: String,
+
+     var total_rating: List<TotalRatingBean?>? = ArrayList()
+
 )  : Parcelable {
 
 }

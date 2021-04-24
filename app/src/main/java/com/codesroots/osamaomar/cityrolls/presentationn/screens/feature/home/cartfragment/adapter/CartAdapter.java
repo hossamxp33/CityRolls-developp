@@ -51,51 +51,49 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>  {
     public void onBindViewHolder(@NonNull final ViewHolder holder,final int position) {
         try {
 
-            Log.i("COLORS", "onBindViewHolder: "+ colordata.get(position));
-            holder.name.setText(dataBeans.get(position).getProduct().getName());
-            holder.amount.setText(context.getText(R.string.remendier) + " " +String.valueOf(dataBeans.get(position).getAmount()) + " " + context.getText(R.string.num));
+           // Log.i("COLORS", "onBindViewHolder: "+ colordata.get(position));
+            holder.name.setText(dataBeans.get(position).getName());
             products.add(new OrderModel.productSize(dataBeans.get(position).getId()));
-            products.get(position).setproductcolor_id(Integer.valueOf(colordata.get(position)));
-            if (dataBeans.get(position).getProduct().getOffers().size()>0)
-            {
-                if (PreferenceHelper.getCurrencyValue()>0)
-                    holder.price.setText(getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),
-                            (float) dataBeans.get(position).getCurrent_price())*PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency());
-                else
-                    holder.price.setText(getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),
-                            (float) dataBeans.get(position).getCurrent_price())  + " " + context.getText(R.string.realcoin));
 
-                //  holder.price.setText(dataBeans.get(position).getStart_price() + " " + context.getText(R.string.realcoin));
-                products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
-                        getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),
-                                (float) dataBeans.get(position).getCurrent_price())));
-
-
-                products.get(position).setNotice("خصم بسبب العرض رقم"+dataBeans.get(position).getProduct().getOffers().get(0).getId());
-            }
-            else {
+            holder.amount.setText(context.getText(R.string.remendier) + " " +String.valueOf(dataBeans.get(position).getAmount()) + " " + context.getText(R.string.num));
+//            if (dataBeans.get(position).getProduct().getOffers() != null)
+//            {
+//                if (PreferenceHelper.getCurrencyValue()>0)
+//                    holder.price.setText(getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),
+//                            (float) dataBeans.get(position).getCurrent_price())*PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency());
+//                else
+//                    holder.price.setText(getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),
+//                            (float) dataBeans.get(position).getCurrent_price())  + " " + context.getText(R.string.realcoin));
+//
+//                //  holder.price.setText(dataBeans.get(position).getStart_price() + " " + context.getText(R.string.realcoin));
+//                products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
+//                        getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),
+//                                (float) dataBeans.get(position).getCurrent_price())));
+//
+//
+              //  products.get(position).setNotice("خصم بسبب العرض رقم"+dataBeans.get(position).getProduct().getOffers().get(0).getId());
+//            }
+//            else {
                 products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString()) *
                         Float.valueOf(dataBeans.get(position).getCurrent_price())));
 
                 if (PreferenceHelper.getCurrencyValue()>0)
-                    holder.price.setText(Float.valueOf(dataBeans.get(position).getCurrent_price())*PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency());
+                    holder.price.setText(Float.valueOf(dataBeans.get(position).getCurrent_price())+" "+PreferenceHelper.getCurrency());
 
                 else
                     holder.price.setText(dataBeans.get(position).getCurrent_price() + " " + context.getText(R.string.realcoin));
-            }
+        //    }
 
-            if (dataBeans.get(position).getProduct().getTotal_rating() != null)
-                if (dataBeans.get(position).getProduct().getTotal_rating().size() > 0) {
-                    holder.ratingBar.setRating(dataBeans.get(position).getProduct().getTotal_rating().get(0).getStars() /
-                            dataBeans.get(position).getProduct().getTotal_rating().get(0).getCount());
-                    holder.rateCount.setText("(" + dataBeans.get(position).getProduct().getTotal_rating().get(0).getCount() + ")");
-                }
-            if (dataBeans.get(position).getProduct().getProductphotos()!=null) {
-                if (dataBeans.get(position).getProduct().getProductphotos().size() > 0)
+//            if (dataBeans.get(position).getProduct().getTotal_rating() != null)
+//                if (dataBeans.get(position).getProduct().getTotal_rating().size() > 0) {
+//                    holder.ratingBar.setRating(dataBeans.get(position).getProduct().getTotal_rating().get(0).getStars() /
+//                            dataBeans.get(position).getProduct().getTotal_rating().get(0).getCount());
+//                    holder.rateCount.setText("(" + dataBeans.get(position).getProduct().getTotal_rating().get(0).getCount() + ")");
+//                }
                     Glide.with(context.getApplicationContext())
-                            .load(dataBeans.get(position).getProduct().getImg()).placeholder(R.drawable.product).dontAnimate()
+                            .load(dataBeans.get(position).getPhoto()).placeholder(R.drawable.product).dontAnimate()
                             .into(holder.Image);
-            }
+          //  }
         }
 
         catch (Exception e)

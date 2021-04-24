@@ -1,5 +1,7 @@
 package com.codesroots.osamaomar.cityrolls.entities
 
+import com.google.gson.annotations.SerializedName
+
 class CartItems {
 
 
@@ -17,13 +19,13 @@ class CartItems {
         var id: Int = 0
         var amount: Int = 0
         var product_id: Int = 0
+        @SerializedName("price")
         var current_price: Int = 0
+        var photo: String? = null
+        var name: String? = null
+
         var product: ProductBean? = null
-
-
-
         class ProductBean {
-
             var id: Int = 0
             var name: String? = null
             var name_en: String? = null
@@ -35,25 +37,16 @@ class CartItems {
             var productphotos: List<ProductphotosBean>? = null
             var offers: List<OffersBean>? = null
             var favourites: List<FavouritesBean>? = null
-
-
-
-
-
-
-
             class OffersBean {
                 /**
                  * id : 4
                  * percentage : 30
                  * product_id : 31
                  */
-
                 var id: Int = 0
                 var percentage: String? = null
                 var product_id: Int = 0
             }
-
             class FavouritesBean {
                 /**
                  * product_id : 31
@@ -64,7 +57,6 @@ class CartItems {
                 var product_id: Int = 0
                 var id: Int = 0
                 var user_id: Int = 0
-
             }
         }
     }

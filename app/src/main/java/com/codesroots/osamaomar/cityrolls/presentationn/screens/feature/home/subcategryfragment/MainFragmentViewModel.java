@@ -3,6 +3,7 @@ package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.su
 import android.annotation.SuppressLint;
 import android.util.Log;
 
+import com.codesroots.osamaomar.cityrolls.domain.ApiClient;
 import com.codesroots.osamaomar.cityrolls.domain.ServerGateway;
 import com.codesroots.osamaomar.cityrolls.entities.MainView;
 
@@ -24,19 +25,21 @@ class MainFragmentViewModel extends ViewModel {
 
      MainFragmentViewModel(ServerGateway serverGateway1) {
         serverGateway = serverGateway1;
-        getData();
+       // getData();
     }
 
     public void getData() {
 
 
-     //   getObservable().subscribeWith(getObserver());
+        getObservable().subscribeWith(getObserver());
     }
-
+    private ServerGateway getApiService() {
+        return ApiClient.getClient().create(ServerGateway.class);
+    }
 
     @SuppressLint("CheckResult")
     private Observable<MainView> getObservable() {
-        Observable<MainView> photographersData = serverGateway.getMainViewData();
+        Observable<MainView> photographersData = getApiService().getMainViewData();
         photographersData.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
         return photographersData;

@@ -63,7 +63,8 @@ class SubcategryFragment : Fragment() {
         (activity as MainActivity).head_title.text = categry_name
         (activity as MainActivity).logo.visibility = View.VISIBLE
 
-        viewModel = ViewModelProviders.of(this, getViewModelFactory()).get(MainFragmentViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(MainFragmentViewModel::class.java)
+        viewModel!!.getData()
         viewModel!!.mainViewMutableLiveData?.observe(this, androidx.lifecycle.Observer {
             datArray = it.items.get(0).items
             adapterr = SubCatsAdapter(context as FragmentActivity, datArray!!)

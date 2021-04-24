@@ -43,9 +43,7 @@ class SubCatsAdapter(var activity: FragmentActivity, var menu: List<Items>): Rec
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): CustomViewHolder {
         val binding: OfferItemAdapterBinding
                 = DataBindingUtil.inflate (LayoutInflater.from(p0.context), R.layout.offer_item_adapter,p0,false)
-        binding.addtocart.setOnClickListener {
-                Toast.makeText(activity,activity.getText(R.string.loginfirst), Toast.LENGTH_SHORT).show()
-        }
+//
 
 
         return CustomViewHolder(binding)

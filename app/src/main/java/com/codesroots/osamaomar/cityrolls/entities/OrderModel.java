@@ -17,12 +17,14 @@ public class OrderModel implements Serializable {
     @SerializedName("user_lat")
     String user_lat;
 
+    @SerializedName("area_id")
+    int area_id;
+
     @SerializedName("user_long")
     String user_long;
 
-    @SerializedName("type")
+    @SerializedName("typeorder")
     String type;
-
 
     @SerializedName("notes")
     String notes;
@@ -30,9 +32,28 @@ public class OrderModel implements Serializable {
     @SerializedName("currency_id")
     int currency_id;
 
-    @SerializedName("price")
+    @SerializedName("total")
     String price;
 
+    @SerializedName("service")
+    float service;
+
+    public float getservice() {
+        return service;
+    }
+
+    public void setservice(float user_id) {
+        this.service = user_id;
+    }
+
+
+    public int getArea_id() {
+        return area_id;
+    }
+
+    public void setArea_id(int user_id) {
+        this.area_id = user_id;
+    }
     public int getUser_id() {
         return user_id;
     }
@@ -118,13 +139,13 @@ public class OrderModel implements Serializable {
 
     public static  class  productSize implements Serializable
     {
-        @SerializedName("productsize_id")
+        @SerializedName("item_id")
         int productsize_id;
 
-        @SerializedName("amount")
+        @SerializedName("itemamount")
         int amount = 1;
 
-        @SerializedName("total")
+        @SerializedName("itemtotal")
         String total;
 
 

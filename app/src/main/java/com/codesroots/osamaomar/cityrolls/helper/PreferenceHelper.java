@@ -4,8 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -26,6 +31,7 @@ public class PreferenceHelper {
     private final static String USER_NAME = "USERNAME";
     private final static String CART_ARRAY = "CART_ARRAY";
     private final static String Color_ARRAY = "Color_ARRAY";
+    private final static String URL_Base = "URL_Base";
 
     private final static String Doller_value = "Doller_value";
     private final static String IN_OMAN = "IN_OMAN";
@@ -57,6 +63,16 @@ public class PreferenceHelper {
         edit.putInt(COUNTRY_ID, countryId);
         edit.apply();
     }
+    public static void setURL_Base(String API_TOKEN) {
+        Editor edit = app_prefs.edit();
+        edit.putString(URL_Base, API_TOKEN);
+        edit.commit();
+    }
+    public static String getURL_Base() {
+
+        return app_prefs.getString(URL_Base,"1");
+    }
+
 
     public static void setCURRENCY_VALUE(float value) {
         Editor edit = app_prefs.edit();
@@ -171,40 +187,60 @@ public class PreferenceHelper {
 
     public static void addItemtoCart(int product_id)
     {
-        Set<String> set ;
-        set = app_prefs.getStringSet(CART_ARRAY, null);
-        if (set==null)
-            set = new HashSet<String>();
-        set.add(String.valueOf(product_id));
+        Gson gson = new Gson();
+        String json = app_prefs.getString(CART_ARRAY, "");
+        Type type = new TypeToken<List<String>>() {}.getType();
+
+        List<String> arrayList = gson.fromJson(json,type);
+        if (arrayList==null)
+            arrayList = new ArrayList<>();
+        //  arrayList.(String.valueOf(product_id));
         Editor editor = app_prefs.edit();
-        editor.putStringSet(CART_ARRAY, set);
+        arrayList.add(String.valueOf(product_id));
+        String newdata = gson.toJson(arrayList,type);
+        editor.putString(CART_ARRAY, newdata);
         editor.apply();
+
+
+        editor.commit();
     }
 
     public static ArrayList retriveCartItemsValue() {
-        Set<String> set = app_prefs.getStringSet(CART_ARRAY, null);
-        if (set == null)
+        Gson gson = new Gson();
+        String json = app_prefs.getString(CART_ARRAY, "");
+        Type type = new TypeToken<List<String>>() {}.getType();
+
+        List<String> arrayList = gson.fromJson(json,type);
+        if (arrayList == null)
             return null;
-            else
-        arrPackage.addAll(set);
+        else
+            arrPackage.addAll(arrayList);
         return arrPackage;
     }
 
     public static int  retriveCartItemsSize() {
-        Set<String> set = app_prefs.getStringSet(CART_ARRAY, null);
-        if (set == null)
+        Gson gson = new Gson();
+        String json = app_prefs.getString(CART_ARRAY, "");
+        Type type = new TypeToken<List<String>>() {}.getType();
+
+        List<String> arrayList = gson.fromJson(json,type);
+        if (arrayList == null)
             return 0;
         else
-        return set.size();
+            return arrayList.size();
     }
 
 
     public static  void removeItemFromCart(int product_id)
     {
-        Set<String> set = app_prefs.getStringSet(CART_ARRAY, null);
-        set.remove(String.valueOf(product_id));
+        Gson gson = new Gson();
+        String json = app_prefs.getString(CART_ARRAY, "");
+        Type type = new TypeToken<List<String>>() {}.getType();
+
+        List<String> arrayList = gson.fromJson(json,type);
+        arrayList.remove(String.valueOf(product_id));
         arrPackage.clear();
-        arrPackage.addAll(set);
+        arrPackage.addAll(arrayList);
     }
 
     public static  void clearCart()
@@ -238,6 +274,10 @@ public class PreferenceHelper {
         Editor edit = app_prefs.edit();
         edit.putString(Token, API_TOKEN);
         edit.commit();
+    }
+    public static String getToken() {
+
+        return app_prefs.getString(Token,"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImV4cCI6MTU3Mzk2ODg3MH0.w45qrjLBSXaGfHRATa33EwGG-IfPkhKbnZSbflWRLSo");
     }
 
     public static int getUserId() {

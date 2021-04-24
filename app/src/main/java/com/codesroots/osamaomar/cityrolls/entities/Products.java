@@ -103,8 +103,8 @@ public class Products {
 
 
         public List<TotalRatingBean> getTotal_rating() {
-            if (total_rating.size()==0)
-                total_rating.add(new TotalRatingBean(0,0));
+
+
             return total_rating;
         }
 

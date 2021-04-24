@@ -56,23 +56,21 @@ public class AllFavProductsAdapter extends RecyclerView.Adapter<AllFavProductsAd
         try {
             holder.del_favorite.setVisibility( View.VISIBLE);
             holder.oldprice.setVisibility(View.INVISIBLE);
-            if (productsbysubcats.get(position).getProduct().getProductphotos().size() > 0)
                 Glide.with(context.getApplicationContext())
-                        .load(productsbysubcats.get(position).getProduct().getImg())
+                        .load(productsbysubcats.get(position).getProduct().getPhoto())
                         .placeholder(R.drawable.product).dontAnimate()
                         .into(holder.Image);
-            holder.price.setText(productsbysubcats.get(position).getProduct().getProductsizes().get(0).getCurrent_price() + " " +
+            holder.price.setText(productsbysubcats.get(position).getProduct().getPrice() + " " +
                     PreferenceHelper.getCurrency());
             holder.name.setText(productsbysubcats.get(position).getProduct().getName());
-            holder.amount.setText(context.getText(R.string.remendier) + " " +
-                    String.valueOf(productsbysubcats.get(position).getProduct().getProductsizes().get(position).getAmount()) + " " + context.getText(R.string.num));
+            holder.itemdesc.setText(productsbysubcats.get(position).getProduct().getDescription());
 
-            if (productsbysubcats.get(position).getProduct().getTotal_rating() != null)
-                if (productsbysubcats.get(position).getProduct().getTotal_rating().size() > 0) {
-                    holder.ratingBar.setRating(productsbysubcats.get(position).getProduct().getTotal_rating().get(position).getStars() /
-                            productsbysubcats.get(position).getProduct().getTotal_rating().get(position).getCount());
-                    holder.rateCount.setText("(" + productsbysubcats.get(position).getProduct().getTotal_rating().get(position).getCount() + ")");
-                }
+//            if (productsbysubcats.get(position).getProduct().getTotal_rating() != null)
+//                if (productsbysubcats.get(position).getProduct().getTotal_rating().size() > 0) {
+//                    holder.ratingBar.setRating(productsbysubcats.get(position).getProduct().getTotal_rating().get(position).getStars() /
+//                            productsbysubcats.get(position).getProduct().getTotal_rating().get(position).getCount());
+//                    holder.rateCount.setText("(" + productsbysubcats.get(position).getProduct().getTotal_rating().get(position).getCount() + ")");
+//                }
 
 
         } catch (Exception e) {
@@ -103,7 +101,7 @@ public class AllFavProductsAdapter extends RecyclerView.Adapter<AllFavProductsAd
 
         holder.del_favorite.setOnClickListener(v -> {
             viewModel.curent_position=position;
-            viewModel.DeleteFav(PreferenceHelper.getUserId(),productsbysubcats.get(position).getProduct_id());
+            viewModel.DeleteFav(PreferenceHelper.getUserId(),productsbysubcats.get(position).getProduct().getId());
         });
 
 
@@ -129,7 +127,7 @@ public class AllFavProductsAdapter extends RecyclerView.Adapter<AllFavProductsAd
     class ViewHolder extends RecyclerView.ViewHolder {
         final View mView;
         private ImageView Image, favorite,del_favorite;
-        private TextView name, rateCount, amount, price,oldprice,addtocart;
+        private TextView name, rateCount, amount, price,oldprice,addtocart,itemdesc;
         private RatingBar ratingBar;
 
         ViewHolder(View view) {
@@ -143,8 +141,9 @@ public class AllFavProductsAdapter extends RecyclerView.Adapter<AllFavProductsAd
             ratingBar = mView.findViewById(R.id.rates);
             del_favorite = mView.findViewById(R.id.del_favorite);
             favorite = mView.findViewById(R.id.favorite);
+            itemdesc = mView.findViewById(R.id.item_desc);
 
-            oldprice = mView.findViewById(R.id.old_price);
+//            oldprice = mView.findViewById(R.id.old_price);
               addtocart = mView.findViewById(R.id.add_to_cart);
 
         }

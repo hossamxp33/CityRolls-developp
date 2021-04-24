@@ -8,7 +8,9 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import com.codesroots.osamaomar.cityrolls.domain.ApiClient;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.homeFragment;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.morefragment.MenuFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
@@ -38,8 +40,7 @@ import com.codesroots.osamaomar.cityrolls.helper.PreferenceHelper;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.cartfragment.CartFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.favorite.FavoritsFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainactivity.adapter.AllDepartsAdapter;
-import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.MainFragment;
-import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productfragment.myorders.MyOrdersFragment;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.myorders.MyOrdersFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.offerfragment.OffersFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productfragment.ProductsFragment;
 
@@ -176,7 +177,7 @@ private void HiddenKeyboard(View view ){
         switch (item.getItemId()) {
             case R.id.more:
                 drawer.closeDrawers();
-                getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, new homeFragment()).addToBackStack(null).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, new MenuFragment()).addToBackStack(null).commit();
                 break;
 
             case R.id.notifications:

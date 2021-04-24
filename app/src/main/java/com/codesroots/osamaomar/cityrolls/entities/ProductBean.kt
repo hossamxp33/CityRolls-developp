@@ -15,7 +15,7 @@ class ProductBean {
     var total_rating: List<TotalRatingBean>? = null
     var productphotos: List<ProductphotosBean>? = null
     var offers: List<OffersBean>? = null
-    var cat_id: Int = 0
+    var price: Int = 0
     var subcat_id: Int = 0
     var color_hex: String? = null
     var created: String? = null

@@ -1,5 +1,7 @@
 package com.codesroots.osamaomar.cityrolls.entities
 
+import com.google.gson.annotations.SerializedName
+
 class offers {
 
     var data: List<DataBean>? = null
@@ -21,7 +23,9 @@ class offers {
                 field
         var product_id: Int = 0
         var end_date: String? = null
-        var product: ProductBean? = null
+
+        @SerializedName("item")
+        var product: Items? = null
 
     }
 }

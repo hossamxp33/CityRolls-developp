@@ -1,4 +1,4 @@
-package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productfragment.myorders;
+package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.myorders;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -25,7 +25,7 @@ public class MyOrdersViewModel extends ViewModel {
 
     private void getMyOrders(){
         mCompositeDisposable.add(
-                serverGateway.retrieveUserOrders(user_id)
+                serverGateway.retrieveUserOrders()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe( this::postDataResponse,

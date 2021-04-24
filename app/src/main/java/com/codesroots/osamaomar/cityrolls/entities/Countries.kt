@@ -5,7 +5,7 @@ data class Countries(
     val `data`: List<CountriesData>
 )
 data class CountriesData(
-        val code: String,
+        val service: Int,
         val created: Any,
         val id: Int,
         val modified: String,

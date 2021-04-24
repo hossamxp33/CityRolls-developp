@@ -1,4 +1,4 @@
-package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productfragment.myorders.productsinsideorder;
+package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.myorders.productsinsideorder;
 
 import android.app.Application;
 import androidx.lifecycle.ViewModel;

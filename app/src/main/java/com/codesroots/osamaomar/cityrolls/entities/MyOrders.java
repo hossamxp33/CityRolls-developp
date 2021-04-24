@@ -1,5 +1,7 @@
 package com.codesroots.osamaomar.cityrolls.entities;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -30,6 +32,7 @@ public class MyOrders {
 
         private int id;
         private String created;
+        @SerializedName("total")
         private String price;
         private String order_status;
         private int user_id;
@@ -127,11 +130,14 @@ public class MyOrders {
             private int productsize_id;
             private int  productcolor_id;
             private int order_id;
+            @SerializedName("itemamount")
             private int amount;
-            private ProductsizeBean productsize;
+            @SerializedName("item")
+
+            private Items productsize;
             private ProductColor product_color;
 
-
+            @SerializedName("itemtotal")
             private String total;
             //
             public int getId() {
@@ -171,11 +177,11 @@ public class MyOrders {
                 this.order_id = order_id;
             }
 
-            public ProductsizeBean getProductsize() {
+            public Items getProductsize() {
                 return productsize;
             }
 
-            public void setProductsize(ProductsizeBean productsize) {
+            public void setProductsize(Items productsize) {
                 this.productsize = productsize;
             }
             public ProductColor getProduct_color() {

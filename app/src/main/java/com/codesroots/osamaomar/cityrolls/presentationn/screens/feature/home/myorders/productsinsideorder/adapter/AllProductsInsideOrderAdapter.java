@@ -1,4 +1,4 @@
-package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productfragment.myorders.productsinsideorder.adapter;
+package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.myorders.productsinsideorder.adapter;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -50,9 +50,9 @@ public class AllProductsInsideOrderAdapter extends RecyclerView.Adapter<AllProdu
         holder.rate_product.setOnClickListener(v -> {
             Fragment fragment = new AddRateFragment();
             Bundle bundle = new Bundle() ;
-            bundle.putInt(PRODUCT_ID,orderdetailsBeans.get(position).getProductsize().getProduct().getId());
-            bundle.putString(PRODUCT_NAME,orderdetailsBeans.get(position).getProductsize().getProduct().getName());
-            bundle.putString(PRODUCT_PHOTO,orderdetailsBeans.get(position).getProductsize().getProduct().getImg());
+            bundle.putInt(PRODUCT_ID,orderdetailsBeans.get(position).getProductsize().getId());
+            bundle.putString(PRODUCT_NAME,orderdetailsBeans.get(position).getProductsize().getName());
+            bundle.putString(PRODUCT_PHOTO,orderdetailsBeans.get(position).getProductsize().getPhoto());
            // bundle.putString(PRODUCT_PHOTO,"http://shopgate.codesroots.com/library/attachment/pd1.jpg");
             fragment.setArguments(bundle);
             ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().
@@ -60,30 +60,30 @@ public class AllProductsInsideOrderAdapter extends RecyclerView.Adapter<AllProdu
             .addToBackStack(null).commit();
         });
 
-        if (orderdetailsBeans.get(position).getProductsize().getProduct()!=null)
+        if (orderdetailsBeans.get(position).getProductsize()!=null)
             Glide.with(context.getApplicationContext())
-                    .load(orderdetailsBeans.get(position).getProductsize().getProduct().getImg()).placeholder(R.drawable.product).dontAnimate()
+                    .load(orderdetailsBeans.get(position).getProductsize().getPhoto()).placeholder(R.drawable.product).dontAnimate()
                     .into(holder.Image);
         try {
-            holder.name.setText(orderdetailsBeans.get(position).getProductsize().getProduct().getName()  +  "/" + orderdetailsBeans.get(position).getProductsize().getSize()  +  "/" + orderdetailsBeans.get(position).getProduct_color().getColor() );
+            holder.name.setText(orderdetailsBeans.get(position).getProductsize().getName() );
 
         } catch (Exception e) {
         }
 
-
-        if (orderdetailsBeans.get(position).getProductsize().getProduct().getTotal_rating()!=null)
-        if (orderdetailsBeans.get(position).getProductsize().getProduct().getTotal_rating().size()>0) {
-            holder.rateCount.setText("("+orderdetailsBeans.get(position).getProductsize().getProduct().getTotal_rating().get(0).getCount()+")");
-            holder.ratingBar.setRating(orderdetailsBeans.get(position).getProductsize().getProduct().getTotal_rating().get(0).getStars()/
-                    orderdetailsBeans.get(position).getProductsize().getProduct().getTotal_rating().get(0).getCount());
+//
+        if (orderdetailsBeans.get(position).getProductsize().getTotal_rating()!=null)
+        if (orderdetailsBeans.get(position).getProductsize().getTotal_rating().size()>0) {
+            holder.rateCount.setText("("+orderdetailsBeans.get(position).getProductsize().getTotal_rating().get(0).getCount()+")");
+            holder.ratingBar.setRating(orderdetailsBeans.get(position).getProductsize().getTotal_rating().get(0).getStars()/
+                    orderdetailsBeans.get(position).getProductsize().getTotal_rating().get(0).getCount());
 
         }
 
-        holder.amount.setText(context.getText(R.string.remendier)+" "+
-                String.valueOf(orderdetailsBeans.get(position).getProductsize().getAmount())+" "+context.getText(R.string.num));
+       holder.amount.setText(context.getText(R.string.remendier)+" "+
+                String.valueOf(orderdetailsBeans.get(position).getAmount())+" "+context.getText(R.string.num));
 
        holder.price.setText(String.valueOf(Float.valueOf(orderdetailsBeans.get(position).getTotal())
-               *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
+               * PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
 
 
     }

@@ -176,7 +176,7 @@ public class ProductDetailsFragment extends Fragment {
         {
             addToFav.setEnabled(false);
             if (!productfav) {
-                mViewModel.AddToFav();
+                mViewModel.AddToFav(productid);
                 productfav = true;
             } else {
                 mViewModel.DeleteFav(userid, productid);
@@ -451,7 +451,7 @@ public class ProductDetailsFragment extends Fragment {
 
 
     private ProductDetailsModelFactory getViewModelFactory() {
-        return new ProductDetailsModelFactory(this.getActivity().getApplication(), productid, userid);
+        return new ProductDetailsModelFactory(this.getActivity().getApplication(), userid);
     }
 
     private void init(int size) {

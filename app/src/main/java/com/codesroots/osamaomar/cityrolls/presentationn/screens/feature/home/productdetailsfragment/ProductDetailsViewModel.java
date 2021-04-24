@@ -17,7 +17,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-class ProductDetailsViewModel extends ViewModel {
+public class ProductDetailsViewModel extends ViewModel {
     public MutableLiveData<ProductDetails.ProductdetailsBean> productDetailsizeMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<ProductDetails> productDetailsMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<AddToFavModel> addToFavMutableLiveData = new MutableLiveData<>();
@@ -26,12 +26,11 @@ class ProductDetailsViewModel extends ViewModel {
     public MutableLiveData<StoreSetting> storeSettingMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<Throwable> throwablefav = new MutableLiveData<>();
     private ServerGateway serverGateway;
-    private  int product_id,userid;
+    private  int item_id,userid;
     private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
-     ProductDetailsViewModel(ServerGateway serverGateway1,int id,int user_id) {
+     ProductDetailsViewModel(ServerGateway serverGateway1,int user_id) {
         serverGateway = serverGateway1;
-        product_id = id;
          userid = user_id;
        // getData();
          getSettingData();
@@ -60,8 +59,9 @@ class ProductDetailsViewModel extends ViewModel {
         throwableMutableLiveData.postValue(throwable);
     }
 
-    public  void AddToFav ()
+    public  void AddToFav (int item_ids)
     {
+        item_id = item_ids;
         getObservableToFavObservable().subscribeWith(getObserverAddFav());
     }
 
@@ -73,7 +73,7 @@ class ProductDetailsViewModel extends ViewModel {
     ////////////// getData
     @SuppressLint("CheckResult")
     private Observable<ProductDetails> getObservable() {
-        Observable<ProductDetails> photographersData = serverGateway.getProductDetails(product_id,userid);
+        Observable<ProductDetails> photographersData = serverGateway.getProductDetails(item_id,userid);
         photographersData.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
         return photographersData;
@@ -102,7 +102,7 @@ class ProductDetailsViewModel extends ViewModel {
     //////////////// add to fav
     @SuppressLint("CheckResult")
     private Observable<AddToFavModel> getObservableToFavObservable() {
-        Observable<AddToFavModel> addToFavObservable = serverGateway.addToFave(userid,product_id);
+        Observable<AddToFavModel> addToFavObservable = serverGateway.addToFave(userid,item_id);
         addToFavObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
         return addToFavObservable;

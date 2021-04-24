@@ -11,6 +11,7 @@ import com.codesroots.osamaomar.cityrolls.R;
 import com.codesroots.osamaomar.cityrolls.entities.CountriesData;
 import com.codesroots.osamaomar.cityrolls.helper.PreferenceHelper;
 import com.codesroots.osamaomar.cityrolls.helper.ResourceUtil;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.chooseActivity.ChooseTypes;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainactivity.MainActivity;
 
 import java.util.ArrayList;
@@ -57,14 +58,23 @@ public class CountriesActivity extends AppCompatActivity {
 
         done.setOnClickListener(v -> {
             PreferenceHelper.setCountryId(countries.get(index).getId());
+            PreferenceHelper.setCURRENCY_VALUE(countries.get(index).getService());
+
             if (ResourceUtil.getCurrentLanguage(CountriesActivity.this).matches("ar"))
                     ResourceUtil.changeLang("ar", CountriesActivity.this);
                 else
                     ResourceUtil.changeLang("en", CountriesActivity.this);
 
-                Intent mainIntent = new Intent(CountriesActivity.this, MainActivity.class);
-                startActivity(mainIntent);
-                finish();
+                if (countries.get(index).getId() == 2 || countries.get(index).getId() == 3){
+                    Intent mainIntent = new Intent(CountriesActivity.this, ChooseTypes.class);
+                    startActivity(mainIntent);
+                    finish();
+                }else {
+                    Intent mainIntent = new Intent(CountriesActivity.this, MainActivity.class);
+                    startActivity(mainIntent);
+                    finish();
+                }
+
         });
 
         next.setOnClickListener(v -> {

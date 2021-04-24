@@ -1,6 +1,11 @@
 package com.codesroots.osamaomar.cityrolls.entities
 
-class TotalRatingBean {
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+
+class TotalRatingBean : Parcelable {
     /**
      * product_id : 31
      * stars : 5
@@ -10,9 +15,6 @@ class TotalRatingBean {
     var product_id: Int = 0
     var stars: Float = 0.toFloat()
     var count: Int = 0
-    constructor() {}
-    constructor(stars: Float, count: Int) {
-        this.stars = stars
-        this.count = count
 
-    }}
+
+}

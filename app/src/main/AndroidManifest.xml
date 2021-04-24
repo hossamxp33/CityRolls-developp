@@ -32,6 +32,9 @@
         <activity
             android:name="com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.conditions.ConditionsActivity"
             android:label="@string/conditions" />
+        <activity
+            android:name="com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.chooseActivity.ChooseTypes"
+            android:label="@string/conditions" />
         <activity android:name="com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.aboutus.contactus" />
         <activity
             android:name="com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainactivity.MainActivity"

@@ -1,8 +1,9 @@
 package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.detailsfragment
 
-import android.app.PendingIntent.getActivity
 import android.os.Build
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -12,16 +13,21 @@ import com.codesroots.osamaomar.cityrolls.R
 import com.codesroots.osamaomar.cityrolls.databinding.ItemDetailsBinding
 import com.codesroots.osamaomar.cityrolls.entities.Items
 import com.codesroots.osamaomar.cityrolls.helper.AddorRemoveCallbacks
+import com.codesroots.osamaomar.cityrolls.helper.Converter
 import com.codesroots.osamaomar.cityrolls.helper.PreferenceHelper
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.ClickHandler
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.cartfragment.CartFragment
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainactivity.MainActivity
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.MainFragmentViewModel
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.MainViewModelFactory
 
-public class ItemDetails  : AppCompatActivity() {
+public class ItemDetails  : AppCompatActivity() , AddorRemoveCallbacks {
 
 
     lateinit var viewModel: MainFragmentViewModel
     var Itemdata: Items? = null
+    private var cart_count = 0
+
     var binding: ItemDetailsBinding? = null
     private fun getViewModelFactory(): MainViewModelFactory {
         return MainViewModelFactory(this.application)
@@ -47,7 +53,7 @@ public class ItemDetails  : AppCompatActivity() {
         binding!!.viewmodel = viewModel
         binding!!.data = Itemdata
 
-        binding!!.itemImg.setOnClickListener {
+        binding!!.addtocart.setOnClickListener {
             if (PreferenceHelper.getUserId() > 0) {
                 if (PreferenceHelper.retriveCartItemsValue() != null) {
                     if (!PreferenceHelper.retriveCartItemsValue().contains(Itemdata!!.id)) {
@@ -74,6 +80,47 @@ public class ItemDetails  : AppCompatActivity() {
 //
 //        })
 //    }
+
+
+    }
+
+    override fun onAddProduct() {
+        cart_count++
+        invalidateOptionsMenu()
+    }
+
+    override fun onRemoveProduct() {
+        cart_count--
+        invalidateOptionsMenu()
+    }
+
+    override fun onClearCart() {
+        PreferenceHelper.clearCart()
+        cart_count = 0
+        invalidateOptionsMenu()
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main, menu)
+        val menuItem = menu.findItem(R.id.action_cart)
+        cart_count = PreferenceHelper.retriveCartItemsSize()
+        menuItem.icon = Converter.convertLayoutToImage(this, cart_count, R.drawable.shoppcart)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_cart -> {
+                supportFragmentManager.beginTransaction().replace(R.id.mainfram, CartFragment()).addToBackStack(null).commit()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+
+        return super.onPrepareOptionsMenu(menu)
 
 
     }

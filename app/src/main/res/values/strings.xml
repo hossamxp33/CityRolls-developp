@@ -4,7 +4,7 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="google_maps_key">AIzaSyD8z2lWzm896P2g8VhaBfrVam0JL1BaiW0</string>
+    <string name="google_maps_key">AIzaSyD7JEsjyD4txA-88_O45mN_PWhrN22gpI0 </string>
     <string name="more_sale">More Sales</string>
     <string name="deliveryaddress">choice delivery place</string>
     <string name="noaddressfound">No address found</string>
@@ -35,7 +35,7 @@
     <string name="choice_payment_way">Choice Payment Way</string>
     <string name="choice_size">Choice Size</string>
     <string name="client">Client</string>
-    <string name="coin">OMR</string>
+    <string name="coin">L.E</string>
     <string name="day_offers">Day offers</string>
     <string name="dayoffer">Day offers</string>
     <string name="degree_rate">Rate Ratio</string>
@@ -99,10 +99,15 @@
 
     <string name="sure_order">confirm order</string>
     <string name="title">Login</string>
+    <string name="choosetitle">Choose from Our Types</string>
+
     <string name="total">Tatal :</string>
     <string name="under_delivery">deliveried</string>
     <string name="user_rates">User rates</string>
     <string name="username">user name</string>
+    <string name="chooseRestaurants">Restaurants</string>
+    <string name="choosFreeze">Freeze Products</string>
+
     <string name="wait">Waiting...</string>
     <string name="write_comment">"write a coment "</string>
     <string name="writecomment">write tou comment</string>

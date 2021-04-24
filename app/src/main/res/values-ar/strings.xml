@@ -6,7 +6,7 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="google_maps_key">AIzaSyD8z2lWzm896P2g8VhaBfrVam0JL1BaiW0</string>
+    <string name="google_maps_key">AIzaSyD7JEsjyD4txA-88_O45mN_PWhrN22gpI0</string>
     <string name="notexists">هذا الرقم غير مسجل علي هاتفك يجب تسجيله اولا لامكانية الدردشة علي الواتساب</string>
     <string name="related">منتجات ذات صلة</string>
     <string name="deliveryaddress">أختر مكان التوصيل</string>
@@ -32,8 +32,8 @@
     <string name="product_des">وصف المنتج</string>
     <string name="addlocation">اختر عنوان الشارع،صندوق البريد،الشقه،الجناح،الوحده</string>
     <string name="choice_size">اختر الحجم</string>
-    <string name="coin"> ريال عماني </string>
-    <string name="remendier">  متوفر  </string>
+    <string name="coin"> جنيه  </string>
+    <string name="remendier">  مطلوب  </string>
     <string name="num"> قطع </string>
     <string name="realcoin">ريال</string>
     <string name="rates">تعليقات / التقييمات</string>
@@ -177,6 +177,9 @@
     <string name="available">متوفر</string>
     <string name="piece">قطعة</string>
     <string name="color">اختر اللون</string>
+    <string name="chooseRestaurants">المطعم</string>
+    <string name="choosFreeze">مجمدات</string>
+    <string name="choosetitle">اختر هل تريد طلب من المطعم او مجمدات</string>
 
 
 </resources>

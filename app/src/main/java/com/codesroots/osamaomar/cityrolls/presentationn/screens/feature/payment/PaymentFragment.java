@@ -66,12 +66,7 @@ public class PaymentFragment extends Fragment {
         for (int i = 0; i < orderModel.getOrderdetails().size(); i++)
             Total += Float.valueOf(orderModel.getOrderdetails().get(i).getTotal());
 
-        if (Total<PreferenceHelper.getMIM_CHIPPING())
-        {  if (PreferenceHelper.getCOUNTRY_ID()==1)
-           Total+=PreferenceHelper.getIN_OMAN();
-            else
-            Total+=PreferenceHelper.getOUT_OMAN();
-        }
+         Total+=PreferenceHelper.getCurrencyValue();
         paypal.setOnClickListener(v -> processpayment());
         cash.setOnClickListener(v -> showBankDialog());
         paymentViewModel = ViewModelProviders.of(this, getViewModelFactory()).get(PaymentViewModel.class);
@@ -95,7 +90,9 @@ public class PaymentFragment extends Fragment {
 
     private void processCashpayment() {
 
-        orderModel.setType(getString(R.string.cash));
+        orderModel.setservice(PreferenceHelper.getCurrencyValue());
+        orderModel.setArea_id(PreferenceHelper.getCOUNTRY_ID());
+        orderModel.setType("1");
         orderModel.setPrice(String.valueOf(Total));
         sendRequest();
     }
