@@ -27,10 +27,9 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/detailsaddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="10dp"
+        app:layout_constraintHeight_percent="0.5"
         app:layout_constraintTop_toBottomOf="@+id/search_container" />
 
 
@@ -104,24 +103,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usermap"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/send"
         app:layout_constraintHeight_percent="0.07"
         />
-
+    <EditText
+        android:id="@+id/notes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="@string/addressdetails"
+        android:textColorHint="@color/black"
+        android:background="@drawable/linear_background_for_cart"
+        app:layout_constraintWidth_percent="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsaddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintHeight_percent="0.2"
+        />
     <TextView
         android:id="@+id/send"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/linear_background_for_addtocart"
         android:gravity="center"
         android:onClick="send"
         android:text="@string/send"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/notes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.07"
         app:layout_constraintStart_toStartOf="parent"
