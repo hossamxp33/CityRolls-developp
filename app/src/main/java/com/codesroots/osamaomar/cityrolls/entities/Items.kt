@@ -9,14 +9,14 @@ data class Items(
     val category_id: Int,
 
     val id: Int,
-    val modified: String,
+    val modified: String?=null,
     val name: String,
     val description: String,
 
     val price: Float,
     val photo: String,
 
-     var total_rating: List<TotalRatingBean?>? = ArrayList()
+     var total_rating: List<TotalRatingBean?>? = null
 
 )  : Parcelable {
 

@@ -23,6 +23,7 @@ class CartItems {
         var current_price: Int = 0
         var photo: String? = null
         var name: String? = null
+        var total_rating: List<TotalRatingBean>? = null
 
         var product: ProductBean? = null
         class ProductBean {

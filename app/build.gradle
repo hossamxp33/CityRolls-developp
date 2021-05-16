@@ -12,6 +12,7 @@ apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -64,6 +65,8 @@ dependencies {
     implementation 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
     implementation 'com.google.android.gms:play-services-maps:16.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.google.android.gms:play-services:9.2.0'
+
     implementation 'com.google.android.gms:play-services-location:16.0.0'
     implementation 'com.google.android.gms:play-services-maps:16.0.0'
     implementation 'com.google.android.gms:play-services-places:16.0.0'
@@ -108,6 +111,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.0.0'
     // alternatively, just LiveData
     implementation 'androidx.lifecycle:lifecycle-livedata:2.0.0'
+    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+
     annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0'
 }
 repositories {

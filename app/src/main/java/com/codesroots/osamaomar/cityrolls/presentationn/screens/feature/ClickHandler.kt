@@ -5,16 +5,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.bumptech.glide.Glide
 import com.codesroots.osamaomar.cityrolls.R
 import com.codesroots.osamaomar.cityrolls.entities.Category
 import com.codesroots.osamaomar.cityrolls.entities.Items
+import com.codesroots.osamaomar.cityrolls.entities.names
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.detailsfragment.ItemDetails
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainactivity.MainActivity
-import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.MainFragment
-import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.homeFragment
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsFragment
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.subcategryfragment.SubcategryFragment
-import kotlinx.android.synthetic.main.main_fragment.view.*
 
 @BindingAdapter("app:imageResource")
 fun setImageResource(imageView: ImageView, resource: String?) {
@@ -26,11 +27,16 @@ fun setImageResource(imageView: ImageView, resource: String?) {
 
 
     fun SwitchToItemDetails(context: Context,  data: Items){
-
-        val homeIntent = Intent(context, ItemDetails()::class.java)
-     //   homeIntent.putExtra("position",int)
-        homeIntent.putExtra("myobj", data)
-        (context as MainActivity).startActivity(homeIntent)
+        val fragment: Fragment = ProductDetailsFragment()
+        val bundle = Bundle()
+        bundle.putInt(names.PRODUCT_ID, data.id)
+        fragment.arguments = bundle
+        (context as FragmentActivity).supportFragmentManager.beginTransaction().replace(R.id.mainfram, fragment)
+                .addToBackStack(null).commit()
+//        val homeIntent = Intent(context, ItemDetails()::class.java)
+//     //   homeIntent.putExtra("position",int)
+//        homeIntent.putExtra("myobj", data)
+//        (context as MainActivity).startActivity(homeIntent)
 
     }
 

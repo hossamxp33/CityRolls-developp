@@ -56,6 +56,8 @@ import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mai
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.myorders.MyOrdersFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.offerfragment.OffersFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productfragment.ProductsFragment;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 
@@ -84,7 +86,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         preferenceHelper = new PreferenceHelper(this);
-
+        FirebaseApp.initializeApp(this);
+        FirebaseMessaging.getInstance();
         initialize();
         setUpToggle();
         GetLocation();

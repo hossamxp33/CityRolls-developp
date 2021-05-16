@@ -164,7 +164,7 @@
     <string name="ok">تأكيد</string>
     <string name="notesvalue">لن يتم اعتماد الطلب بشكل نهائي حتى يتم تحويل المبلغ عبر الحساب وإرسال صورة من إيصال التحويل ورقم الطلب على الواتس اب أو البريد الالكتروني.</string>
     <string name="notes">  *ملاحظات </string>
-    <string name="change_country">تغيير الدولة</string>
+    <string name="change_country">تغيير المنطقة</string>
     <string name="charge"> سعر التوصيل : </string>
     <string name="cancel">الغاء</string>
     <string name="your_selected">اخيارك هو</string>
@@ -180,6 +180,9 @@
     <string name="chooseRestaurants">المطعم</string>
     <string name="choosFreeze">مجمدات</string>
     <string name="choosetitle">اختر هل تريد طلب من المطعم او مجمدات</string>
+    <string name="choosearea">برجاء اختيار منطقة التوصيل</string>
+    <string name="changeareafromsetting"> يمكنك تغيير الدولة من الاعدادات</string>
+
 
 
 </resources>

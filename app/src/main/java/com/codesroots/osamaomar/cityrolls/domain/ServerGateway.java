@@ -46,10 +46,10 @@ public interface ServerGateway {
     @GET("Categories/allcategories.json")
     Observable<Sidemenu> getSideMenuData();
 
-    @GET("Productsizes/productdetails/{product_id}/{user_id}.json")
+    @GET("items/view/{product_id}/{user_id}.json")
     Observable<ProductDetails> getProductDetails(
 
-            @Path("product_id") int product_id,
+            @Path("item_id") int product_id,
             @Path("user_id") int user_id
     );
 
@@ -100,11 +100,9 @@ public interface ServerGateway {
     @GET("products/getproductsbycatid/{type}/{subcat_id}/{user_id}/1.json")
     Observable<Products> getProducts(
             @Path("type") int type,
-
             @Path("subcat_id") int id,
             @Path("user_id") int user_id,
             @Path("user_id") int pager
-
     );
 
 
@@ -158,8 +156,6 @@ public interface ServerGateway {
             @Field("rate") float rate,
             @Field("comment") String comment
     );
-
-
     ////////////// make order
     @POST("Orders/addorder.json")
     @Headers("Accept: Application/json")
@@ -181,8 +177,6 @@ public interface ServerGateway {
             @Path("type") String type,
             @Path("userid") int userid
     );
-
-
 ///// Get Small store
 
     @POST("smallstores/getsmallstoredata/{id}/{type}")
@@ -191,11 +185,6 @@ public interface ServerGateway {
             @Path("type") int type
 
     );
-
-
-
-
-
     ////////////// get currency
     @GET("Currencies/currency.json")
     @Headers("Accept: Application/json")

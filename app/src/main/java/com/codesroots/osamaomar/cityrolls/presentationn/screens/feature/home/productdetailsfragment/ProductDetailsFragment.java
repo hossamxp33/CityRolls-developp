@@ -119,18 +119,8 @@ public class ProductDetailsFragment extends Fragment {
         });
 
 
+        mViewModel.getData();
 
-        mViewModel.storeSettingMutableLiveData.observe(this, storeSetting ->
-        {
-            mViewModel.getData();
-            setting = storeSetting;
-            if (storeSetting.getData()!=null) {
-                PreferenceHelper.setInOman(storeSetting.getData().get(0).getInoman());
-                PreferenceHelper.setOutOman(storeSetting.getData().get(0).getOutoman());
-                PreferenceHelper.setMinChipping(storeSetting.getData().get(0).getShippingPrice());
-            }
-
-        });
 //
 
 

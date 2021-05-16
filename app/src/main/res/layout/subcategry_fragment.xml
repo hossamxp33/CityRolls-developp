@@ -21,18 +21,7 @@
 
 
 
-        <TextView
-            android:id="@+id/head_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.95" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/subcategry_Rec"
@@ -40,7 +29,7 @@
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintHeight_percent="0.4"
-            app:layout_constraintTop_toBottomOf="@+id/head_title" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

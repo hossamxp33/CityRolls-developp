@@ -97,11 +97,11 @@
     <string name="sendrate">send</string>
     <string name="read_more">Read More....</string>
 
-    <string name="sure_order">confirm order</string>
+    <string name="sure_order">Confirm Order</string>
     <string name="title">Login</string>
     <string name="choosetitle">Choose from Our Types</string>
 
-    <string name="total">Tatal :</string>
+    <string name="total">Total :</string>
     <string name="under_delivery">deliveried</string>
     <string name="user_rates">User rates</string>
     <string name="username">user name</string>
@@ -217,7 +217,7 @@
     <string name="share">Share App </string>
 
     <string name="notes">*notes</string>
-    <string name="change_country">change country </string>
+    <string name="change_country">change area</string>
     <string name="charge"> Delivery cost :  </string>
     <string name="cancel">cancel</string>
     <string name="alltotal">Total :</string>
@@ -226,5 +226,8 @@
 This number is not registered on your phone must be registered first to the possibility of chatting on WhatsApp</string>
     <string name="mail">E-mail</string>
     <string name="success">thanks..success operation</string>
+    <string name="choosearea">please choose your area</string>
+    <string name="changeareafromsetting">you can change the area from setting</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
 
 </resources>

@@ -55,7 +55,7 @@ public class AllFavProductsAdapter extends RecyclerView.Adapter<AllFavProductsAd
         holder.addtocart.setVisibility(View.GONE);
         try {
             holder.del_favorite.setVisibility( View.VISIBLE);
-            holder.oldprice.setVisibility(View.INVISIBLE);
+         //   holder.oldprice.setVisibility(View.INVISIBLE);
                 Glide.with(context.getApplicationContext())
                         .load(productsbysubcats.get(position).getProduct().getPhoto())
                         .placeholder(R.drawable.product).dontAnimate()

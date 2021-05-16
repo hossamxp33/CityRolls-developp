@@ -68,13 +68,12 @@ public  OffersFragment offersFragments;
 
 
 
-//        priceafteroffer =Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price())- Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price())*
-//                Integer.valueOf(offersData.get(position).getPercentage())/100;
+       priceafteroffer =Float.valueOf(offersData.get(position).getProduct().getPrice())- Float.valueOf(offersData.get(position).getProduct().getPrice())*
+               Integer.valueOf(offersData.get(position).getPercentage())/100;
 
 //        holder.discount.setText(context.getText(R.string.disscount)+" "+offersData.get(position).getPercentage()+" "+"%");
 
-        if (!offersData.get(position).getPercentage().matches(""))
-        {
+
             if (PreferenceHelper.getCurrencyValue()>0)
                 holder.price.setText(String.valueOf(String.valueOf(priceafteroffer *PreferenceHelper.getCurrencyValue()+" "+
                         PreferenceHelper.getCurrency())));
@@ -83,16 +82,14 @@ public  OffersFragment offersFragments;
                 holder.price.setText(String.valueOf(offersData.get(position).getProduct().getPrice())+" "+
                         PreferenceHelper.getCurrency());
 
-      }
-        else
-        {
+
 //            if (PreferenceHelper.getCurrencyValue()>0)
 //                holder.price.setText(String.valueOf(Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price())
 //                        *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
 //            else
 //                holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price()+" "+
 //                        PreferenceHelper.getCurrency());
-        }
+      //  }
 
 //        holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price()+" "+
              //   PreferenceHelper.getCurrency());
