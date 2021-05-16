@@ -19,7 +19,7 @@ public class ProductDetailsModelFactory implements ViewModelProvider.Factory {
         application = application1;
         userid = user_id;
         productid =   item_id ;
-
+//hossam
     }
 
     /////// for menu viewmodel
