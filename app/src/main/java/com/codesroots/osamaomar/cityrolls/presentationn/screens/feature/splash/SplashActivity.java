@@ -44,6 +44,6 @@ if (PreferenceHelper.getURL_Base() == "1") {
                 startActivity(mainIntent);
                 finish();
             }
-        }, 5000);
+        }, 3000);
     }
 }

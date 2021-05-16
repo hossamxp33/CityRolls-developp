@@ -33,7 +33,7 @@ public class ProductDetailsViewModel extends ViewModel {
         serverGateway = serverGateway1;
          userid = user_id;
        // getData();
-         getSettingData();
+     //    getSettingData();
     }
 
     public void getData() {

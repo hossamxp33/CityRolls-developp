@@ -15,9 +15,11 @@ public class ProductDetailsModelFactory implements ViewModelProvider.Factory {
     private Application application;
     private int productid,userid;
 
-    public ProductDetailsModelFactory(Application application1,int user_id) {
+    public ProductDetailsModelFactory(Application application1,int user_id,int item_id) {
         application = application1;
         userid = user_id;
+        productid =   item_id ;
+
     }
 
     /////// for menu viewmodel
