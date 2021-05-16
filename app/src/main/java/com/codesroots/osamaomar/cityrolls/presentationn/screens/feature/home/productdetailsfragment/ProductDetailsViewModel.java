@@ -26,12 +26,13 @@ public class ProductDetailsViewModel extends ViewModel {
     public MutableLiveData<StoreSetting> storeSettingMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<Throwable> throwablefav = new MutableLiveData<>();
     private ServerGateway serverGateway;
-    private  int item_id,userid;
+    private  int itemid,userid;
     private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
-     ProductDetailsViewModel(ServerGateway serverGateway1,int user_id) {
+     ProductDetailsViewModel(ServerGateway serverGateway1,int user_id,int item_id) {
         serverGateway = serverGateway1;
          userid = user_id;
+         itemid = item_id;
        // getData();
      //    getSettingData();
     }
@@ -61,7 +62,7 @@ public class ProductDetailsViewModel extends ViewModel {
 
     public  void AddToFav (int item_ids)
     {
-        item_id = item_ids;
+        itemid = item_ids;
         getObservableToFavObservable().subscribeWith(getObserverAddFav());
     }
 
@@ -73,7 +74,7 @@ public class ProductDetailsViewModel extends ViewModel {
     ////////////// getData
     @SuppressLint("CheckResult")
     private Observable<ProductDetails> getObservable() {
-        Observable<ProductDetails> photographersData = serverGateway.getProductDetails(item_id,userid);
+        Observable<ProductDetails> photographersData = serverGateway.getProductDetails(itemid,userid);
         photographersData.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
         return photographersData;
@@ -102,7 +103,7 @@ public class ProductDetailsViewModel extends ViewModel {
     //////////////// add to fav
     @SuppressLint("CheckResult")
     private Observable<AddToFavModel> getObservableToFavObservable() {
-        Observable<AddToFavModel> addToFavObservable = serverGateway.addToFave(userid,item_id);
+        Observable<AddToFavModel> addToFavObservable = serverGateway.addToFave(userid,itemid);
         addToFavObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
         return addToFavObservable;

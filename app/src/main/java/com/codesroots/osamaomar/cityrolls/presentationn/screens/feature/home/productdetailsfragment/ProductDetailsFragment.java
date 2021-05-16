@@ -441,7 +441,7 @@ public class ProductDetailsFragment extends Fragment {
 
 
     private ProductDetailsModelFactory getViewModelFactory() {
-        return new ProductDetailsModelFactory(this.getActivity().getApplication(), userid);
+        return new ProductDetailsModelFactory(this.getActivity().getApplication(), userid,productid);
     }
 
     private void init(int size) {

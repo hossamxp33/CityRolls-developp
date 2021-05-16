@@ -33,7 +33,7 @@ public class ProductDetailsModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
          if (modelClass == ProductDetailsViewModel.class)
         {
-            return (T) new ProductDetailsViewModel(getApiService(),userid);
+            return (T) new ProductDetailsViewModel(getApiService(),userid,productid);
         }
         else   if (modelClass == MenuViewModel.class)
          {
