@@ -15,7 +15,7 @@ data class Items(
         val price: Float,
         val photo: String,
         val favourites: List<FavouritesBean?>? = null,
-var item_photo:List<ItemPhoto>? = null,
+        var item_photo:List<ItemPhoto>? = null,
         var total_rating: List<TotalRatingBean?>? = null
 
 )  : Parcelable {

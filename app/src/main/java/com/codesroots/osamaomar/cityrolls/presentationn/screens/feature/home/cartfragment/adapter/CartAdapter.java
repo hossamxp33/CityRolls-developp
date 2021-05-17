@@ -146,7 +146,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>  {
                                 Float.valueOf(dataBeans.get(position).getCurrent_price())));
                     cartFragment.onMinusProduct(position);
                 }catch (Exception e){
-
+//
                 }
 
             }

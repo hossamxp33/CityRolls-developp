@@ -52,7 +52,7 @@ public class  ProductSizesAdapter extends RecyclerView.Adapter<ProductSizesAdapt
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.text.setText(productsizes.get(position).getSize());
-        fragment.amount.setText(context.getText(R.string.remendier) + " " + String.valueOf(productsizes.get(mSelectedItem).getAmount()) + " " + context.getText(R.string.num));
+        //fragment.amount.setText(context.getText(R.string.remendier) + " " + String.valueOf(productsizes.get(mSelectedItem).getAmount()) + " " + context.getText(R.string.num));
 
         if (position == mSelectedItem)
             holder.text.setBackgroundResource(R.drawable.linear_background_for_selected_size);

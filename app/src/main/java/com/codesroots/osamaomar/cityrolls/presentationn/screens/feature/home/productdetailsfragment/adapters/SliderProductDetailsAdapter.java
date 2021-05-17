@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.cityrolls.R;
+import com.codesroots.osamaomar.cityrolls.entities.ItemPhoto;
 import com.codesroots.osamaomar.cityrolls.entities.ProductphotosBean;
 
 import java.util.List;
@@ -17,8 +18,8 @@ import java.util.List;
 
 public class SliderProductDetailsAdapter extends PagerAdapter {
     private Context activity;
-   private List<ProductphotosBean> slider;
-    public SliderProductDetailsAdapter(FragmentActivity context, List<ProductphotosBean> sliders) {
+   private List<ItemPhoto> slider;
+    public SliderProductDetailsAdapter(FragmentActivity context, List<ItemPhoto> sliders) {
         activity=context;
         slider=sliders;
     }

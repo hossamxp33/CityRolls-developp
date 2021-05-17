@@ -47,7 +47,7 @@ public interface ServerGateway {
     Observable<Sidemenu> getSideMenuData();
 
     @GET("items/view/{item_id}/{user_id}.json")
-    Observable<Details> getProductDetails(
+    Observable<ProductDetails> getProductDetails(
 
             @Path("item_id") int product_id,
             @Path("user_id") int user_id

@@ -221,7 +221,7 @@ public class ProductDetailsFragment extends Fragment {
         ratingBar = view.findViewById(R.id.rates);
         item_img = view.findViewById(R.id.item_img);
         addToFav = view.findViewById(R.id.fav);
-        amount = view.findViewById(R.id.amount);
+        //amount = view.findViewById(R.id.amount);
         addtocart = view.findViewById(R.id.addtocart);
         show_desc = view.findViewById(R.id.show);
         hide_desc = view.findViewById(R.id.hide);
@@ -240,12 +240,19 @@ public class ProductDetailsFragment extends Fragment {
     private void setDatainViews(ProductDetails productDetails) {
         recommended_products.setAdapter(new RelatedProductsAdapter(getActivity(),productDetails.
                 getRelated()));
+        try {
+            if (productDetails.getProductdetails().getItem_photo().size() > 0) {
+                slider.setAdapter(new SliderProductDetailsAdapter(getActivity(), productDetails.getProductdetails().getItem_photo()));
+                indicator.setViewPager(slider);
+                init(productDetails.getProductdetails().getItem_photo().size());
+                product_name.setText(productDetails.getProductdetails().getName());
 
-     //   if (productDetails.getProductdetails().size() > 0) {
-           // slider.setAdapter(new SliderProductDetailsAdapter(getActivity(), productDetails.getProductdetails().get(0).getProductphotos()));
-//            indicator.setViewPager(slider);
-        //    init(productDetails.getProductdetails().get(0).getProductphotos().size());
-            product_name.setText(productDetails.getProductdetails().getName());
+
+            } else {
+                slider.setVisibility(View.GONE);
+            }
+        }catch (Exception e){}
+
 
 
 
@@ -288,19 +295,19 @@ public class ProductDetailsFragment extends Fragment {
         ////////////////////////// Spinner /////////////////////////////////
       //  List values = new kotlinusercase().makestringarray(productdetailsBean.getProductsizes());
         //  String values = productdetailsBean.getProductsizes().get(0).getSize();
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item,values);
-//        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+//       ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item,values);
+     //  adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 //        spinner.setAdapter(adapter);
 
-//        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-//        adapter.notifyDataSetChanged();
+   //    adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+   //   adapter.notifyDataSetChanged();
 //        spinner.setAdapter(adapter);
 
 //        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //            @Override
 //            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //
-//                sizeid = productdetailsBean.getProductsizes().get(position).getId();
+                sizeid = productdetailsBean.getId();
 //                //   if (position > 0 )a
 //                if (productdetailsBean.getOffers().size() > 0) {
 //                    //hasOffer = true;
@@ -369,9 +376,9 @@ public class ProductDetailsFragment extends Fragment {
                     .useAnimationPool(true).placeholder(R.drawable.product).into(item_img);
             imagurl = productdetailsBean.getPhoto();
 
-            productImagesAdapter = new ProductImagesAdapter(getActivity(), productdetailsBean.getProductphotos(), this);
-            images_rec.setAdapter(productImagesAdapter);
-
+//            productImagesAdapter = new ProductImagesAdapter(getActivity(), productdetailsBean.getProductphotos(), this);
+//            images_rec.setAdapter(productImagesAdapter);
+//
 
 
             if (productdetailsBean.getTotal_rating() != null) {
