@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
     public static String BASE_URL ;
-    //                                      https://system.city-rolls.com/api/items/homepage.json
+    //  https://system.city-rolls.com/api/items/homepage.json
     private static final int TIMEOUT = 30;
     public static Retrofit retrofit = null;
 

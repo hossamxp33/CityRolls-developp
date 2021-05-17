@@ -63,6 +63,6 @@ public class OffersFragment extends Fragment {
         return new OffersViewModelFactory(this.getActivity().getApplication());
     }
     private ProductDetailsModelFactory ProductDetailsModelFactory() {
-        return new ProductDetailsModelFactory(this.getActivity().getApplication(),  PreferenceHelper.getUserId());
+        return new ProductDetailsModelFactory(this.getActivity().getApplication(),  PreferenceHelper.getUserId(),0);
     }
 }

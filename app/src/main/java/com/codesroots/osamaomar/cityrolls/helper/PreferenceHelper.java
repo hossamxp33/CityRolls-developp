@@ -46,9 +46,9 @@ public class PreferenceHelper {
     public PreferenceHelper(Context context) {
         this.context = context;
         try {
-            app_prefs = context.getSharedPreferences(app_ref,
-                    Context.MODE_PRIVATE);
+            app_prefs = context.getSharedPreferences(app_ref, Context.MODE_PRIVATE);
         } catch (NullPointerException e) {
+
         }
     }
 

@@ -37,7 +37,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.viewpager.widget.ViewPager
+            <ImageView
                 android:id="@+id/sliderr"
                 android:layout_width="wrap_content"
                 android:layout_height="180dp"
@@ -290,32 +290,32 @@
                 android:visibility="invisible" />
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/size_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/choice_size"
-            android:textColor="@color/gray"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView1"
-            app:layout_constraintWidth_percent="0.9" />
+<!--        <TextView-->
+<!--            android:id="@+id/size_title"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:text="@string/choice_size"-->
+<!--            android:textColor="@color/gray"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView1"-->
+<!--            app:layout_constraintWidth_percent="0.9" />-->
 
 
-        <Spinner
-            android:id="@+id/planets_spinner"
-            android:layout_width="150dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rounded_corner_spinner"
-            android:ellipsize="marquee"
-            android:singleLine="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/size_title" />
+<!--        <Spinner-->
+<!--            android:id="@+id/planets_spinner"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="25dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:background="@drawable/rounded_corner_spinner"-->
+<!--            android:ellipsize="marquee"-->
+<!--            android:singleLine="true"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/size_title" />-->
 
         <TextView
             android:id="@+id/relatedText"
@@ -325,7 +325,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/related"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/planets_spinner" />
+            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView1" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recommended_products"

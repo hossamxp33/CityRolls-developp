@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.codesroots.osamaomar.cityrolls.domain.ServerGateway;
 import com.codesroots.osamaomar.cityrolls.entities.AddToFavModel;
+import com.codesroots.osamaomar.cityrolls.entities.Details;
 import com.codesroots.osamaomar.cityrolls.entities.ProductDetails;
 import com.codesroots.osamaomar.cityrolls.entities.StoreSetting;
 
@@ -19,7 +20,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ProductDetailsViewModel extends ViewModel {
     public MutableLiveData<ProductDetails.ProductdetailsBean> productDetailsizeMutableLiveData = new MutableLiveData<>();
-    public MutableLiveData<ProductDetails> productDetailsMutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<Details> productDetailsMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<AddToFavModel> addToFavMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<AddToFavModel> deleteToFavMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<Throwable> throwableMutableLiveData = new MutableLiveData<>();
@@ -73,17 +74,17 @@ public class ProductDetailsViewModel extends ViewModel {
 
     ////////////// getData
     @SuppressLint("CheckResult")
-    private Observable<ProductDetails> getObservable() {
-        Observable<ProductDetails> photographersData = serverGateway.getProductDetails(itemid,userid);
+    private Observable<Details> getObservable() {
+        Observable<Details> photographersData = serverGateway.getProductDetails(itemid,userid);
         photographersData.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
         return photographersData;
     }
 
-    private DisposableObserver<ProductDetails> getObserver() {
-        return new DisposableObserver<ProductDetails>() {
+    private DisposableObserver<Details> getObserver() {
+        return new DisposableObserver<Details>() {
             @Override
-            public void onNext(@NonNull ProductDetails result) {
+            public void onNext(@NonNull Details result) {
                 if (productDetailsMutableLiveData !=null)
                     productDetailsMutableLiveData.postValue(result);
             }

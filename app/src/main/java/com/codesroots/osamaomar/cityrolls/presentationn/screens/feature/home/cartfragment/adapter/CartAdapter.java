@@ -134,16 +134,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>  {
             if (newValue >0) {
                 holder.products_count.setText(String.valueOf(newValue));
                 products.get(position).setAmount( Integer.valueOf(holder.products_count.getText().toString()));
-                if (dataBeans.get(position).getProduct().getOffers().size()>0)
-                {
-                    products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
-                            getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(), (float) dataBeans.get(position).getCurrent_price())));
-                    products.get(position).setNotice("خصم بسبب العرض رقم "+dataBeans.get(position).getProduct().getOffers().get(0).getId());
+                try {
+//                    if (dataBeans.get(position).getProduct().getOffers().size()>0)
+//                    {
+//                        products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
+//                                getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(), (float) dataBeans.get(position).getCurrent_price())));
+//                        products.get(position).setNotice("خصم بسبب العرض رقم "+dataBeans.get(position).getProduct().getOffers().get(0).getId());
+//                    }
+//                    else
+                        products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
+                                Float.valueOf(dataBeans.get(position).getCurrent_price())));
+                    cartFragment.onMinusProduct(position);
+                }catch (Exception e){
+
                 }
-                else
-                    products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
-                            Float.valueOf(dataBeans.get(position).getCurrent_price())));
-                cartFragment.onMinusProduct(position);
+
             }
         });
     }

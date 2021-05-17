@@ -9,6 +9,7 @@ import com.codesroots.osamaomar.cityrolls.entities.Currency;
 import com.codesroots.osamaomar.cityrolls.entities.DefaultAdd;
 import com.codesroots.osamaomar.cityrolls.entities.AddToFavModel;
 import com.codesroots.osamaomar.cityrolls.entities.CartItems;
+import com.codesroots.osamaomar.cityrolls.entities.Details;
 import com.codesroots.osamaomar.cityrolls.entities.Favoriets;
 import com.codesroots.osamaomar.cityrolls.entities.LoginResponse;
 import com.codesroots.osamaomar.cityrolls.entities.MainView;
@@ -42,12 +43,11 @@ public interface ServerGateway {
     @GET("items/homepage.json")
     Observable<MainView> getMainViewData();
 
-
     @GET("Categories/allcategories.json")
     Observable<Sidemenu> getSideMenuData();
 
     @GET("items/view/{item_id}/{user_id}.json")
-    Observable<ProductDetails> getProductDetails(
+    Observable<Details> getProductDetails(
 
             @Path("item_id") int product_id,
             @Path("user_id") int user_id
