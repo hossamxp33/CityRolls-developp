@@ -76,8 +76,8 @@ public class CartFragment extends Fragment implements EditCallbacks {
 
                 for (int i = 0; i < products.size(); i++)
                     tot_price += products.get(i).getCurrent_price();
-                totalvalue.setText(new DecimalFormat("##.##").format(tot_price )+" "+PreferenceHelper.getCurrency());
-                alltotalvalue.setText(tot_price+chargrvalue+" "+PreferenceHelper.getCurrency());
+                totalvalue.setText(new DecimalFormat("##.##").format(tot_price )+" "+ getString(R.string.coin));
+                alltotalvalue.setText(tot_price+chargrvalue+" "+ getString(R.string.coin) );
             }
         });
 
@@ -178,7 +178,7 @@ public class CartFragment extends Fragment implements EditCallbacks {
 
     private void checkDeliveryPrice(double tot_price1)
     {
-        alltotalvalue.setText(new DecimalFormat("##.##").format(tot_price+chargrvalue)+" "+PreferenceHelper.getCurrency());
+        alltotalvalue.setText(new DecimalFormat("##.##").format(tot_price+chargrvalue)+" "+getString(R.string.coin));
         if (tot_price1<PreferenceHelper.getMIM_CHIPPING())
         {  if (PreferenceHelper.getCOUNTRY_ID()==1)
             chargevalue.setText(PreferenceHelper.getIN_OMAN()+" "+getString(R.string.coin));
