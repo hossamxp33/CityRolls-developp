@@ -363,45 +363,16 @@ public class ProductDetailsFragment extends Fragment {
 
 
         try {
-            Glide.with(getActivity()).load(productdetailsBean.getPhoto())
-                    .useAnimationPool(true).placeholder(R.drawable.product).into(item_img);
             for (int i = 0; i < productdetailsBean.getItem_photo().size(); i++)
                 images.add(productdetailsBean.getItem_photo().get(i).getPhoto());
-
-            if (productdetailsBean.getOffers().size() > 0)
-                productSizesAdapter = new ProductSizesAdapter(getActivity(), productdetailsBean.getProductsizes(),
-                        this, productdetailsBean.getOffers().get(0).getPercentage());
-            else
+            Glide.with(getActivity()).load(productdetailsBean.getPhoto())
+                    .useAnimationPool(true).placeholder(R.drawable.product).into(item_img);
+            imagurl = productdetailsBean.getPhoto();
 
             productImagesAdapter = new ProductImagesAdapter(getActivity(), productdetailsBean.getProductphotos(), this);
             images_rec.setAdapter(productImagesAdapter);
-       //     product_name.setText(productdetailsBean.getName());
 
-//            if (productdetailsBean.getOffers().size() > 0) {
-//
-//                String priceafteroffer = String.format("%.4f", Float.valueOf(productdetailsBean.getProductsizes().
-//                        get(productSizesAdapter.mSelectedItem).getCurrent_price()) - Float.valueOf(productdetailsBean.getProductsizes()
-//                        .get(productSizesAdapter.mSelectedItem).getCurrent_price()) *
-//                        productdetailsBean.getOffers().get(0).getPercentage() / 100);
-//                if (PreferenceHelper.getCurrencyValue() > 0) {
-//                    price.setText(String.valueOf(priceafteroffer) + PreferenceHelper.getCurrency());
-//                    oldprice.setText(productdetailsBean.getProductsizes().
-//                            get(productSizesAdapter.mSelectedItem).getCurrent_price() + PreferenceHelper.getCurrency());
-//                } else {
-//                    price.setText(String.valueOf(priceafteroffer) + getText(R.string.realcoin));
-//                    oldprice.setText(productdetailsBean.getProductsizes().
-//                            get(productSizesAdapter.mSelectedItem).getCurrent_price() +""+ getText(R.string.realcoin));
-//                }
-//            } else
-//                price.setText(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getCurrent_price() +  PreferenceHelper.getCurrency());
-//
-//            if (Float.valueOf(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getCurrent_price()) <
-//                    setting.getData().get(0).getShippingPrice()) {
-//                if (PreferenceHelper.getCOUNTRY_ID()==1)
-//                    charege.setText(String.valueOf(PreferenceHelper.getIN_OMAN())+" "+getString(R.string.coin));
-//                else
-//                    charege.setText(String.valueOf(PreferenceHelper.getOUT_OMAN())+" "+getString(R.string.coin));
-//            }
+
 
             if (productdetailsBean.getTotal_rating() != null) {
                 if (productdetailsBean.getTotal_rating().size() > 0) {
