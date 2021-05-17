@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.codesroots.osamaomar.cityrolls.domain.ServerGateway;
 import com.codesroots.osamaomar.cityrolls.entities.AddToFavModel;
+import com.codesroots.osamaomar.cityrolls.entities.Items;
 import com.codesroots.osamaomar.cityrolls.entities.ProductDetails;
 import com.codesroots.osamaomar.cityrolls.entities.StoreSetting;
 
@@ -18,7 +19,7 @@ import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class ProductDetailsViewModel extends ViewModel {
-    public MutableLiveData<ProductDetails.ProductdetailsBean> productDetailsizeMutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<Items> productDetailsizeMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<ProductDetails> productDetailsMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<AddToFavModel> addToFavMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<AddToFavModel> deleteToFavMutableLiveData = new MutableLiveData<>();

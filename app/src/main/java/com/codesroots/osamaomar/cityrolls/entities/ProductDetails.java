@@ -8,20 +8,20 @@ public class ProductDetails {
 //    val related: List<Related>,
 //    val subcat: Int
 
-    private List<ProductdetailsBean> productdetails;
-    private List<Related> related;
+    private Items item;
+    private List<Items> related;
     private int cat;
     private int subcat;
 
-    public List<ProductdetailsBean> getProductdetails() {
-        return productdetails;
+    public Items getProductdetails () {
+        return item;
     }
 
-    public List<Related> getRelated() {
+    public List<Items> getRelated() {
         return related;
     }
 
-    public void setRelated (List <Related> related) {
+    public void setRelated (List <Items> related) {
         this.related = related;
     }
 
@@ -42,8 +42,8 @@ public class ProductDetails {
     }
 
 
-    public void setProductdetails(List<ProductdetailsBean> productdetails) {
-        this.productdetails = productdetails;
+    public void setItem(Items productdetails) {
+        this.item = productdetails;
     }
 
     public static class ProductdetailsBean {
@@ -243,7 +243,7 @@ public class ProductDetails {
         private int id;
         private String name;
         private String name_en;
-        private String img;
+        private String photo;
         private String description;
         private String description_en;
         private int store_id;
@@ -266,11 +266,11 @@ public class ProductDetails {
             return id;
         }
         public void setImg(String img) {
-            this.img = img;
+            this.photo = img;
         }
 
         public String getImg() {
-            return img;
+            return photo;
         }
         public void setId(int id) {
             this.id = id;

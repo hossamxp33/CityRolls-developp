@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.cityrolls.R;
+import com.codesroots.osamaomar.cityrolls.entities.Items;
 import com.codesroots.osamaomar.cityrolls.entities.ProductDetails;
 import com.codesroots.osamaomar.cityrolls.helper.PreferenceHelper;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsFragment;
@@ -30,9 +31,9 @@ public class RelatedProductsAdapter extends RecyclerView.Adapter<RelatedProducts
 
 
     private Context context;
-    List<ProductDetails.Related> famousProduct;
+    List<Items> famousProduct;
 
-    public RelatedProductsAdapter(Context context, List<ProductDetails.Related> relateds) {
+    public RelatedProductsAdapter(Context context, List<Items> relateds) {
         this.context = context;
         this.famousProduct = relateds;
     }
@@ -50,18 +51,17 @@ public class RelatedProductsAdapter extends RecyclerView.Adapter<RelatedProducts
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         try {
         holder.name.setText(famousProduct.get(position).getName());
-        if (famousProduct.get(position).getImg() != null) {
+        if (famousProduct.get(position).getPhoto() != null) {
                 Glide.with(context.getApplicationContext())
-                        .load(famousProduct.get(position).getImg())
+                        .load(famousProduct.get(position).getPhoto())
                         .into(holder.item_img);
         }
-            String the_price = String.format("%.2f",Float.valueOf(famousProduct.get(position).getProductsizes()
-                    .get(0).getCurrent_price() *
+            String the_price = String.format("%.2f",Float.valueOf(famousProduct.get(position).getPrice() *
                     PreferenceHelper.getCurrencyValue()) );
         if (PreferenceHelper.getCurrencyValue() > 0)
             holder.price.setText(the_price + " " + PreferenceHelper.getCurrency());
         else
-            holder.price.setText(Float.valueOf(famousProduct.get(position).getProductsizes().get(0).getCurrent_price()) + " " + context.getText(R.string.coin));
+            holder.price.setText(Float.valueOf(famousProduct.get(position).getPrice()) + " " + context.getText(R.string.coin));
 
 
         holder.mView.setOnClickListener(v ->
