@@ -80,11 +80,11 @@ public class GetUserLocationActivity extends AppCompatActivity implements OnMapR
         setContentView(R.layout.activity_get_user_location);
         // setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // Make to run your application only in portrait mode
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-    getLocationPermission();
+        getLocationPermission();
 
         search = findViewById(R.id.search);
         detatils_address = findViewById(R.id.detailsaddress);
-     GetLocation();
+        GetLocation();
         search.setOnClickListener(view -> {
             try {
                 Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.RESULT_ERROR)
@@ -310,7 +310,7 @@ public class GetUserLocationActivity extends AppCompatActivity implements OnMapR
             }
             else
 
-               //  GetLocation();
+                //  GetLocation();
                 Snackbar.make(findViewById(R.id.usermap), getText(R.string.adddetailsaddress), Snackbar.LENGTH_LONG).show();
         }
         else
