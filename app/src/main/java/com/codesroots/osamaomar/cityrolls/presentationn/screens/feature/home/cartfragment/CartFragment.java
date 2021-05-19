@@ -6,9 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.userlocations.UserLocationsFragment;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,11 +96,23 @@ public class CartFragment extends Fragment implements EditCallbacks {
             progress.setVisibility(View.GONE);
             Toast.makeText(getActivity(), throwable.toString(), Toast.LENGTH_SHORT).show();
         });
-
         sale.setOnClickListener(v -> {
-            orderModel.setOrderdetails(cartAdapter.products);
-            Intent intent = new Intent(getActivity(), GetUserLocationActivity.class);
-              startActivityForResult(intent, REQUEST_CODE_LOCATION);
+            if (PreferenceHelper.getUserId()>0) {
+
+                Fragment fragment = new UserLocationsFragment();
+                Bundle bundle = new Bundle();
+                if (cartAdapter!=null) {
+                    //  orderModel.setOrderdetails(cartAdapter.products);
+
+
+
+                    bundle.putSerializable(ORDER, orderModel);
+                    fragment.setArguments(bundle);
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, fragment).addToBackStack(null).commit();
+                }
+            }
+            else
+                Toast.makeText(getContext(),getText(R.string.loginfirst),Toast.LENGTH_SHORT).show();
         });
         return view;
     }

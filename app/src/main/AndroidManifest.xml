@@ -45,7 +45,7 @@
             android:windowSoftInputMode="adjustPan">
     </activity>
         <activity
-            android:name="com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.getuserlocation.GetUserLocationActivity"
+            android:name="com.codesroots.osamaomar.cityrolls.presentationn.getuserlocation.GetUserLocationActivity"
             android:label="@string/choice_location" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

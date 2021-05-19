@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import com.codesroots.osamaomar.cityrolls.domain.ApiClient;
 import com.codesroots.osamaomar.cityrolls.domain.ServerGateway;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.chating.ChatViewModel;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.userlocations.UserLocationsViewModel;
 
 public class MainViewModelFactory implements ViewModelProvider.Factory {
 
@@ -31,6 +32,9 @@ public class MainViewModelFactory implements ViewModelProvider.Factory {
         else   if (modelClass == ChatViewModel.class)
          {
              return (T) new ChatViewModel(getApiService());
+         }
+        else if (modelClass == UserLocationsViewModel.class) {
+             return (T) new UserLocationsViewModel(getApiService());
          }
 
         throw new IllegalArgumentException("Invalid view model class type");

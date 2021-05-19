@@ -15,7 +15,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Fabric.with(this, new Crashlytics());
+//        Fabric.with(this, new Crashlytics());
         context = getApplicationContext();
         preferenceHelper  = new PreferenceHelper(context);
 //        Fabric.with(this, new Crashlytics(), new CrashlyticsNdk());

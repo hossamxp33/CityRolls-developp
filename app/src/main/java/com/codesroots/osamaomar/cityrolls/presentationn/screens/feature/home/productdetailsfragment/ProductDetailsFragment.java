@@ -71,7 +71,7 @@ public class ProductDetailsFragment extends Fragment {
     FrameLayout loading;
     public TextView product_name, description, price, ratecount, amount, addtocart, charege, oldprice;
     RatingBar ratingBar;
-    public ImageView item_img;
+    public ImageView item_img; 
     int userid = PreferenceHelper.getUserId(), favid = 0;
     ProductSizesAdapter productSizesAdapter;
 //    ProductImagesAdapter productImagesAdapter;

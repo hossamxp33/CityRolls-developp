@@ -27,7 +27,16 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <fragment
+                android:id="@+id/usermap"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                app:layout_constraintTop_toTopOf="parent"
 
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                 />
 
             <EditText
                 android:id="@+id/name"
@@ -40,7 +49,7 @@
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/usermap"
                 app:layout_constraintWidth_percent="0.8" />
 
             <View
@@ -187,6 +196,7 @@
                 app:layout_constraintStart_toStartOf="@id/notes"
                 app:layout_constraintTop_toTopOf="@id/notes" />
 
+
             <TextView
                 android:id="@+id/send"
                 android:layout_width="0dp"
@@ -202,7 +212,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/notes"
                 app:layout_constraintWidth_percent="0.55" />
-
+            <ImageView
+                android:id="@+id/mMarker"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:src="@drawable/loc"
+                app:layout_constraintBottom_toBottomOf="@id/usermap"
+                app:layout_constraintEnd_toEndOf="@id/usermap"
+                app:layout_constraintStart_toStartOf="@id/usermap"
+                app:layout_constraintTop_toTopOf="@id/usermap" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

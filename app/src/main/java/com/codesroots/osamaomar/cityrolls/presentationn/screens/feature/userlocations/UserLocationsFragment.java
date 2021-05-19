@@ -13,7 +13,7 @@ import com.codesroots.osamaomar.cityrolls.entities.OrderModel;
 import com.codesroots.osamaomar.cityrolls.entities.UserLocations;
 import com.codesroots.osamaomar.cityrolls.helper.Locationclick;
 import com.codesroots.osamaomar.cityrolls.helper.PreferenceHelper;
-import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.getuserlocation.GetUserLocationActivity;
+import com.codesroots.osamaomar.cityrolls.presentationn.getuserlocation.GetUserLocationActivity;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.MainViewModelFactory;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.payment.PaymentFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.userlocations.adapter.LocationsAdapter;
