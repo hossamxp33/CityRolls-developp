@@ -92,7 +92,9 @@
 
             android:label=""
            />
+
         <activity android:name="com.paypal.android.sdk.payments.PayPalProfileSharingActivity" />
+
         <activity android:name="com.paypal.android.sdk.payments.ProfileSharingConsentActivity" />
         <activity android:name="com.paypal.android.sdk.payments.FuturePaymentInfoActivity" />
         <activity android:name="com.paypal.android.sdk.payments.LoginActivity" />
