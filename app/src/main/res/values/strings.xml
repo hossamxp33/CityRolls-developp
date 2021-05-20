@@ -132,10 +132,10 @@
     <string name="newaddress">Add new address</string>
     <string name="editaddress"> edit address </string>
     <string name="save">save</string>
-    <string name="choicecountry">  choice your country </string>
+    <string name="choicecountry"> type address details </string>
     <string name="choicecity">choice your city/state/region</string>
     <string name="choicename">choice your name</string>
-    <string name="choicephone">choice your phone</string>
+    <string name="choicephone">type your phone</string>
     <string name="addlocation">choice Street address, post office, apartment, suite, unit</string>
 
     <string name="popular_products">Popular products</string>

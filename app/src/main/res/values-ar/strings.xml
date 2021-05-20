@@ -16,9 +16,9 @@
     <string name="read_more">قراءة المزيد...</string>
     <string name="save">حفظ</string>
     <string name="choicename">اختر الاسم</string>
-    <string name="choicephone">اختر الهاتف</string>
+    <string name="choicephone">اكتب الهاتف</string>
     <string name="choicecity">اختر المدينة/الولاية/المنطقة</string>
-    <string name="choicecountry"> اختر الدولة </string>
+    <string name="choicecountry"> اكتب تفاصيل عنوانك ورقم الشقة </string>
     <string name="action_settings">Settings</string>
     <string name="searchabout">ابحث بالمنتجات</string>
     <string name="choice_depart">أختر حسب القسم</string>

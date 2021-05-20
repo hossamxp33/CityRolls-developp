@@ -40,29 +40,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/name"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:background="@drawable/linear_background_for_writecomment"
-                android:gravity="center_vertical|start"
-                android:hint="@string/choicename"
-                android:paddingStart="40dp"
-                android:textColorHint="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/usermap"
-                app:layout_constraintWidth_percent="0.8" />
-
-            <View
-                android:id="@+id/view5"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                android:layout_marginStart="15dp"
-                android:background="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/name"
-                app:layout_constraintStart_toStartOf="@id/name"
-                app:layout_constraintTop_toTopOf="@id/name" />
 
 
             <EditText
@@ -78,7 +55,7 @@
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/name"
+                app:layout_constraintTop_toBottomOf="@+id/usermap"
                 app:layout_constraintWidth_percent="0.8" />
 
             <View
@@ -144,30 +121,7 @@
                 app:layout_constraintTop_toTopOf="@id/country" />
 
 
-            <EditText
-                android:id="@+id/city"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/linear_background_for_writecomment"
-                android:gravity="center_vertical|start"
-                android:hint="@string/choicecity"
-                android:paddingStart="40dp"
-                android:textColorHint="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/country"
-                app:layout_constraintWidth_percent="0.8" />
 
-            <View
-                android:id="@+id/view3"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                android:layout_marginStart="15dp"
-                android:background="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/city"
-                app:layout_constraintStart_toStartOf="@id/city"
-                app:layout_constraintTop_toTopOf="@id/city" />
 
 
             <EditText
@@ -182,7 +136,7 @@
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/city"
+                app:layout_constraintTop_toBottomOf="@+id/country"
                 app:layout_constraintWidth_percent="0.8" />
 
             <View
