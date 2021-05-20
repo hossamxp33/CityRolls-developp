@@ -69,11 +69,11 @@ public interface ServerGateway {
     @POST("BillingAddress/add.json")
     Observable<AddLocation> addBillingAddress(
             @Field("customer_id") int user_id,
-            @Field("first_name") String first_name,
+         //   @Field("first_name") String first_name,
             @Field("phone") String phone,
             @Field("address") String address,
-            @Field("state_country") String state_country,
-            @Field("town_city") String town_city,
+            @Field("address_details") String address_details,
+       //     @Field("town_city") String town_city,
             @Field("notes") String notes
     );
 

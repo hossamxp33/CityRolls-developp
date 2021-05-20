@@ -23,12 +23,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.codesroots.osamaomar.cityrolls.R;
 import com.codesroots.osamaomar.cityrolls.entities.names;
 import com.codesroots.osamaomar.cityrolls.helper.PreferenceHelper;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.MainViewModelFactory;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.payment.PaymentFragment;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.userlocations.UserLocationsFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.userlocations.UserLocationsViewModel;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Status;
@@ -47,6 +51,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+
+import static com.codesroots.osamaomar.cityrolls.entities.names.ORDER;
 
 
 public class GetUserLocationActivity extends AppCompatActivity  implements OnMapReadyCallback {
@@ -82,13 +88,13 @@ public class GetUserLocationActivity extends AppCompatActivity  implements OnMap
         userLocationsViewModel = ViewModelProviders.of(this, getViewModelFactory()).get(UserLocationsViewModel.class);
         search = findViewById(R.id.search);
         location = findViewById(R.id.location);
-        city = findViewById(R.id.city);
+      //  city = findViewById(R.id.city);
         country = findViewById(R.id.country);
         country = findViewById(R.id.country);
         notes = findViewById(R.id.notes);
         send = findViewById(R.id.send);
         title = findViewById(R.id.title);
-        name = findViewById(R.id.name);
+       // name = findViewById(R.id.name);
         phone = findViewById(R.id.phone);
         addressid = getIntent().getIntExtra(names.BILLING_ID, 0);
         if (addressid>0)
@@ -152,14 +158,20 @@ public class GetUserLocationActivity extends AppCompatActivity  implements OnMap
         ((TextView) view).setText(getText(R.string.wait));
         (view).setEnabled(false);
 
-        if (addressid>0)
+        if (addressid>0){
             userLocationsViewModel.editUserLocation(addressid,name.getText().toString(),phone.getText().toString(),
                     location.getText().toString(), country.getText().toString(), city.getText().toString(), notes.getText().toString());
 
+        }
         else
-        userLocationsViewModel.addUserLocation(PreferenceHelper.getUserId(),name.getText().toString(),phone.getText().toString(),
-                location.getText().toString(), country.getText().toString(), city.getText().toString(), notes.getText().toString());
+        userLocationsViewModel.addUserLocation(PreferenceHelper.getUserId(),phone.getText().toString(),
+                location.getText().toString(), country.getText().toString(), notes.getText().toString());
+
+
+
+
     }
+
 
 
     @Override

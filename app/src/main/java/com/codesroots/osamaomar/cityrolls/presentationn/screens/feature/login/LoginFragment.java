@@ -56,7 +56,9 @@ public class LoginFragment extends Fragment {
                         PreferenceHelper.setUserId(response.getData().getId());
                         PreferenceHelper.setUserName(response.getData().getUsername());
                         PreferenceHelper.setToken(response.getData().getToken());
-                        Toast.makeText(getActivity(),getText(R.string.hello)+" "+response.getData().getUsername(),Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(getActivity(),getText(R.string.hello)+" "+response.getData().getUsername(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),getText(R.string.hello)+" "+response.getData().getId(),Toast.LENGTH_SHORT).show();
+
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         for (int i = 0; i < fm.getBackStackEntryCount(); ++i) {
                             fm.popBackStack();
