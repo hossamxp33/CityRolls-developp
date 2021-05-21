@@ -74,7 +74,10 @@ public interface ServerGateway {
             @Field("address") String address,
             @Field("address_details") String address_details,
        //     @Field("town_city") String town_city,
-            @Field("notes") String notes
+            @Field("notes") String notes,
+                        @Field("latitude") Double lat,
+                    @Field("longitude") Double longitude
+
     );
 
 
@@ -87,7 +90,9 @@ public interface ServerGateway {
             @Field("address") String address,
             @Field("state_country") String state_country,
             @Field("town_city") String town_city,
-            @Field("notes") String notes
+            @Field("notes") String notes,
+              @Field("latitude") Double lat,
+            @Field("longitude") Double longitude
     );
 
     @GET("BillingAddress/view/{billingid}.json")

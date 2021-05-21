@@ -9,13 +9,17 @@ public class OrderModel implements Serializable {
 
     @SerializedName("user_id")
     int user_id;
-    @SerializedName("billing_id")
-    String billing_id;
+    @SerializedName("billing_address_id")
+    int billing_address_id;
     @SerializedName("address")
     String address;
 
     @SerializedName("user_lat")
     String user_lat;
+
+    @SerializedName("platform_id")
+    int platform_id;
+
 
     @SerializedName("area_id")
     int area_id;
@@ -62,6 +66,16 @@ public class OrderModel implements Serializable {
         this.user_id = user_id;
     }
 
+
+    public int getPlatform_id() {
+        return platform_id;
+    }
+
+    public void setPlatform_id(int user_id) {
+        this.platform_id = user_id;
+    }
+
+
     public String getNotes() {
         return notes;
     }
@@ -71,13 +85,14 @@ public class OrderModel implements Serializable {
     }
 
 
-    public String getBilling_id() {
-        return billing_id;
+    public int getBilling_id() {
+        return billing_address_id;
     }
 
-    public void setBilling_id(String billing_id) {
-        this.billing_id = billing_id;
+    public void setBilling_id(int billing_id) {
+        this.billing_address_id = billing_id;
     }
+
     public String getAddress() {
         return address;
     }

@@ -101,7 +101,7 @@ public class CartFragment extends Fragment implements EditCallbacks {
                 Fragment fragment = new UserLocationsFragment();
                 Bundle bundle = new Bundle();
                 if (cartAdapter!=null) {
-                    //  orderModel.setOrderdetails(cartAdapter.products);
+                      orderModel.setOrderdetails(cartAdapter.products);
                     bundle.putSerializable(ORDER, orderModel);
                     fragment.setArguments(bundle);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, fragment).addToBackStack(null).commit();

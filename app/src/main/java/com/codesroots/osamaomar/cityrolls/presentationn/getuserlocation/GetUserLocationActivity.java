@@ -160,12 +160,12 @@ public class GetUserLocationActivity extends AppCompatActivity  implements OnMap
 
         if (addressid>0){
             userLocationsViewModel.editUserLocation(addressid,name.getText().toString(),phone.getText().toString(),
-                    location.getText().toString(), country.getText().toString(), city.getText().toString(), notes.getText().toString());
+                    location.getText().toString(), country.getText().toString(), city.getText().toString(), notes.getText().toString(),latitude,longitude);
 
         }
         else
         userLocationsViewModel.addUserLocation(PreferenceHelper.getUserId(),phone.getText().toString(),
-                location.getText().toString(), country.getText().toString(), notes.getText().toString());
+                location.getText().toString(), country.getText().toString(), notes.getText().toString(),latitude,longitude);
 
 
 
@@ -314,6 +314,8 @@ public class GetUserLocationActivity extends AppCompatActivity  implements OnMap
                     if (location != null) {
                         goToAddress(location.getLatitude(),location.getLongitude());
                         // Logic to handle location object
+                        latitude =location.getLatitude();
+                        longitude = location.getLongitude();
                     }
                 }
             });

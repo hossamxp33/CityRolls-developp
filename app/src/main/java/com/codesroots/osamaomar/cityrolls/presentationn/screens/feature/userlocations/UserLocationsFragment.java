@@ -83,7 +83,7 @@ public class UserLocationsFragment extends Fragment implements Locationclick {
     @Override
     public void onlocationchoicw(UserLocations.DataBean location) {
         if (orderModel!=null) {
-            orderModel.setBilling_id(String.valueOf(location.getBilling_id()));
+            orderModel.setBilling_id(location.getBilling_id());
             Fragment fragment = new PaymentFragment();
             Bundle bundle = new Bundle();
             bundle.putSerializable(ORDER, orderModel);

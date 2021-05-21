@@ -135,6 +135,7 @@ public class PaymentFragment extends Fragment {
     }
 
     private void sendRequest() {
+        orderModel.setPlatform_id(1);
         paymentViewModel.addOrder(orderModel);
     }
 
