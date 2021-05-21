@@ -15,20 +15,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:itemIconTint="@color/red"
-        android:fitsSystemWindows="true" >
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:id="@+id/nav_view"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="start"-->
+<!--        app:itemIconTint="@color/red"-->
+<!--        android:fitsSystemWindows="true" >-->
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/all_departs"
-            android:layout_width="match_parent"
-            android:layout_marginTop="30dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_height="match_parent"/>
-    </com.google.android.material.navigation.NavigationView>
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/all_departs"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--            android:layout_height="match_parent"/>-->
+<!--    </com.google.android.material.navigation.NavigationView>-->
 
 </androidx.drawerlayout.widget.DrawerLayout>

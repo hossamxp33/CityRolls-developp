@@ -27,6 +27,7 @@ import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mai
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsModelFactory;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.login.LoginFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.splash.SplashActivity;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.userlocations.UserLocationsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +59,11 @@ public class MenuFragment extends Fragment {
 //        chat = view.findViewById(R.id.chat);
         change_country = view.findViewById(R.id.change_country);
 
-        currency.setOnClickListener(v -> mViewModel.getCurrencyData());
+    //    currency.setOnClickListener(v -> mViewModel.getCurrencyData());
+           currency.setOnClickListener(v -> getActivity().getSupportFragmentManager().beginTransaction().
+                   replace(R.id.mainfram, new UserLocationsFragment()).addToBackStack(null).commit());
+
+
         terms.setOnClickListener(v -> startActivity(new Intent(getActivity(), ConditionsActivity.class)));
         about.setOnClickListener(v -> startActivity(new Intent(getActivity(), contactus.class)));
         change_country.setOnClickListener(v ->

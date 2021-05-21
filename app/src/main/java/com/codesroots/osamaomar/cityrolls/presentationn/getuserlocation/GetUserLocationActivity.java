@@ -114,10 +114,10 @@ public class GetUserLocationActivity extends AppCompatActivity  implements OnMap
         userLocationsViewModel.viewLocationMutableLiveData.observe(this,viewLocation ->
                 {
                     location.setText(viewLocation.getData().getAddress());
-                    city.setText(viewLocation.getData().getTown_city());
+              //      city.setText(viewLocation.getData().getTown_city());
                     country.setText(viewLocation.getData().getState_country());
                     notes.setText(viewLocation.getData().getNotes());
-                    name.setText(viewLocation.getData().getFirst_name());
+          //          name.setText(viewLocation.getData().getFirst_name());
                     phone.setText(viewLocation.getData().getPhone());
                 });
 
@@ -159,8 +159,8 @@ public class GetUserLocationActivity extends AppCompatActivity  implements OnMap
         (view).setEnabled(false);
 
         if (addressid>0){
-            userLocationsViewModel.editUserLocation(addressid,name.getText().toString(),phone.getText().toString(),
-                    location.getText().toString(), country.getText().toString(), city.getText().toString(), notes.getText().toString(),latitude,longitude);
+            userLocationsViewModel.editUserLocation(addressid,phone.getText().toString(),
+                    location.getText().toString(), country.getText().toString(),  notes.getText().toString(),latitude,longitude);
 
         }
         else

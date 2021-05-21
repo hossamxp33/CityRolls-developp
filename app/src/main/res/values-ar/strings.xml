@@ -33,6 +33,8 @@
     <string name="addlocation">اختر عنوان الشارع،صندوق البريد،الشقه،الجناح،الوحده</string>
     <string name="choice_size">اختر الحجم</string>
     <string name="coin"> جنيه  </string>
+    <string name="addresses">عنواني</string>
+
     <string name="remendier">  مطلوب  </string>
     <string name="num"> قطع </string>
     <string name="realcoin">ريال</string>

@@ -49,9 +49,9 @@ public class UserLocationsViewModel extends ViewModel {
     }
 
 
-    public void editUserLocation(int locationid, String name , String phone, String address, String country, String city, String notes,double lat,Double longitude)
+    public void editUserLocation(int locationid, String phone, String address, String country, String notes,double lat,Double longitude)
     {
-        mCompositeDisposable.add(serverGateway.editBillingAddress(locationid,name,phone,address,country,city,notes,lat,longitude).
+        mCompositeDisposable.add(serverGateway.editBillingAddress(locationid,phone,address,country,notes,lat,longitude).
                 observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).
                 subscribe(addLocation -> addLocationMutableLiveData.postValue(addLocation),
                         throwable -> error.postValue(throwable)));

@@ -40,7 +40,7 @@
         android:drawableEnd="@drawable/ic_arrow"
         android:gravity="center_vertical"
         android:padding="12dp"
-        android:text="@string/cuurency"
+        android:text="@string/addresses"
         android:textColor="@color/black"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"

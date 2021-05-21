@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity
     RecyclerView alldepartsinNavigation;
     BottomNavigationView bottomNavigationView;
     MainActivityViewModel mainActivityViewModel;
-    NavigationView navigationView;
+ //   NavigationView navigationView;
     public DrawerLayout drawer;
     public ImageView logo, search;
     public TextView head_title;
@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity
         preferenceHelper = new PreferenceHelper(this);
         FirebaseApp.initializeApp(this);
         FirebaseMessaging.getInstance();
-        initialize();
-        setUpToggle();
+       initialize();
+        //setUpToggle();
         GetLocation();
 //        search.setOnClickListener(v -> {
 //
@@ -118,15 +118,15 @@ private void HiddenKeyboard(View view ){
     private void initialize() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        drawer = findViewById(R.id.drawer_layout);
+     //   drawer = findViewById(R.id.drawer_layout);
         search = findViewById(R.id.search);
         head_title = findViewById(R.id.head_title);
-        searchName = findViewById(R.id.searchName);
-        toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        alldepartsinNavigation = findViewById(R.id.all_departs);
+      //  searchName = findViewById(R.id.searchName);
+    //    toggle = new ActionBarDrawerToggle(
+   //           this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.addDrawerListener(toggle);
+        //toggle.syncState();
+//        alldepartsinNavigation = findViewById(R.id.all_departs);
         logo = findViewById(R.id.logo);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -134,8 +134,8 @@ private void HiddenKeyboard(View view ){
         mainActivityViewModel = ViewModelProviders.of(this, getViewModelFactory()).get(MainActivityViewModel.class);
         mainActivityViewModel.sidemenuMutableLiveData.observe(this, sidemenu ->
                 alldepartsinNavigation.setAdapter(new AllDepartsAdapter(this, sidemenu.getCategory())));
-        navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+    //    navigationView = findViewById(R.id.nav_view);
+    //    navigationView.setNavigationItemSelectedListener(this);
         ActivityCompat.requestPermissions(this,
                 new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION,
                         Manifest.permission.CALL_PHONE,Manifest.permission.READ_CONTACTS
@@ -158,14 +158,14 @@ private void HiddenKeyboard(View view ){
         return new MainActivityModelFactory(getApplication());
     }
 
-    @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -194,27 +194,27 @@ private void HiddenKeyboard(View view ){
         // Handle navigation view item clicks here.
         switch (item.getItemId()) {
             case R.id.more:
-                drawer.closeDrawers();
+           //     drawer.closeDrawers();
                 getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, new MenuFragment()).addToBackStack(null).commit();
                 break;
 
             case R.id.notifications:
                 if (PreferenceHelper.getUserId() > 0) {
-                    drawer.closeDrawers();
+               //     drawer.closeDrawers();
                     popupFragments();
                     getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, new FavoritsFragment()).addToBackStack(null).commit();
                 } else
                     Toast.makeText(MainActivity.this, getText(R.string.loginfirst), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.main:
-                drawer.closeDrawers();
+              //  drawer.closeDrawers();
                 popupFragments();
                 getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, new homeFragment()).addToBackStack(null).commit();
                 break;
 
             case R.id.myorders:
                 if (PreferenceHelper.getUserId() > 0) {
-                    drawer.closeDrawers();
+               //     drawer.closeDrawers();
                     popupFragments();
                     getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, new MyOrdersFragment()).addToBackStack(null).commit();
                 } else
@@ -222,14 +222,14 @@ private void HiddenKeyboard(View view ){
                 break;
 
             case R.id.offers:
-                drawer.closeDrawers();
+             //   drawer.closeDrawers();
                 popupFragments();
                 getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, new OffersFragment()).addToBackStack(null).commit();
                 break;
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+       // DrawerLayout drawer = findViewById(R.id.drawer_layout);
+    //    drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 

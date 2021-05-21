@@ -46,14 +46,21 @@ public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.View
         holder.location.setText(
                 places.get(position).getState_country() + "," +
                         places.get(position).getTown_city() + "," + places.get(position).getAddress());
-        holder.mView.setOnClickListener(v ->
+
+
+              holder.mView.setOnClickListener(v ->
                 userLocationsFragment.onlocationchoicw(places.get(position)));
 
         holder.editloc.setOnClickListener(v ->
                 {
-                    Intent intent = new Intent(context, GetUserLocationActivity.class);
+//                    Intent intent = new Intent(context, GetUserLocationActivity.class);
+//                    intent.putExtra(names.BILLING_ID, places.get(position).getBilling_id());
+//                    userLocationsFragment.startActivityForResult(intent,115);
+                    Intent intent = new Intent(context, com.codesroots.osamaomar.cityrolls.presentationn.getuserlocation.GetUserLocationActivity.class);
                     intent.putExtra(names.BILLING_ID, places.get(position).getBilling_id());
-                    userLocationsFragment.startActivityForResult(intent,115);
+
+                    context.startActivity(intent);
+
                 }
         );
     }

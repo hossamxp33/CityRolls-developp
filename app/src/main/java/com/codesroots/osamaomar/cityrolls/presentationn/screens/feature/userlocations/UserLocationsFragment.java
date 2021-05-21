@@ -55,6 +55,7 @@ public class UserLocationsFragment extends Fragment implements Locationclick {
                 locationsAdapter = new LocationsAdapter(getContext(), dataBeans, this);
                 locations.setAdapter(locationsAdapter);
                 notfound.setVisibility(View.GONE);
+                locationsAdapter.notifyDataSetChanged();
             } else
                 notfound.setVisibility(View.VISIBLE);
         });
@@ -74,6 +75,8 @@ public class UserLocationsFragment extends Fragment implements Locationclick {
     public void onActivityResult(int reqCode, int resultCode, Intent data) {
         super.onActivityResult(reqCode, resultCode, data);
         mViewModel.retrieveUserLocations(PreferenceHelper.getUserId());
+        locationsAdapter.notifyDataSetChanged();
+
     }
 
     private MainViewModelFactory getViewModelFactory() {
