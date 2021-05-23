@@ -69,14 +69,12 @@ public interface ServerGateway {
     @POST("BillingAddress/add.json")
     Observable<AddLocation> addBillingAddress(
             @Field("customer_id") int user_id,
-         //   @Field("first_name") String first_name,
             @Field("phone") String phone,
             @Field("address") String address,
             @Field("address_details") String address_details,
-       //     @Field("town_city") String town_city,
             @Field("notes") String notes,
-                        @Field("latitude") Double lat,
-                    @Field("longitude") Double longitude
+            @Field("latitude") Double lat,
+            @Field("longitude") Double longitude
 
     );
 
@@ -85,13 +83,11 @@ public interface ServerGateway {
     @POST("BillingAddress/edit/{locationid}.json")
     Observable<AddLocation> editBillingAddress(
             @Path("locationid") int locationid,
-          //  @Field("first_name") String first_name,
             @Field("phone") String phone,
             @Field("address") String address,
-            @Field("state_country") String state_country,
-       //     @Field("town_city") String town_city,
+            @Field("address_details") String state_country,
             @Field("notes") String notes,
-              @Field("latitude") Double lat,
+            @Field("latitude") Double lat,
             @Field("longitude") Double longitude
     );
 

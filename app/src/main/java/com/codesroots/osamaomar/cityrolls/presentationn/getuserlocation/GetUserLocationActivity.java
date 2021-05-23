@@ -90,7 +90,6 @@ public class GetUserLocationActivity extends AppCompatActivity  implements OnMap
         location = findViewById(R.id.location);
       //  city = findViewById(R.id.city);
         country = findViewById(R.id.country);
-        country = findViewById(R.id.country);
         notes = findViewById(R.id.notes);
         send = findViewById(R.id.send);
         title = findViewById(R.id.title);

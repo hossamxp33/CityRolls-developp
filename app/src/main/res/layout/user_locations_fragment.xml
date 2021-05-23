@@ -34,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
             android:gravity="center_vertical"
             android:text="@string/deliveryaddress"
             android:textColor="@color/black"
