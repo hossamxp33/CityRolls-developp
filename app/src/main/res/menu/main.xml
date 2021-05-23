@@ -4,7 +4,6 @@
     >
 
     <item
-        android:visible="false"
         android:id="@+id/action_cart"
         android:orderInCategory="100"
 

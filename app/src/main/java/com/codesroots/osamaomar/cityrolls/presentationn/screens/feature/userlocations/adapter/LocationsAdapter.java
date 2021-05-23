@@ -58,7 +58,6 @@ public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.View
 //                    userLocationsFragment.startActivityForResult(intent,115);
                     Intent intent = new Intent(context, com.codesroots.osamaomar.cityrolls.presentationn.getuserlocation.GetUserLocationActivity.class);
                     intent.putExtra(names.BILLING_ID, places.get(position).getBilling_id());
-
                     context.startActivity(intent);
 
                 }

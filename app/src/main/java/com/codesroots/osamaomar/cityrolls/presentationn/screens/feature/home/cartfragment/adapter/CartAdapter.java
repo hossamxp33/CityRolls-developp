@@ -102,10 +102,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>  {
         }
 
         holder.delete_item.setOnClickListener(v -> {
+
             PreferenceHelper.removeItemFromCart(dataBeans.get(position).getId());
-            //dataBeans.remove(position);
+
+           // dataBeans.remove(position);
+
             cartFragment.onRemoveProduct(position, Integer.parseInt(holder.products_count.getText().toString()),1f);
-            //  notifyItemRemoved(position);
+
+           //  notifyItemRemoved(position);
         });
 
         holder.quintityPlus.setOnClickListener(v ->

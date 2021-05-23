@@ -207,7 +207,7 @@ public class PreferenceHelper {
 
     public static ArrayList retriveCartItemsValue() {
         Gson gson = new Gson();
-        String json = app_prefs.getString(CART_ARRAY, "");
+        String json = app_prefs.getString(CART_ARRAY, null);
         Type type = new TypeToken<List<String>>() {}.getType();
 
         List<String> arrayList = gson.fromJson(json,type);
@@ -220,7 +220,7 @@ public class PreferenceHelper {
 
     public static int  retriveCartItemsSize() {
         Gson gson = new Gson();
-        String json = app_prefs.getString(CART_ARRAY, "");
+        String json = app_prefs.getString(CART_ARRAY, null);
         Type type = new TypeToken<List<String>>() {}.getType();
 
         List<String> arrayList = gson.fromJson(json,type);
@@ -234,7 +234,7 @@ public class PreferenceHelper {
     public static  void removeItemFromCart(int product_id)
     {
         Gson gson = new Gson();
-        String json = app_prefs.getString(CART_ARRAY, "");
+        String json = app_prefs.getString(CART_ARRAY, null);
         Type type = new TypeToken<List<String>>() {}.getType();
 
         List<String> arrayList = gson.fromJson(json,type);
