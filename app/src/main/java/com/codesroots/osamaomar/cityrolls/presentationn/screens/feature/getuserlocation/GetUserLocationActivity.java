@@ -43,6 +43,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Timer;
 
 import static com.codesroots.osamaomar.cityrolls.entities.names.AddressDetails;
 import static com.codesroots.osamaomar.cityrolls.entities.names.FULL_ADDRESS;
@@ -72,6 +73,7 @@ public class GetUserLocationActivity extends AppCompatActivity implements OnMapR
     EditText detatils_address;
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private Object mLastKnownLocation;
+     Timer timer;
 
 
     @Override
@@ -96,6 +98,7 @@ public class GetUserLocationActivity extends AppCompatActivity implements OnMapR
 
         ((SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.usermap)).getMapAsync(this);
+
 
 
     }
@@ -306,6 +309,7 @@ public class GetUserLocationActivity extends AppCompatActivity implements OnMapR
                 data.putExtra(AddressDetails,  detatils_address.getText().toString());
 
                 setResult(RESULT_OK, data);
+
                 finish();
             }
             else

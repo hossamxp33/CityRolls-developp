@@ -71,6 +71,7 @@ public class PaymentFragment extends Fragment {
         cash.setOnClickListener(v -> showBankDialog());
         paymentViewModel = ViewModelProviders.of(this, getViewModelFactory()).get(PaymentViewModel.class);
         paymentViewModel.myOrdersMutableLiveData.observe(this, aBoolean -> {
+
             if (aBoolean) {
                 PreferenceHelper.clearCart();
                 FragmentManager fm = getActivity().getSupportFragmentManager();

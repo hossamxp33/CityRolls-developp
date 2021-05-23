@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -61,6 +62,7 @@ public class GetUserLocationActivity extends AppCompatActivity  implements OnMap
     UserLocationsViewModel userLocationsViewModel;
     EditText location,city,country,notes,name,phone;
     int addressid;
+    private FragmentManager mFragmentManager;
 
     private static final String TAG = "tag";
 
@@ -160,7 +162,8 @@ public class GetUserLocationActivity extends AppCompatActivity  implements OnMap
         if (addressid>0){
             userLocationsViewModel.editUserLocation(addressid,phone.getText().toString(),
                     location.getText().toString(), country.getText().toString(),  notes.getText().toString(),latitude,longitude);
-
+            UserLocationsFragment kawuitElkhairFragment = new UserLocationsFragment();
+            showFragment(kawuitElkhairFragment);
         }
         else
         userLocationsViewModel.addUserLocation(PreferenceHelper.getUserId(),phone.getText().toString(),
@@ -359,5 +362,11 @@ public class GetUserLocationActivity extends AppCompatActivity  implements OnMap
             e.printStackTrace();
         }
         return null;
+    }
+    public void showFragment(Fragment fragment) {
+        FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+        mFragmentTransaction.replace(R.id.mainfram, fragment);
+        mFragmentTransaction.addToBackStack(null);
+        mFragmentTransaction.commit();
     }
 }
