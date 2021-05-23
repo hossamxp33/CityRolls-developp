@@ -117,7 +117,7 @@ public class GetUserLocationActivity extends AppCompatActivity  implements OnMap
                 {
                     location.setText(viewLocation.getData().getAddress());
               //      city.setText(viewLocation.getData().getTown_city());
-                    country.setText(viewLocation.getData().getState_country());
+                    country.setText(viewLocation.getData().getAddress_details());
                     notes.setText(viewLocation.getData().getNotes());
           //          name.setText(viewLocation.getData().getFirst_name());
                     phone.setText(viewLocation.getData().getPhone());
@@ -163,8 +163,7 @@ public class GetUserLocationActivity extends AppCompatActivity  implements OnMap
         if (addressid>0){
             userLocationsViewModel.editUserLocation(addressid,phone.getText().toString(),
                     location.getText().toString(), country.getText().toString(),  notes.getText().toString(),latitude,longitude);
-            UserLocationsFragment kawuitElkhairFragment = new UserLocationsFragment();
-            showFragment(kawuitElkhairFragment);
+
         }
         else
         userLocationsViewModel.addUserLocation(PreferenceHelper.getUserId(),phone.getText().toString(),
@@ -364,10 +363,5 @@ public class GetUserLocationActivity extends AppCompatActivity  implements OnMap
         }
         return null;
     }
-    public void showFragment(Fragment fragment) {
-        FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.mainfram, fragment);
-        mFragmentTransaction.addToBackStack(null);
-        mFragmentTransaction.commit();
-    }
+
 }

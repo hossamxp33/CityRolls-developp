@@ -60,6 +60,8 @@ public class ViewLocation {
         private String created_at;
         private String updated_at;
         private String notes;
+        private String address_details;
+
 
         public String getNotes() {
             return notes;
@@ -73,6 +75,7 @@ public class ViewLocation {
             return billing_id;
         }
 
+
         public void setBilling_id(int billing_id) {
             this.billing_id = billing_id;
         }
@@ -84,6 +87,8 @@ public class ViewLocation {
         public void setCustomer_id(int customer_id) {
             this.customer_id = customer_id;
         }
+
+
 
         public String getFirst_name() {
             return first_name;
@@ -115,6 +120,13 @@ public class ViewLocation {
 
         public void setAddress(String address) {
             this.address = address;
+        }
+
+        public String getAddress_details() {
+            return address_details;
+        }
+
+        public void setAddress_details(String address_details) { this.address_details = address_details;
         }
 
         public String getTown_city() {

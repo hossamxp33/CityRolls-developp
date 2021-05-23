@@ -88,8 +88,8 @@ public interface ServerGateway {
           //  @Field("first_name") String first_name,
             @Field("phone") String phone,
             @Field("address") String address,
-            @Field("state_country") String state_country,
-       //     @Field("town_city") String town_city,
+            @Field("address_details") String address_details,
+            //     @Field("town_city") String town_city,
             @Field("notes") String notes,
               @Field("latitude") Double lat,
             @Field("longitude") Double longitude
