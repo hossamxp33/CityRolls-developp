@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -47,6 +48,7 @@ public class PaymentFragment extends Fragment {
     ImageView paypal, cash;
     OrderModel orderModel;
     float Total;
+    EditText order_details;
     PaymentViewModel paymentViewModel;
     private BraintreeFragment mBraintreeFragment;
 
@@ -57,13 +59,15 @@ public class PaymentFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_paypal, container, false);
         paypal = view.findViewById(R.id.paypal);
         cash = view.findViewById(R.id.cash);
+        order_details= view.findViewById(R.id.order_details);
+
         Intent intent = new Intent(getActivity(), PayPalService.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, configuration);
         getActivity().startService(intent);
         orderModel = (OrderModel) getArguments().getSerializable(ORDER);
         assert orderModel != null;
         orderModel.setUser_id(PreferenceHelper.getUserId());
-//        for (int i = 0; i < orderModel.getOrderdetails().size(); i++)
+//             for (int i = 0; i < orderModel.getOrderdetails().size(); i++)
    //         Total += Float.valueOf(orderModel.getOrderdetails().get(i).getTotal());
 
          Total+=PreferenceHelper.getCurrencyValue();
@@ -95,6 +99,7 @@ public class PaymentFragment extends Fragment {
         orderModel.setArea_id(PreferenceHelper.getCOUNTRY_ID());
         orderModel.setType("1");
         orderModel.setPrice(String.valueOf(Total));
+        orderModel.setNotes(String.valueOf(order_details.getText().toString()));;
         sendRequest();
     }
 
@@ -121,6 +126,7 @@ public class PaymentFragment extends Fragment {
                         Toast.makeText(getActivity(), state, Toast.LENGTH_SHORT).show();
                         orderModel.setType(getString(R.string.paypal));
                         orderModel.setPrice(String.valueOf(Total));
+
                         sendRequest();
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -138,6 +144,7 @@ public class PaymentFragment extends Fragment {
     private void sendRequest() {
         orderModel.setPlatform_id(1);
         paymentViewModel.addOrder(orderModel);
+
     }
 
     private PaymentViewModelFactory getViewModelFactory() {

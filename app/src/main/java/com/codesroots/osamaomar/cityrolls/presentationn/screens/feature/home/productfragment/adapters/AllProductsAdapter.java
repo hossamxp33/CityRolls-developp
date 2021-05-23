@@ -82,7 +82,7 @@ public class AllProductsAdapter extends RecyclerView.Adapter<AllProductsAdapter.
 
 
             if (PreferenceHelper.getCurrency() !=  null)
-                holder.price.setText( price + " " + PreferenceHelper.getCurrency() );
+                holder.price.setText( price + " " + context.getText(R.string.coin) );
             else
                 holder.price.setText(productsbysubcats.get(position).getProductsizes().get(0).getCurrent_price() + " " + context.getText(R.string.coin));
 

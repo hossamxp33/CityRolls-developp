@@ -56,7 +56,7 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
         try {
             if (PreferenceHelper.getCurrencyValue()>0)
                 holder.orderPrice.setText(String.valueOf(Float.valueOf(orderdata.get(position).getPrice())
-                        *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
+                        *PreferenceHelper.getCurrencyValue()+" "+context.getText(R.string.coin)));
 
             else
 
