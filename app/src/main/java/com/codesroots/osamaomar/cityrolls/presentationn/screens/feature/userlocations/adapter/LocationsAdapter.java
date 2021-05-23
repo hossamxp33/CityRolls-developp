@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.codesroots.osamaomar.cityrolls.R;
 import com.codesroots.osamaomar.cityrolls.entities.UserLocations;
 import com.codesroots.osamaomar.cityrolls.entities.names;
-import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.getuserlocation.GetUserLocationActivity;
+import com.codesroots.osamaomar.cityrolls.presentationn.getuserlocation.GetUserLocationActivity;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.userlocations.UserLocationsFragment;
 
 import java.util.List;

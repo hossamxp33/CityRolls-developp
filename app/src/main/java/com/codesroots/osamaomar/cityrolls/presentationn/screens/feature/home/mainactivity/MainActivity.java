@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity
         FirebaseApp.initializeApp(this);
         FirebaseMessaging.getInstance();
        initialize();
-        //setUpToggle();
+      //    setUpToggle();
         GetLocation();
 //        search.setOnClickListener(v -> {
 //
@@ -118,14 +118,15 @@ private void HiddenKeyboard(View view ){
     private void initialize() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
      //   drawer = findViewById(R.id.drawer_layout);
         search = findViewById(R.id.search);
         head_title = findViewById(R.id.head_title);
       //  searchName = findViewById(R.id.searchName);
-    //    toggle = new ActionBarDrawerToggle(
-   //           this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        toggle = new ActionBarDrawerToggle(
+              this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 //        drawer.addDrawerListener(toggle);
-        //toggle.syncState();
+    //    toggle.syncState();
 //        alldepartsinNavigation = findViewById(R.id.all_departs);
         logo = findViewById(R.id.logo);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -134,7 +135,7 @@ private void HiddenKeyboard(View view ){
         mainActivityViewModel = ViewModelProviders.of(this, getViewModelFactory()).get(MainActivityViewModel.class);
         mainActivityViewModel.sidemenuMutableLiveData.observe(this, sidemenu ->
                 alldepartsinNavigation.setAdapter(new AllDepartsAdapter(this, sidemenu.getCategory())));
-    //    navigationView = findViewById(R.id.nav_view);
+    //    navigationView = findViewById (R.id.nav_view);
     //    navigationView.setNavigationItemSelectedListener(this);
         ActivityCompat.requestPermissions(this,
                 new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION,
@@ -275,10 +276,7 @@ private void HiddenKeyboard(View view ){
         };
         toggle.setDrawerIndicatorEnabled(false);
 
-        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.list, this.getTheme());
-        toggle.setHomeAsUpIndicator(drawable);
 
-        drawer.addDrawerListener(toggle);
         toggle.setToolbarNavigationClickListener(v -> {
             if (drawer.isDrawerVisible(GravityCompat.START)) {
 
@@ -287,7 +285,7 @@ private void HiddenKeyboard(View view ){
                 drawer.openDrawer(GravityCompat.START);
             }
         });
-        toggle.syncState();
+//        toggle.syncState();
     }
 
     @Override
