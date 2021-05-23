@@ -66,7 +66,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>  {
 //                            (float) dataBeans.get(position).getCurrent_price())  + " " + context.getText(R.string.realcoin));
 //
 //                //  holder.price.setText(dataBeans.get(position).getStart_price() + " " + context.getText(R.string.realcoin));
-//                products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
+//               products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
 //                        getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),
 //                                (float) dataBeans.get(position).getCurrent_price())));
 //
