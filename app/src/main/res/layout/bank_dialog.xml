@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -28,7 +29,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/bank"
+            android:text="@string/notes"
             android:textAlignment="center"
             app:layout_constraintTop_toTopOf="parent"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
@@ -39,129 +40,106 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/bankname"
+            android:text="@string/chooseRestaurants"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title"
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-        <TextView
-            android:id="@+id/banknamevalue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text=" Bank Muscat "
-            app:layout_constraintStart_toEndOf="@id/bankname"
-            app:layout_constraintTop_toBottomOf="@+id/title"
-            android:textColor="@color/black"
+            android:textColor="@color/red"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
+        <TextView
+            android:id="@+id/banknamevalue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/if_resturant"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/bankname"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintWidth_percent=".7" />
 
 
         <TextView
             android:id="@+id/benifitname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/benfitname"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bankname"
-            android:textColor="@color/black"
+            android:layout_marginTop="16dp"
+            android:text="@string/choosFreeze"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/red"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/banknamevalue" />
+
         <TextView
             android:id="@+id/benifitnamevalue"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="  SHOPGATE  "
-            app:layout_constraintStart_toEndOf="@id/benifitname"
-            app:layout_constraintTop_toBottomOf="@+id/bankname"
-            android:textColor="@color/black"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/if_company"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/benifitname"
+            app:layout_constraintTop_toBottomOf="@+id/banknamevalue"
+            app:layout_constraintWidth_percent=".65" />
 
 
         <TextView
             android:id="@+id/accountnum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/accountnum"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/benifitname"
-            android:textColor="@color/black"
+            android:layout_marginTop="16dp"
+            android:text="@string/phone"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/red"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/benifitnamevalue" />
 
         <TextView
             android:id="@+id/accountnumvalue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="  0317051679970018  "
+            android:layout_marginTop="16dp"
+            android:text="  01141087755  "
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@id/accountnum"
-            app:layout_constraintTop_toBottomOf="@+id/benifitname"
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-        <TextView
-            android:id="@+id/hint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/notes"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accountnum"
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-        <TextView
-            android:id="@+id/hinttext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/notesvalue"
-            android:gravity="start"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hint"
-            android:textColor="@color/gray"
-            android:textAlignment="center"
-            android:textSize="13sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            app:layout_constraintTop_toBottomOf="@+id/benifitnamevalue" />
 
         <Button
             android:id="@+id/buttonOk"
             android:layout_width="00dp"
-            app:layout_constraintWidth_percent="0.4"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="15dp"
             android:layout_marginStart="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hinttext"
             android:background="@drawable/button_background"
             android:text="@string/ok"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/buttoncancel"
+            app:layout_constraintWidth_percent="0.4" />
 
 
         <Button
             android:id="@+id/buttoncancel"
             android:layout_width="00dp"
-            app:layout_constraintWidth_percent="0.4"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hinttext"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/button_background"
             android:text="@string/cancel"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/accountnumvalue"
+            app:layout_constraintWidth_percent="0.4" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

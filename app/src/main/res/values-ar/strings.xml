@@ -62,7 +62,7 @@
     <string name="product_color"> لون المنتج</string>
 
     <string name="total">  المجموع :  </string>
-    <string name="order_details">تفاصيل الطلب</string>
+    <string name="order_details">اكتب هنا تفاصيل الطلب في حالة طلب عرض </string>
     <string name="product_num">  عدد المنتجات : </string>
     <string name="myorders">طلباتي</string>
     <string name="payment_way">طريقة الدفع :  </string>
@@ -136,6 +136,7 @@
     <string name="product_name">اسم المنتج</string>
     <string name="contact">تواصل معنا</string>
     <string name="sendreq">أرسل تفسيرك</string>
+    <string name="confirm"> تاكيد الطلب</string>
 
     <string name="popular_products">Popular products</string>
     <string name="error">Error</string>
@@ -160,6 +161,8 @@
     <string name="empty">اكتب رسالتك</string>
     <string name="now">الان</string>
     <string name="bank">معلومات التحويل البنكي</string>
+    <string name="if_resturant"> : اذا تم الطلب عن طريق المطعم سيتم التواصل معك خلال ١٥ دقيقة</string>
+
     <string name="bankname">اسم البنك : </string>
     <string name="benfitname">اسم المستفيد :</string>
     <string name="accountnum">  رقم الحساب  : </string>
@@ -181,6 +184,8 @@
     <string name="color">اختر اللون</string>
     <string name="chooseRestaurants">المطعم</string>
     <string name="choosFreeze">مجمدات</string>
+    <string name="if_company"> : اذا تم طلب منتجات مجمدة سيتم التواصل معك غدا الساعة ١٠ صباحا </string>
+
     <string name="choosetitle">اختر هل تريد طلب من المطعم او مجمدات</string>
     <string name="choosearea">برجاء اختيار منطقة التوصيل</string>
     <string name="changeareafromsetting"> يمكنك تغيير الدولة من الاعدادات</string>

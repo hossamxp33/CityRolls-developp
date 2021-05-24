@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.braintreepayments.api.BraintreeFragment;
@@ -32,6 +33,7 @@ import com.paypal.android.sdk.payments.PaymentConfirmation;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.math.BigDecimal;
 
@@ -44,8 +46,9 @@ public class PaymentFragment extends Fragment {
     private static PayPalConfiguration configuration = new PayPalConfiguration()
             .environment(PayPalConfiguration.ENVIRONMENT_PRODUCTION)
             .clientId(Config.PAYPAL_CLIENT_ID);
-    ImageView paypal, cash;
+    ImageView paypal;
     OrderModel orderModel;
+    TextView cash ;
     float Total;
     PaymentViewModel paymentViewModel;
     private BraintreeFragment mBraintreeFragment;

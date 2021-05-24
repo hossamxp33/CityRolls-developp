@@ -40,18 +40,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pay_options" />
 
-    <ImageView
+    <TextView
         android:id="@+id/cash"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintWidth_percent="0.85"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/red"
+        android:fontFamily="@font/mohamed"
+        android:gravity="center"
+
+        android:text="@string/confirm"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guid"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.17"
-        android:src="@drawable/money"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.85" />
 
     <ImageView
         android:id="@+id/paypal"
