@@ -248,7 +248,7 @@ public class PreferenceHelper {
         SharedPreferences.Editor editor = app_prefs.edit();
         editor.remove(CART_ARRAY);
         editor.remove(Color_ARRAY);
-
+        editor.putString(CART_ARRAY, "");
         editor.commit();
         editor.apply();
 
