@@ -63,10 +63,10 @@ public class PaymentFragment extends Fragment {
         orderModel = (OrderModel) getArguments().getSerializable(ORDER);
         assert orderModel != null;
         orderModel.setUser_id(PreferenceHelper.getUserId());
-        for (int i = 0; i < orderModel.getOrderdetails().size(); i++)
-            Total += Float.valueOf(orderModel.getOrderdetails().get(i).getTotal());
+//        for (int i = 0; i < orderModel.getOrderdetails().size(); i++)
+   //         Total += Float.valueOf(orderModel.getOrderdetails().get(i).getTotal());
 
-         Total += PreferenceHelper.getCurrencyValue();
+         Total+=PreferenceHelper.getCurrencyValue();
         paypal.setOnClickListener(v -> processpayment());
         cash.setOnClickListener(v -> showBankDialog());
         paymentViewModel = ViewModelProviders.of(this, getViewModelFactory()).get(PaymentViewModel.class);

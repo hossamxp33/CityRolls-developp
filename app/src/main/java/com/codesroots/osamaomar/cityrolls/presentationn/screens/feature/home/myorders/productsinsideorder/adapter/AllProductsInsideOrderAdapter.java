@@ -80,10 +80,10 @@ public class AllProductsInsideOrderAdapter extends RecyclerView.Adapter<AllProdu
         }
 
        holder.amount.setText(context.getText(R.string.remendier)+" "+
-                String.valueOf(orderdetailsBeans.get(position).getAmount())+" "+context.getText(R.string.num));
+                String.valueOf(orderdetailsBeans.get(position).getAmount())+" "+context.getText(R.string.coin));
 
        holder.price.setText(String.valueOf(Float.valueOf(orderdetailsBeans.get(position).getTotal())
-               * PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
+               * PreferenceHelper.getCurrencyValue()+" "+context.getText(R.string.coin)));
 
 
     }

@@ -78,10 +78,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>  {
                         Float.valueOf(dataBeans.get(position).getCurrent_price())));
 
                 if (PreferenceHelper.getCurrencyValue()>0)
-                    holder.price.setText(Float.valueOf(dataBeans.get(position).getCurrent_price())+" "+PreferenceHelper.getCurrency());
+                    holder.price.setText(Float.valueOf(dataBeans.get(position).getCurrent_price())+" "+context.getText(R.string.coin));
 
                 else
-                    holder.price.setText(dataBeans.get(position).getCurrent_price() + " " + context.getText(R.string.realcoin));
+                    holder.price.setText(dataBeans.get(position).getCurrent_price() + " " + context.getText(R.string.coin));
         //    }
 
             if (dataBeans.get(position).getTotal_rating() != null)
