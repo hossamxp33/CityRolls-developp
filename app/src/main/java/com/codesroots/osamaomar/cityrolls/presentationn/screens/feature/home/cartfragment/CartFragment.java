@@ -65,7 +65,7 @@ public class CartFragment extends Fragment implements EditCallbacks {
 
         chargrvalue =PreferenceHelper.getCurrencyValue();
 
-            chargevalue.setText(chargrvalue + " " + getString(R.string.coin));
+            chargevalue.setText(new DecimalFormat("##.##").format(chargrvalue) + " " + getString(R.string.coin));
 
 
 
@@ -81,7 +81,7 @@ public class CartFragment extends Fragment implements EditCallbacks {
                 for (int i = 0; i < products.size(); i++)
                     tot_price += products.get(i).getCurrent_price();
                 totalvalue.setText(new DecimalFormat("##.##").format(tot_price )+" "+ getString(R.string.coin));
-                alltotalvalue.setText(tot_price+chargrvalue+" "+ getString(R.string.coin) );
+                alltotalvalue.setText(new DecimalFormat("##.##").format(tot_price+chargrvalue)+" "+ getString(R.string.coin) );
             }
         });
 
@@ -193,7 +193,7 @@ public class CartFragment extends Fragment implements EditCallbacks {
         alltotalvalue.setText(new DecimalFormat("##.##").format(tot_price+chargrvalue)+" "+getString(R.string.coin));
         if (tot_price1<PreferenceHelper.getMIM_CHIPPING())
         {  if (PreferenceHelper.getCOUNTRY_ID()==1)
-            chargevalue.setText(PreferenceHelper.getIN_OMAN()+" "+getString(R.string.coin));
+            chargevalue.setText(PreferenceHelper.getOUT_OMAN()+" "+getString(R.string.coin));
         else
             chargevalue.setText(PreferenceHelper.getOUT_OMAN()+" "+ getString(R.string.coin));
         }

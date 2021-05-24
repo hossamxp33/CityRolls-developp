@@ -59,7 +59,7 @@ public class RelatedProductsAdapter extends RecyclerView.Adapter<RelatedProducts
             String the_price = String.format("%.2f",Float.valueOf(famousProduct.get(position).getPrice() *
                     PreferenceHelper.getCurrencyValue()) );
         if (PreferenceHelper.getCurrencyValue() > 0)
-            holder.price.setText(the_price + " " + PreferenceHelper.getCurrency());
+            holder.price.setText(the_price + " " + context.getText(R.string.coin));
         else
             holder.price.setText(Float.valueOf(famousProduct.get(position).getPrice()) + " " + context.getText(R.string.coin));
 
