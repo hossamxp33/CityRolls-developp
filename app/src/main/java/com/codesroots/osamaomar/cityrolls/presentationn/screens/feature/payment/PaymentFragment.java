@@ -6,10 +6,16 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainactivity.MainActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import androidx.fragment.app.FragmentManager;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +31,7 @@ import com.codesroots.osamaomar.cityrolls.helper.AddorRemoveCallbacks;
 import com.codesroots.osamaomar.cityrolls.helper.PreferenceHelper;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.confirmorder.FinishOrderFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.MainFragment;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
@@ -77,6 +84,19 @@ public class PaymentFragment extends Fragment {
 
             if (aBoolean) {
                 PreferenceHelper.clearCart();
+                FirebaseMessaging.getInstance().subscribeToTopic("admin")
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+//                                String msg = getString(R.string.msg_subscribed);
+//                                if (!task.isSuccessful()) {
+//                                    msg = getString(R.string.msg_subscribe_failed);
+//                                }
+//                                Log.d("TAG", msg);
+//                                Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 for (int i1 = 0; i1 < fm.getBackStackEntryCount(); ++i1) {
                     Fragment fragment = fm.findFragmentById(R.id.mainfram);

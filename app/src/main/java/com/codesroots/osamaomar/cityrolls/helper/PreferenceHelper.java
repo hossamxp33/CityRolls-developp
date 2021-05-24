@@ -206,8 +206,10 @@ public class PreferenceHelper {
     }
 
     public static ArrayList retriveCartItemsValue() {
+        arrPackage.clear();
+
         Gson gson = new Gson();
-        String json = app_prefs.getString(CART_ARRAY, null);
+        String json = app_prefs.getString(CART_ARRAY, "");
         Type type = new TypeToken<List<String>>() {}.getType();
 
         List<String> arrayList = gson.fromJson(json,type);
@@ -234,11 +236,16 @@ public class PreferenceHelper {
     public static  void removeItemFromCart(int product_id)
     {
         Gson gson = new Gson();
+        Editor editor = app_prefs.edit();
+
         String json = app_prefs.getString(CART_ARRAY, null);
         Type type = new TypeToken<List<String>>() {}.getType();
 
         List<String> arrayList = gson.fromJson(json,type);
         arrayList.remove(String.valueOf(product_id));
+        String newdata = gson.toJson(arrayList,type);
+        editor.putString(CART_ARRAY, newdata);
+        editor.apply();
         arrPackage.clear();
         arrPackage.addAll(arrayList);
     }
@@ -246,11 +253,12 @@ public class PreferenceHelper {
     public static  void clearCart()
     {
         SharedPreferences.Editor editor = app_prefs.edit();
-        editor.remove(CART_ARRAY);
         editor.remove(Color_ARRAY);
-        editor.putString(CART_ARRAY, "");
-        editor.commit();
+        editor.remove(CART_ARRAY);
+
         editor.apply();
+        editor.commit();
+        String json = app_prefs.getString(CART_ARRAY, "");
 
     }
 

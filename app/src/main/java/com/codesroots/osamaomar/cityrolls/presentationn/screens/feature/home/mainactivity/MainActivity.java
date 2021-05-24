@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity
         preferenceHelper = new PreferenceHelper(this);
         FirebaseApp.initializeApp(this);
         FirebaseMessaging.getInstance();
+        FirebaseMessaging.getInstance().subscribeToTopic("admin");
        initialize();
       //    setUpToggle();
         GetLocation();
