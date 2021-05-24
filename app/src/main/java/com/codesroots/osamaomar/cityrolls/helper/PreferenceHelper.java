@@ -200,14 +200,11 @@ public class PreferenceHelper {
         String newdata = gson.toJson(arrayList,type);
         editor.putString(CART_ARRAY, newdata);
         editor.apply();
-
-
         editor.commit();
     }
 
     public static ArrayList retriveCartItemsValue() {
         arrPackage.clear();
-
         Gson gson = new Gson();
         String json = app_prefs.getString(CART_ARRAY, "");
         Type type = new TypeToken<List<String>>() {}.getType();
@@ -224,7 +221,6 @@ public class PreferenceHelper {
         Gson gson = new Gson();
         String json = app_prefs.getString(CART_ARRAY, null);
         Type type = new TypeToken<List<String>>() {}.getType();
-
         List<String> arrayList = gson.fromJson(json,type);
         if (arrayList == null)
             return 0;
@@ -237,10 +233,8 @@ public class PreferenceHelper {
     {
         Gson gson = new Gson();
         Editor editor = app_prefs.edit();
-
         String json = app_prefs.getString(CART_ARRAY, null);
         Type type = new TypeToken<List<String>>() {}.getType();
-
         List<String> arrayList = gson.fromJson(json,type);
         arrayList.remove(String.valueOf(product_id));
         String newdata = gson.toJson(arrayList,type);
@@ -288,6 +282,7 @@ public class PreferenceHelper {
     public static String getToken() {
 
         return app_prefs.getString(Token,"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImV4cCI6MTU3Mzk2ODg3MH0.w45qrjLBSXaGfHRATa33EwGG-IfPkhKbnZSbflWRLSo");
+
     }
 
     public static int getUserId() {

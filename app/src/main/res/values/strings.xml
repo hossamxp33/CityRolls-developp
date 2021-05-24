@@ -222,7 +222,7 @@
     <string name="if_resturant"> : If the request is made through the restaurant, you will be contacted within 15 minutes</string>
     <string name="if_company"> : If frozen products are requested, we will contact you tomorrow at 10 am </string>
 
-    <string name="notes">*notes</string>
+    <string name="notes">*Add a note</string>
     <string name="change_country">change area</string>
     <string name="charge"> Delivery cost :  </string>
     <string name="cancel">cancel</string>
