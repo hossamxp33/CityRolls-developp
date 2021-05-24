@@ -57,12 +57,13 @@
         android:gravity="center"
         android:text="@string/confirm"
         android:textColor="@color/white"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button_background"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guid"
+        app:layout_constraintTop_toBottomOf="@+id/order_details"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.12"
+        app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent="0.85" />
 
@@ -94,17 +95,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.89" />
 
-    <View
-        android:id="@+id/view3"
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:background="@color/write_comment"
-        android:layout_centerVertical ="true"
-        android:layout_alignParentTop="true"
-        app:layout_constraintBottom_toTopOf="@+id/cash"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/order_details" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
