@@ -241,6 +241,8 @@ public class PreferenceHelper {
         arrayList.remove(String.valueOf(product_id));
         arrPackage.clear();
         arrPackage.addAll(arrayList);
+        arrayList.remove(String.valueOf(product_id));
+
     }
 
     public static  void clearCart()
