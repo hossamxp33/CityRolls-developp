@@ -83,9 +83,9 @@ public class  ProductSizesAdapter extends RecyclerView.Adapter<ProductSizesAdapt
                     float offerPercentage = Float.valueOf(productsizes.get(mSelectedItem).getCurrent_price()) * offer / 100;
                     priceafteroffer = Float.valueOf(productsizes.get(mSelectedItem).getCurrent_price()) - offerPercentage;
                     if (PreferenceHelper.getCurrency()!=null)
-                        fragment.price.setText(String.valueOf(priceafteroffer*PreferenceHelper.getCurrencyValue()) + context.getText(R.string.realcoin));
+                        fragment.price.setText(String.valueOf(priceafteroffer*PreferenceHelper.getCurrencyValue()) + context.getText(R.string.coin));
                     else
-                    fragment.price.setText(String.valueOf(priceafteroffer) + context.getText(R.string.realcoin));
+                    fragment.price.setText(String.valueOf(priceafteroffer) + context.getText(R.string.coin));
 
                     if (offerPercentage < fragment.setting.getData().get(0).getShippingPrice()) {
                         fragment.charege.setText(R.string.charge_rules);
@@ -94,7 +94,7 @@ public class  ProductSizesAdapter extends RecyclerView.Adapter<ProductSizesAdapt
                     else
                         fragment.charege.setText(R.string.free_charge);
                 } else {
-                    fragment.price.setText(productsizes.get(mSelectedItem).getCurrent_price() + " " + context.getText(R.string.realcoin));
+                    fragment.price.setText(productsizes.get(mSelectedItem).getCurrent_price() + " " + context.getText(R.string.coin));
                     if (Float.valueOf(productsizes.get(mSelectedItem).getCurrent_price()) < fragment.setting.getData().get(0).getShippingPrice()) {
                         fragment.charege.setText(R.string.charge_rules);
                         fragment.freecharg = false;

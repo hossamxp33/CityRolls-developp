@@ -290,7 +290,7 @@ public class ProductDetailsFragment extends Fragment {
                 *
                 PreferenceHelper.getCurrencyValue()) );
 
-                price.setText(the_price  + PreferenceHelper.getCurrency());
+                price.setText(the_price  + this.getText(R.string.coin));
 
         ////////////////////////// Spinner /////////////////////////////////
       //  List values = new kotlinusercase().makestringarray(productdetailsBean.getProductsizes());

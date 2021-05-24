@@ -193,7 +193,7 @@ public class CartFragment extends Fragment implements EditCallbacks {
         alltotalvalue.setText(new DecimalFormat("##.##").format(tot_price+chargrvalue)+" "+getString(R.string.coin));
         if (tot_price1<PreferenceHelper.getMIM_CHIPPING())
         {  if (PreferenceHelper.getCOUNTRY_ID()==1)
-            chargevalue.setText(PreferenceHelper.getIN_OMAN()+" "+getString(R.string.coin));
+            chargevalue.setText(PreferenceHelper.getOUT_OMAN()+" "+getString(R.string.coin));
         else
             chargevalue.setText(PreferenceHelper.getOUT_OMAN()+" "+ getString(R.string.coin));
         }

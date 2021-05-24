@@ -147,7 +147,7 @@ public class PreferenceHelper {
         return app_prefs.getFloat(CURRENCY_VALUE, 0);
     }
     public static float getIN_OMAN() {
-        return app_prefs.getFloat(IN_OMAN, 0);
+        return app_prefs.getFloat(OUT_OMAN, 0);
     }
 
     public static float getOUT_OMAN() {
