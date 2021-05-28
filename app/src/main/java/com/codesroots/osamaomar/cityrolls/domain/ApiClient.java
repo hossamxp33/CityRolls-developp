@@ -66,5 +66,18 @@ public class ApiClient {
 //        }
         return retrofit;
     }
-
+    public static Retrofit getClientPayment() {
+        //   if (retrofit == null) {
+        retrofit = new Retrofit.Builder()
+                .baseUrl("https://accept.paymob.com/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory( RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+                .client(getOkHttpClient())
+                .build();
+//        }else {
+//
+//            retrofit.baseUrl().url() = "sd";
+//        }
+        return retrofit;
+    }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+
     package="com.codesroots.osamaomar.cityrolls">
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -15,10 +16,11 @@
         android:name="com.codesroots.osamaomar.cityrolls.helper.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/logoo"
+        android:supportsRtl="true"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
         android:theme="@style/AppTheme"
+    tools:replace="android:icon,android:supportsRtl"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name="com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.country.CountriesActivity"
@@ -94,7 +96,6 @@
            />
 
         <activity android:name="com.paypal.android.sdk.payments.PayPalProfileSharingActivity" />
-
         <activity android:name="com.paypal.android.sdk.payments.ProfileSharingConsentActivity" />
         <activity android:name="com.paypal.android.sdk.payments.FuturePaymentInfoActivity" />
         <activity android:name="com.paypal.android.sdk.payments.LoginActivity" />

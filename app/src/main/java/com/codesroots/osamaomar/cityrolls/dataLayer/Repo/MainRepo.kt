@@ -26,9 +26,31 @@ class  DataRepo {
                         }
                 )
     }
+
+    @SuppressLint("CheckResult")
+
+    fun GetPaymentkey(id:Int,type:Int,livedata: MutableLiveData<StoreData>?) {
+
+        getServergetwayPayment().GetPaymentkey(id,type)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map { data -> data }
+                .subscribe(
+                        { books ->
+                            livedata?.postValue(books)
+                        },
+                        { error ->
+
+                        }
+                )
+    }
     fun getServergetway () : ServerGateway
     {
         return ApiClient.getClient().create(ServerGateway::class.java)
+    }
+    fun getServergetwayPayment () : ServerGateway
+    {
+        return ApiClient.getClientPayment().create(ServerGateway::class.java)
     }
 
 }

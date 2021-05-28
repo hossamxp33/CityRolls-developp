@@ -230,6 +230,13 @@ public interface ServerGateway {
             @Field("sender") int address,
             @Field("message_text") String message_text
     );
+    @FormUrlEncoded
+    @POST("acceptance/payment_keys")
+    Observable<Addmessage> GetPaymentkey(
+            @Field("auth_token") int auth_token,
+            @Field("sender") int address,
+            @Field("message_text") String message_text
+    );
 
 
 
