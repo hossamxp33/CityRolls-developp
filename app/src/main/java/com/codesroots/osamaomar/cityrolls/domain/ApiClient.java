@@ -53,13 +53,13 @@ public class ApiClient {
     }
 
     public static Retrofit getClient() {
-     //   if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(PreferenceHelper.getURL_Base())
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory( RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
-                    .client(getOkHttpClient())
-                    .build();
+        //   if (retrofit == null) {
+        retrofit = new Retrofit.Builder()
+                .baseUrl(PreferenceHelper.getURL_Base())
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory( RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+                .client(getOkHttpClient())
+                .build();
 //        }else {
 //
 //            retrofit.baseUrl().url() = "sd";
