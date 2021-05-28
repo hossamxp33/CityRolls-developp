@@ -32,6 +32,13 @@ import com.codesroots.osamaomar.cityrolls.helper.PreferenceHelper;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.confirmorder.FinishOrderFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.MainFragment;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.paymob.acceptsdk.IntentConstants;
+import com.paymob.acceptsdk.PayActivity;
+import com.paymob.acceptsdk.PayActivityIntentKeys;
+import com.paymob.acceptsdk.PayResponseKeys;
+import com.paymob.acceptsdk.SaveCardResponseKeys;
+import com.paymob.acceptsdk.ThreeDSecureWebViewActivty;
+import com.paymob.acceptsdk.ToastMaker;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
@@ -59,7 +66,8 @@ public class PaymentFragment extends Fragment {
     float Total;
     PaymentViewModel paymentViewModel;
     private BraintreeFragment mBraintreeFragment;
-
+    private int  ACCEPT_PAYMENT_REQUEST = 1000;
+    final String paymentKey = "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6VXhNaUo5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRBeU5EYzFMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuX2lXRnExVEN1VThIaFg1SUNDOE5VZUF3bzFCd0EzSzdTN1FQdmc0R1ExNUp2VklKbUFxXy0zMXo4NXdiSWliNi1UdDVKU3A1R0w1N2pMLThNSzR1V3c=";
 
     @Nullable
     @Override
@@ -123,16 +131,43 @@ public class PaymentFragment extends Fragment {
 
 
     private void processpayment() {
+        Intent pay_intent = new Intent(getActivity(), PayActivity.class);
+        putNormalExtras(pay_intent);
 
-        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(Total * PreferenceHelper.getDoller())), "USD", "oman", PayPalPayment.PAYMENT_INTENT_SALE);
-        Intent intent = new Intent(getActivity(), PaymentActivity.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, configuration);
-        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payPalPayment);
-        startActivityForResult(intent, PAYPAL_REQUEST_CODE);
+        // this key is used to save the card by deafult.
+        pay_intent.putExtra(PayActivityIntentKeys.SAVE_CARD_DEFAULT, false);
+
+        // this key is used to display the savecard checkbox.
+        pay_intent.putExtra(PayActivityIntentKeys.SHOW_SAVE_CARD, true);
+
+        //this key is used to set the theme color(Actionbar, statusBar, button).
+        pay_intent.putExtra(PayActivityIntentKeys.THEME_COLOR,getResources().getColor(R.color.black));
+
+        // this key is to wether display the Actionbar or not.
+        pay_intent.putExtra("ActionBar",true);
+
+        // this key is used to define the language. takes for ex ("ar", "en") as inputs.
+        pay_intent.putExtra("language","ar");
+
+        startActivityForResult(pay_intent, ACCEPT_PAYMENT_REQUEST);
+//        Intent secure_intent = new Intent(this, ThreeDSecureWebViewActivty.class);
+//        secure_intent.putExtra("ActionBar",true);
+
+//        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(Total * PreferenceHelper.getDoller())), "USD", "oman", PayPalPayment.PAYMENT_INTENT_SALE);
+//        Intent intent = new Intent(getActivity(), PaymentActivity.class);
+//        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, configuration);
+//        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payPalPayment);
+//        startActivityForResult(intent, PAYPAL_REQUEST_CODE);
     }
-
+    private void putNormalExtras(Intent intent) {
+        intent.putExtra(PayActivityIntentKeys.PAYMENT_KEY, paymentKey);
+        intent.putExtra(PayActivityIntentKeys.THREE_D_SECURE_ACTIVITY_TITLE, "Verification");
+    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+
+        Bundle extras = data.getExtras();
 
         if (requestCode == PAYPAL_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
@@ -155,6 +190,56 @@ public class PaymentFragment extends Fragment {
         } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
             Toast.makeText(getActivity(), "Invalid", Toast.LENGTH_SHORT).show();
 
+
+        if (requestCode == ACCEPT_PAYMENT_REQUEST) {
+
+            if (resultCode == IntentConstants.USER_CANCELED) {
+                // User canceled and did no payment request was fired
+                ToastMaker.displayShortToast(getActivity(), "User canceled!!");
+            } else if (resultCode == IntentConstants.MISSING_ARGUMENT) {
+                // You forgot to pass an important key-value pair in the intent's extras
+                ToastMaker.displayShortToast(getActivity(), "Missing Argument == " + extras.getString(IntentConstants.MISSING_ARGUMENT_VALUE));
+            } else if (resultCode == IntentConstants.TRANSACTION_ERROR) {
+                // An error occurred while handling an API's response
+                ToastMaker.displayShortToast(getActivity(), "Reason == " + extras.getString(IntentConstants.TRANSACTION_ERROR_REASON));
+            } else if (resultCode == IntentConstants.TRANSACTION_REJECTED) {
+                // User attempted to pay but their transaction was rejected
+
+                // Use the static keys declared in PayResponseKeys to extract the fields you want
+                ToastMaker.displayShortToast(getActivity(), extras.getString(PayResponseKeys.DATA_MESSAGE));
+            } else if (resultCode == IntentConstants.TRANSACTION_REJECTED_PARSING_ISSUE) {
+                // User attempted to pay but their transaction was rejected. An error occured while reading the returned JSON
+                ToastMaker.displayShortToast(getActivity(), extras.getString(IntentConstants.RAW_PAY_RESPONSE));
+            } else if (resultCode == IntentConstants.TRANSACTION_SUCCESSFUL) {
+                // User finished their payment successfully
+
+                // Use the static keys declared in PayResponseKeys to extract the fields you want
+                ToastMaker.displayShortToast(getActivity(), extras.getString(PayResponseKeys.DATA_MESSAGE));
+            } else if (resultCode == IntentConstants.TRANSACTION_SUCCESSFUL_PARSING_ISSUE) {
+                // User finished their payment successfully. An error occured while reading the returned JSON.
+                ToastMaker.displayShortToast(getActivity(), "TRANSACTION_SUCCESSFUL - Parsing Issue");
+
+                // ToastMaker.displayShortToast(this, extras.getString(IntentConstants.RAW_PAY_RESPONSE));
+            } else if (resultCode == IntentConstants.TRANSACTION_SUCCESSFUL_CARD_SAVED) {
+                // User finished their payment successfully and card was saved.
+
+                // Use the static keys declared in PayResponseKeys to extract the fields you want
+                // Use the static keys declared in SaveCardResponseKeys to extract the fields you want
+                ToastMaker.displayShortToast(getActivity(), "Token == " + extras.getString(SaveCardResponseKeys.TOKEN));
+            } else if (resultCode == IntentConstants.USER_CANCELED_3D_SECURE_VERIFICATION) {
+                ToastMaker.displayShortToast(getActivity(), "User canceled 3-d scure verification!!");
+
+                // Note that a payment process was attempted. You can extract the original returned values
+                // Use the static keys declared in PayResponseKeys to extract the fields you want
+                ToastMaker.displayShortToast(getActivity(), extras.getString(PayResponseKeys.PENDING));
+            } else if (resultCode == IntentConstants.USER_CANCELED_3D_SECURE_VERIFICATION_PARSING_ISSUE) {
+                ToastMaker.displayShortToast(getActivity(), "User canceled 3-d scure verification - Parsing Issue!!");
+
+                // Note that a payment process was attempted.
+                // User finished their payment successfully. An error occured while reading the returned JSON.
+                ToastMaker.displayShortToast(getActivity(), extras.getString(IntentConstants.RAW_PAY_RESPONSE));
+            }
+        }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
