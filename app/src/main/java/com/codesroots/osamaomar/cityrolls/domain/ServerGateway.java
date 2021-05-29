@@ -24,6 +24,7 @@ import com.codesroots.osamaomar.cityrolls.entities.Sidemenu;
 import com.codesroots.osamaomar.cityrolls.entities.StoreData;
 import com.codesroots.osamaomar.cityrolls.entities.StoreSetting;
 import com.codesroots.osamaomar.cityrolls.entities.SubCategriesWithProducts;
+import com.codesroots.osamaomar.cityrolls.entities.Token;
 import com.codesroots.osamaomar.cityrolls.entities.UserLocations;
 import com.codesroots.osamaomar.cityrolls.entities.ViewLocation;
 import com.codesroots.osamaomar.cityrolls.entities.offers;
@@ -238,8 +239,12 @@ public interface ServerGateway {
             @Body Payment payment
 
     );
+    @FormUrlEncoded
+    @POST("auth/tokens")
+    Observable<Token> GetToken(
+             @Field("api_key") String  api_key
 
-
+    );
 
     @GET("areas.json")
     Observable<Countries> getCountriesData();

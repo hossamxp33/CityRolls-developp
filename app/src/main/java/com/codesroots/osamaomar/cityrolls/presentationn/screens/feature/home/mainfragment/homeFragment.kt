@@ -15,9 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.codesroots.osamaomar.cityrolls.R
-import com.codesroots.osamaomar.cityrolls.entities.Category
-import com.codesroots.osamaomar.cityrolls.entities.Items
-import com.codesroots.osamaomar.cityrolls.entities.MainView
+import com.codesroots.osamaomar.cityrolls.entities.*
 import com.codesroots.osamaomar.cityrolls.helper.AddorRemoveCallbacks
 import com.codesroots.osamaomar.cityrolls.helper.PreferenceHelper
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.MainFragmentViewModel
@@ -25,6 +23,7 @@ import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mai
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.adapters.OffersProductsAdapter
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.adapters.SliderPagerAdapter
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.subcategryfragment.adapters.SubCatsAdapter
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.smallstore.SmallstoreViewmodel.SmallstoreViewmodel
 
 
 import com.viewpagerindicator.CirclePageIndicator
@@ -41,6 +40,8 @@ import kotlin.collections.ArrayList
 class homeFragment : Fragment() {
 
     private lateinit var viewModel: MainFragmentViewModel
+    private lateinit var     TokenviewModel: SmallstoreViewmodel
+
     var  data : Category? = null
     var pagers: ViewPager? = null
     var indicator: CirclePageIndicator? = null
@@ -48,6 +49,7 @@ class homeFragment : Fragment() {
     var adapterr: CatAdapter? = null
     var datArray = ArrayList<Items>()
     var MainData : MainView? = null
+    internal  var tokenmodel:Token ? = null
 
     var adapter: SubCatsAdapter? = null
     var NUM_PAGES = 0
@@ -61,12 +63,17 @@ class homeFragment : Fragment() {
     ): View?  {
 
         var view = inflater.inflate(R.layout.main_fragment, container, false)
-
+        val api_key = "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6VXhNaUo5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRBeU5EYzFMQ0p1WVcxbElqb2lNVFl5TWpJMU1EUTFNUzR3TmpnMU1ESWlmUS5sYnh4WkNla1BJX3NhbExpYXprUXBWUHlPTnc3OTRwRnExT3I0YkVXRmlvTEQtTHA5ZDctN2RKNmllT2hEYjZUaXViWVdnOFpEWDl3cmFDYVpWNG5SQQ=="
         indicator = view.indicator
 
         viewModel = ViewModelProviders.of(this, getViewModelFactory()).get(MainFragmentViewModel::class.java)
 
         viewModel.getData()
+
+        TokenviewModel = ViewModelProviders.of(this).get(SmallstoreViewmodel::class.java)
+
+        TokenviewModel.GetToken(api_key);
+          tokenmodel = Token()
 
         pagers = view!!.slider
 

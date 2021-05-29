@@ -6,6 +6,7 @@ import com.codesroots.osamaomar.cityrolls.domain.ApiClient
 import com.codesroots.osamaomar.cityrolls.domain.ServerGateway
 import com.codesroots.osamaomar.cityrolls.entities.Payment
 import com.codesroots.osamaomar.cityrolls.entities.StoreData
+import com.codesroots.osamaomar.cityrolls.entities.Token
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -33,6 +34,22 @@ class  DataRepo {
     fun GetPaymentkey(Payment : Payment  ,livedata: MutableLiveData<Payment>?) {
 
         getServergetwayPayment().GetPaymentkey(Payment)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map { data -> data }
+                .subscribe(
+                        { books ->
+                            livedata?.postValue(books)
+                        },
+                        { error ->
+                        }
+                )
+    }
+    @SuppressLint("CheckResult")
+
+    fun GetToken( api_key: String  ,livedata: MutableLiveData<Token>?) {
+
+        getServergetwayPayment().GetToken(api_key)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { data -> data }

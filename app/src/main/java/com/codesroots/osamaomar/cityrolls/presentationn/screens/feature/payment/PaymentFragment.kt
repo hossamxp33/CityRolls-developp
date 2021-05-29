@@ -133,7 +133,6 @@ class PaymentFragment : Fragment() {
         payment.amount_cents = Total.toString()
         payment.auth_token = auth
         payment.order_id = "11783698"
-
         payment.currency = "EGP"
         payment.integration_id = integration_id
         var billingModel = BillingData()

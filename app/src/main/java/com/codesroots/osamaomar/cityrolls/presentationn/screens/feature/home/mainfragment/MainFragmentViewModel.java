@@ -38,6 +38,7 @@ public class MainFragmentViewModel extends ViewModel {
             ItemIndex.postValue(index);
         }
 
+
     @SuppressLint("CheckResult")
     private Observable<MainView> getObservable() {
         Observable<MainView> photographersData = serverGateway.getMainViewData();
