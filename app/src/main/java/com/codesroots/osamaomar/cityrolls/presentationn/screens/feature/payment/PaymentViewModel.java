@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.codesroots.osamaomar.cityrolls.domain.ServerGateway;
 import com.codesroots.osamaomar.cityrolls.entities.OrderModel;
+import com.codesroots.osamaomar.cityrolls.entities.Payment;
 
 import io.reactivex.disposables.CompositeDisposable;
 import okhttp3.ResponseBody;
@@ -16,6 +17,8 @@ import retrofit2.Response;
 public class PaymentViewModel extends ViewModel {
 
     public MutableLiveData<Boolean> myOrdersMutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<Boolean> paymentMutableLiveData = new MutableLiveData<>();
+
     public MutableLiveData<Throwable> throwableMutableLiveData = new MutableLiveData<>();
     private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
     private ServerGateway serverGateway;
@@ -62,4 +65,25 @@ public class PaymentViewModel extends ViewModel {
             }
         });
     }
+
+//    public void payment(Payment payment) {
+//        serverGateway.GetPaymentkey(payment).enqueue(new Callback<ResponseBody>() {
+//            @Override
+//            public void onResponse(Call<ResponseBody> call, final Response<ResponseBody> response) {
+//                try {
+//                    if (response != null)
+//                        paymentMutableLiveData.postValue(true);
+//                } catch (Exception e) {
+//                    // onError.accept(e.getCause());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseBody> call, Throwable t) {
+//                if (throwableMutableLiveData != null) {
+//                    throwableMutableLiveData.postValue(t);
+//                }
+//            }
+//        });
+//    }
 }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import com.codesroots.osamaomar.cityrolls.domain.ApiClient
 import com.codesroots.osamaomar.cityrolls.domain.ServerGateway
+import com.codesroots.osamaomar.cityrolls.entities.Payment
 import com.codesroots.osamaomar.cityrolls.entities.StoreData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -29,9 +30,9 @@ class  DataRepo {
 
     @SuppressLint("CheckResult")
 
-    fun GetPaymentkey(id:Int,type:Int,livedata: MutableLiveData<StoreData>?) {
+    fun GetPaymentkey(Payment : Payment  ,livedata: MutableLiveData<Payment>?) {
 
-        getServergetwayPayment().GetPaymentkey(id,type)
+        getServergetwayPayment().GetPaymentkey(Payment)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { data -> data }
@@ -40,7 +41,6 @@ class  DataRepo {
                             livedata?.postValue(books)
                         },
                         { error ->
-
                         }
                 )
     }

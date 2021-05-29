@@ -36,7 +36,7 @@ public class RegisterFragment extends Fragment {
         password = view.findViewById(R.id.password);
         repassword = view.findViewById(R.id.repassword);
         phone = view.findViewById(R.id.phone);
-        mail = view.findViewById(R.id.mail);
+       //mail = view.findViewById(R.id.mail);
         registerbtn = view.findViewById(R.id.register);
         registerbtn.setOnClickListener(v -> {
             User  user = new User();
@@ -44,7 +44,9 @@ public class RegisterFragment extends Fragment {
             user.setPassword(password.getText().toString());
             user.setRepassword(repassword.getText().toString());
             user.setMobile(phone.getText().toString());
-            user.setMail(mail.getText().toString());
+            PreferenceHelper.setPhoneNum(phone.getText().toString());
+
+            //   user.setMail(mail.getText().toString());
             mViewModel.addUser(user);
             registerbtn.setText(R.string.wait);
             registerbtn.setEnabled(false);
@@ -65,6 +67,8 @@ public class RegisterFragment extends Fragment {
                  if (register.getSuccess()) {
                      PreferenceHelper.setUserId(register.getData().getId());
                      PreferenceHelper.setUserName(register.getData().getUsername());
+                     PreferenceHelper.setPhoneNum(phone.getText().toString());
+
                      PreferenceHelper.setToken(register.getData().getToken());
                      Toast.makeText(getActivity(),getText(R.string.registersuccess),Toast.LENGTH_SHORT).show();
                      FragmentManager fm = getActivity().getSupportFragmentManager();

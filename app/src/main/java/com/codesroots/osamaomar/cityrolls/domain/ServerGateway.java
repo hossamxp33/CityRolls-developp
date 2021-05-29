@@ -15,6 +15,7 @@ import com.codesroots.osamaomar.cityrolls.entities.LoginResponse;
 import com.codesroots.osamaomar.cityrolls.entities.MainView;
 import com.codesroots.osamaomar.cityrolls.entities.MyOrders;
 import com.codesroots.osamaomar.cityrolls.entities.OrderModel;
+import com.codesroots.osamaomar.cityrolls.entities.Payment;
 import com.codesroots.osamaomar.cityrolls.entities.ProductDetails;
 import com.codesroots.osamaomar.cityrolls.entities.ProductRate;
 import com.codesroots.osamaomar.cityrolls.entities.Products;
@@ -161,12 +162,6 @@ public interface ServerGateway {
             @Field("rate") float rate,
             @Field("comment") String comment
     );
-    ////////////// make order
-    @POST("Orders/addorder.json")
-    @Headers("Accept: Application/json")
-    Call<ResponseBody> makeOrder(
-            @Body OrderModel orderModel
-    );
 
 
     ////////////// get  Settings
@@ -230,12 +225,18 @@ public interface ServerGateway {
             @Field("sender") int address,
             @Field("message_text") String message_text
     );
-    @FormUrlEncoded
+
+    ////////////// make order
+    @POST("Orders/addorder.json")
+    @Headers("Accept: Application/json")
+    Call<ResponseBody> makeOrder(
+            @Body OrderModel orderModel
+    );
+
     @POST("acceptance/payment_keys")
-    Observable<Addmessage> GetPaymentkey(
-            @Field("auth_token") int auth_token,
-            @Field("sender") int address,
-            @Field("message_text") String message_text
+    Observable<Payment> GetPaymentkey(
+            @Body Payment payment
+
     );
 
 

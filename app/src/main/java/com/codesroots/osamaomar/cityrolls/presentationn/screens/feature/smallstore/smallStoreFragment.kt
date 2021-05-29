@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.codesroots.osamaomar.cityrolls.R
 import com.codesroots.osamaomar.cityrolls.entities.names.CAT_ID
 import com.codesroots.osamaomar.cityrolls.entities.names.CAT_TYPE
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.smallstore.SmallstoreViewmodel.SmallstoreViewmodel
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.smallstore.adapter.smallStoreAdapter
-import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.smallstore.smallstoreViewmodel.smallstoreViewmodel
 import kotlinx.android.synthetic.main.small_store_fragment.view.*
 
 class smallStoreFramgent : Fragment() {
 
-    lateinit var viewModel: smallstoreViewmodel
+    lateinit var viewModel: SmallstoreViewmodel
     lateinit var MainAdapter: smallStoreAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +31,7 @@ class smallStoreFramgent : Fragment() {
         val  catid = arguments!!.getInt(CAT_ID, 0)
         val type = arguments!!.getInt(CAT_TYPE, 0)
 
-       viewModel = ViewModelProviders.of(this).get(smallstoreViewmodel::class.java)
+       viewModel = ViewModelProviders.of(this).get(SmallstoreViewmodel::class.java)
        viewModel.GetAllData(catid,type);
 
      viewModel.SmallStoreResponseLD?.observe(this, androidx.lifecycle.Observer {

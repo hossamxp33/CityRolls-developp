@@ -32,6 +32,7 @@ public class PreferenceHelper {
     private final static String CART_ARRAY = "CART_ARRAY";
     private final static String Color_ARRAY = "Color_ARRAY";
     private final static String URL_Base = "URL_Base";
+    private final static String PHONE_NUM = "PHONE_NUM";
 
     private final static String Doller_value = "Doller_value";
     private final static String IN_OMAN = "IN_OMAN";
@@ -72,7 +73,15 @@ public class PreferenceHelper {
 
         return app_prefs.getString(URL_Base,"1");
     }
+    public static void setPhoneNum(String PHONE_NUM) {
+        Editor edit = app_prefs.edit();
+        edit.putString(PHONE_NUM, PHONE_NUM);
+        edit.commit();
+    }
+    public static String getPhoneNum() {
 
+        return app_prefs.getString(PHONE_NUM,"1");
+    }
 
     public static void setCURRENCY_VALUE(float value) {
         Editor edit = app_prefs.edit();
