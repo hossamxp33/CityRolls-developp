@@ -21,7 +21,7 @@ public class PreferenceHelper {
     private static String photo = "photo";
     private static String Token = "token";
     private static String UserId = "userid";
-    private static String FirstForCountry = "FirstForCountry";
+    private static String FirstForCountryy = "FirstForCountryy";
     private static String Language = "language";
     private static String CURRENCY = "CURRENCY";
     private static String CURRENCY_ARABIC = "CURRENCY_ARABIC";
@@ -38,6 +38,8 @@ public class PreferenceHelper {
     private final static String IN_OMAN = "IN_OMAN";
     private final static String OUT_OMAN = "OUT_OMAN";
     private final static String MIN_CHIPPING = "MIN_CHIPPING";
+    private final static String PaymentToken = "PaymentToken";
+    private final static String PaymentMerchatId = "PaymentMerchatId";
 
     private final static  ArrayList arrPackage = new ArrayList<>();
     private final static  ArrayList ColorPackage = new ArrayList<>();
@@ -53,6 +55,26 @@ public class PreferenceHelper {
         }
     }
 
+    public static void setPaymentMerchatId(String API_TOKEN) {
+        Editor edit = app_prefs.edit();
+        edit.putString(PaymentMerchatId, API_TOKEN);
+        edit.commit();
+    }
+    public static String getPaymentMerchatId() {
+
+        return app_prefs.getString(PaymentMerchatId,"1");
+    }
+
+    public static void setPaymentToken(String API_TOKEN) {
+        Editor edit = app_prefs.edit();
+        edit.putString(PaymentToken, API_TOKEN);
+        edit.commit();
+        edit.apply();
+    }
+    public static String getPaymentToken() {
+
+        return app_prefs.getString(PaymentToken,"1");
+    }
     public static void setUSER_GROUP_ID(int group) {
         Editor edit = app_prefs.edit();
         edit.putInt(USER_GROUP_ID, group);
@@ -88,11 +110,9 @@ public class PreferenceHelper {
         edit.putFloat(CURRENCY_VALUE, value);
         edit.apply();
     }
-
-
-    public static void setFirstForCountry(Boolean value) {
+    public static void setFirstForCountry(int value) {
         Editor edit = app_prefs.edit();
-        edit.putBoolean(FirstForCountry, value);
+        edit.putInt(FirstForCountryy, value);
         edit.apply();
     }
 
@@ -107,8 +127,6 @@ public class PreferenceHelper {
         edit.putFloat(Doller_value, doller_value);
         edit.apply();
     }
-
-
     public static void setInOman(float value) {
         Editor edit = app_prefs.edit();
         edit.putFloat(IN_OMAN, value);
@@ -148,12 +166,12 @@ public class PreferenceHelper {
         return app_prefs.getInt(COUNTRY_ID, 1);
     }
 
-    public static Boolean getFirstForCountry() {
-        return app_prefs.getBoolean(FirstForCountry,true);
+    public static int getFirstForCountryy() {
+        return app_prefs.getInt(FirstForCountryy,1);
     }
 
     public static float getCurrencyValue() {
-        return app_prefs.getFloat(CURRENCY_VALUE, 0);
+        return app_prefs.getFloat(CURRENCY_VALUE, 1);
     }
     public static float getIN_OMAN() {
         return app_prefs.getFloat(OUT_OMAN, 0);

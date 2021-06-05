@@ -43,6 +43,7 @@ import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mai
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productdetailsfragment.adapters.ProductSizesAdapter;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productdetailsfragment.adapters.RelatedProductsAdapter;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productdetailsfragment.adapters.SliderProductDetailsAdapter;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.login.LoginFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.rate.RateActivity;
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -105,10 +106,7 @@ public class ProductDetailsFragment extends Fragment {
         if (ResourceUtil.getCurrentLanguage(getActivity()).matches("en"))
             description.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
         description.setMovementMethod(new ScrollingMovementMethod());
-        mViewModel.throwableMutableLiveData.observe(this, throwable ->
-                Toast.makeText(getActivity(), throwable.toString(), Toast.LENGTH_SHORT).show());
-
-
+        mViewModel.throwableMutableLiveData.observe(this, throwable -> Toast.makeText(getActivity(), throwable.toString(), Toast.LENGTH_SHORT).show());
         share.setOnClickListener(v -> {
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
@@ -157,7 +155,8 @@ public class ProductDetailsFragment extends Fragment {
                 }
             } else
                 Toast.makeText(getActivity(), getActivity().getText(R.string.loginfirst), Toast.LENGTH_SHORT).show();
-
+            getActivity().getSupportFragmentManager().beginTransaction().
+                    replace(R.id.mainfram, new LoginFragment()).addToBackStack(null).commit();
         });
 
 
@@ -253,11 +252,6 @@ public class ProductDetailsFragment extends Fragment {
             }
         }catch (Exception e){}
 
-
-
-
-
-
     }
 
     private void setDataToViews(@NotNull Items productdetailsBean) {
@@ -292,76 +286,7 @@ public class ProductDetailsFragment extends Fragment {
 
                 price.setText(the_price  + this.getText(R.string.coin));
 
-        ////////////////////////// Spinner /////////////////////////////////
-      //  List values = new kotlinusercase().makestringarray(productdetailsBean.getProductsizes());
-        //  String values = productdetailsBean.getProductsizes().get(0).getSize();
-//       ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item,values);
-     //  adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-//        spinner.setAdapter(adapter);
-
-   //    adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-   //   adapter.notifyDataSetChanged();
-//        spinner.setAdapter(adapter);
-
-//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//
-                sizeid = productdetailsBean.getId();
-//                //   if (position > 0 )a
-//                if (productdetailsBean.getOffers().size() > 0) {
-//                    //hasOffer = true;
-//                    float offerPercentage = Float.valueOf(productdetailsBean.getProductsizes().get(position).getCurrent_price()) * productdetailsBean.getOffers().get(0).getPercentage() / 100;
-//                    String   priceafteroffer = String.format("%.2f",Float.valueOf(productdetailsBean.getProductsizes().get(position).getCurrent_price()) - offerPercentage);
-//                    if (PreferenceHelper.getCurrency()!=null)
-//                        price.setText(priceafteroffer + " " + PreferenceHelper.getCurrency());
-//                    else
-//                        price.setText(String.valueOf(the_price) + PreferenceHelper.getCurrency());
-//
-//
-//                } else {
-//                    price.setText(the_price + " " +PreferenceHelper.getCurrency());
-//                    if (Float.valueOf(productdetailsBean.getProductsizes().get(position).getCurrent_price()) < setting.getData().get(0).getShippingPrice()) {
-//
-//                    }
-//
-//                }
-//
-//                amount.setText( String.valueOf(productdetailsBean.getProductsizes().get(position).getAmount())
-//                );
-//            }
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//            }
-//
-//
-//        });
-     //   textscroll.smoothScrollBy(0,0);
-        ///////////////////////// COLOR SPINNER /////////////////
-        ////////////////////////// Spinner /////////////////////////////////
-      //  List colorvalues = new kotlinusercase().makestringarrayForColor(productdetailsBean.getProductcolor());
-        //  String values = productdetailsBean.getProductsizes().get(0).getSize();
-//        ArrayAdapter<String> Coloradapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item,colorvalues);
-//        Coloradapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-//        color_spinner.setAdapter(Coloradapter);
-
-//        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-//        color_spinner.setAdapter(Coloradapter);
-//        adapter.notifyDataSetChanged();
-//        color_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//
-//                colorid = productdetailsBean.getProductcolor().get(position).getId();
-//
-//            }
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//            }
-//        });
-//
-
-
+             sizeid = productdetailsBean.getId();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             description.setMovementMethod(new ScrollingMovementMethod());
 

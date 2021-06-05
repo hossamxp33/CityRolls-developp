@@ -58,7 +58,7 @@ public class CountriesActivity extends AppCompatActivity {
 
         done.setOnClickListener(v -> {
             PreferenceHelper.setCountryId(countries.get(index).getId());
-            PreferenceHelper.setCURRENCY_VALUE(countries.get(index).getService());
+            PreferenceHelper.setMinChipping(countries.get(index).getService());
 
             if (ResourceUtil.getCurrentLanguage(CountriesActivity.this).matches("ar"))
                     ResourceUtil.changeLang("ar", CountriesActivity.this);

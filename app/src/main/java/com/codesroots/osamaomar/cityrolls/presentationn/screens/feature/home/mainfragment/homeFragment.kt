@@ -2,6 +2,7 @@ package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.ma
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -76,7 +77,12 @@ class homeFragment : Fragment() {
           tokenmodel = Token()
 
         pagers = view!!.slider
+        TokenviewModel.TokenResponseLD?.observe(this,androidx.lifecycle.Observer {
 
+            PreferenceHelper.setPaymentToken(it.token)
+            Log.i("tokenInfo",PreferenceHelper.getPaymentToken())
+            PreferenceHelper.setPaymentMerchatId(it.profile!!.id.toString())
+        })
             viewModel.mainViewMutableLiveData?.observe(this, androidx.lifecycle.Observer {
                 adapterr = CatAdapter(context as FragmentActivity, it.items,viewModel)
                 view.departments.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)

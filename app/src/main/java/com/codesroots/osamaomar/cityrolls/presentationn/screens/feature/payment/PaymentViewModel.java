@@ -3,9 +3,14 @@ package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.payment
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.codesroots.osamaomar.cityrolls.dataLayer.Repo.DataRepo;
 import com.codesroots.osamaomar.cityrolls.domain.ServerGateway;
+import com.codesroots.osamaomar.cityrolls.entities.MainView;
+import com.codesroots.osamaomar.cityrolls.entities.MakePaymentOrderIntegration;
 import com.codesroots.osamaomar.cityrolls.entities.OrderModel;
 import com.codesroots.osamaomar.cityrolls.entities.Payment;
+
+import java.util.HashMap;
 
 import io.reactivex.disposables.CompositeDisposable;
 import okhttp3.ResponseBody;
@@ -20,6 +25,9 @@ public class PaymentViewModel extends ViewModel {
     public MutableLiveData<Boolean> paymentMutableLiveData = new MutableLiveData<>();
 
     public MutableLiveData<Throwable> throwableMutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<MakePaymentOrderIntegration> makePaymentOrderIntegration = new MutableLiveData<>();
+    public  DataRepo DateRepoCompnay = new DataRepo();
+
     private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
     private ServerGateway serverGateway;
 
@@ -43,7 +51,9 @@ public class PaymentViewModel extends ViewModel {
 //    private void postError(Throwable throwable) {
 //        throwableMutableLiveData.postValue(throwable);
 //    }
-
+public void MakePaymentOrderIntegration(HashMap<String,Object> orderModel) {
+    DateRepoCompnay.MakePaymentOrderIntegration(orderModel,makePaymentOrderIntegration);
+}
 
     public void addOrder(OrderModel orderModel) {
         serverGateway.makeOrder(orderModel).enqueue(new Callback<ResponseBody>() {

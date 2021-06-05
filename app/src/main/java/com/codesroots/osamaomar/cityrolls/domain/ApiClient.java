@@ -41,11 +41,7 @@ public class ApiClient {
 
                     builder.addHeader("Accept", "application/json");
                     builder.addHeader("Content-Type", "application/json");
-                    builder.addHeader(
-                            "Authorization",
-                            "Bearer "+ PreferenceHelper.getToken()
-                    )  ;
-                    builder.addHeader("lang", ResourceUtil.getCurrentLanguage(MyApplication.getInstance()));
+
                     Request newRequest = builder.build();
                     return chain.proceed(newRequest);
                 })

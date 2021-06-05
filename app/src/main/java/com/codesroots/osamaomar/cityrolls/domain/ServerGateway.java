@@ -13,6 +13,7 @@ import com.codesroots.osamaomar.cityrolls.entities.Details;
 import com.codesroots.osamaomar.cityrolls.entities.Favoriets;
 import com.codesroots.osamaomar.cityrolls.entities.LoginResponse;
 import com.codesroots.osamaomar.cityrolls.entities.MainView;
+import com.codesroots.osamaomar.cityrolls.entities.MakePaymentOrderIntegration;
 import com.codesroots.osamaomar.cityrolls.entities.MyOrders;
 import com.codesroots.osamaomar.cityrolls.entities.OrderModel;
 import com.codesroots.osamaomar.cityrolls.entities.Payment;
@@ -29,6 +30,8 @@ import com.codesroots.osamaomar.cityrolls.entities.UserLocations;
 import com.codesroots.osamaomar.cityrolls.entities.ViewLocation;
 import com.codesroots.osamaomar.cityrolls.entities.offers;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -39,6 +42,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ServerGateway {
 
@@ -77,8 +81,8 @@ public interface ServerGateway {
             @Field("address_details") String address_details,
        //     @Field("town_city") String town_city,
             @Field("notes") String notes,
-                        @Field("latitude") Double lat,
-                    @Field("longitude") Double longitude
+            @Field("latitude") Double lat,
+            @Field("longitude") Double longitude
 
     );
 
@@ -93,7 +97,7 @@ public interface ServerGateway {
             @Field("state_country") String state_country,
        //     @Field("town_city") String town_city,
             @Field("notes") String notes,
-              @Field("latitude") Double lat,
+            @Field("latitude") Double lat,
             @Field("longitude") Double longitude
     );
 
@@ -163,7 +167,19 @@ public interface ServerGateway {
             @Field("rate") float rate,
             @Field("comment") String comment
     );
+    ////////////// make order
+    @POST("Orders/addorder.json")
+    @Headers({"Accept: Application/json","cache-control: no-cache"})
+    Call<ResponseBody> makeOrder(
+            @Body OrderModel orderModel
+    );
 
+    @POST("ecommerce/orders")
+    @Headers({"Accept: Application/json","cache-control: no-cache"})
+    Observable<MakePaymentOrderIntegration> MakePaymentOrderIntegration(
+            @Body HashMap orderModel
+
+    );
 
     ////////////// get  Settings
     @GET("Storesettings.json")
@@ -226,23 +242,14 @@ public interface ServerGateway {
             @Field("sender") int address,
             @Field("message_text") String message_text
     );
-
-    ////////////// make order
-    @POST("Orders/addorder.json")
-    @Headers("Accept: Application/json")
-    Call<ResponseBody> makeOrder(
-            @Body OrderModel orderModel
-    );
-
     @POST("acceptance/payment_keys")
     Observable<Payment> GetPaymentkey(
-            @Body Payment payment
-
+            @Body Payment orderModel
     );
-    @FormUrlEncoded
+    @Headers({"Content-Type: application/json"})
     @POST("auth/tokens")
     Observable<Token> GetToken(
-             @Field("api_key") String  api_key
+            @Body Token orderModel
 
     );
 

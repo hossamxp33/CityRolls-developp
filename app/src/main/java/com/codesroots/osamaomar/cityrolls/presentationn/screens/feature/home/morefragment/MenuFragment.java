@@ -153,7 +153,7 @@ public class MenuFragment extends Fragment {
             builderInner.setMessage(strName);
             PreferenceHelper.setCURRENCY(dataBeanList.get(which).getName());
             PreferenceHelper.setCURRENCYArabic(dataBeanList.get(which).getName_ar());
-            PreferenceHelper.setCURRENCY_VALUE(dataBeanList.get(which).getValue());
+            //PreferenceHelper.setCURRENCY_VALUE(dataBeanList.get(which).getValue());
             builderInner.setTitle((getString(R.string.your_selected)));
             builderInner.setPositiveButton((getString(R.string.ok)), (dialog1, which1) -> dialog1.dismiss());
             builderInner.show();

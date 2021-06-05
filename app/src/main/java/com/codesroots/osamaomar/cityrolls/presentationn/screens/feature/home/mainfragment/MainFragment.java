@@ -42,7 +42,7 @@ public class MainFragment extends Fragment {
     private static int NUM_PAGES = 0;
     private FrameLayout progress;
     private TextView product_notfound;
-    private ShimmerFrameLayout mShimmerViewContainer,mShimmerViewContainer2,mShimmerViewContainer3,shimmer_view_container4,shimmer_view_container5;
+    private ShimmerFrameLayout mShimmerViewContainer,mShimmerViewContainer3;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,@Nullable Bundle savedInstanceState) {

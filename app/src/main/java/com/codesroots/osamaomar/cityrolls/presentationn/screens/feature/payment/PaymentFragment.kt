@@ -1,19 +1,10 @@
 package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.payment
 
 import android.app.Activity
+import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
-import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
-
-import com.codesroots.osamaomar.cityrolls.entities.Payment
-import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.smallstore.SmallstoreViewmodel.SmallstoreViewmodel
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
-import com.google.android.material.snackbar.Snackbar
-import androidx.fragment.app.Fragment
 import android.os.Bundle
-import androidx.fragment.app.FragmentManager
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,34 +12,27 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.braintreepayments.api.BraintreeFragment
 import com.codesroots.osamaomar.cityrolls.R
-import com.codesroots.osamaomar.cityrolls.entities.OrderModel
+import com.codesroots.osamaomar.cityrolls.entities.*
+import com.codesroots.osamaomar.cityrolls.entities.names.ORDER
 import com.codesroots.osamaomar.cityrolls.helper.AddorRemoveCallbacks
 import com.codesroots.osamaomar.cityrolls.helper.PreferenceHelper
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.confirmorder.FinishOrderFragment
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.MainFragment
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.smallstore.SmallstoreViewmodel.SmallstoreViewmodel
 import com.google.firebase.messaging.FirebaseMessaging
-
-import com.paymob.acceptsdk.IntentConstants
-import com.paymob.acceptsdk.PayActivity
-import com.paymob.acceptsdk.PayActivityIntentKeys
-import com.paymob.acceptsdk.PayResponseKeys
-import com.paymob.acceptsdk.SaveCardResponseKeys
-import com.paymob.acceptsdk.ToastMaker
+import com.paymob.acceptsdk.*
 import com.paypal.android.sdk.payments.PayPalConfiguration
 import com.paypal.android.sdk.payments.PayPalService
 import com.paypal.android.sdk.payments.PaymentActivity
 import com.paypal.android.sdk.payments.PaymentConfirmation
-
 import org.json.JSONException
-import org.json.JSONObject
-
-import android.app.Activity.RESULT_OK
-import androidx.lifecycle.Observer
-import com.codesroots.osamaomar.cityrolls.entities.BillingData
-import com.codesroots.osamaomar.cityrolls.entities.names.ORDER
+import java.util.*
+import kotlin.collections.ArrayList
 
 class PaymentFragment : Fragment() {
     internal lateinit var paypal: ImageView
@@ -56,6 +40,8 @@ class PaymentFragment : Fragment() {
 
     internal var orderModel: OrderModel? = null
     internal lateinit var payment: Payment
+    internal lateinit var makePaymentOrderIntegration: MakePaymentOrderIntegration
+
     lateinit    internal var cash: TextView
     lateinit    internal var auth: String
     internal  var Total: Float = 0.toFloat()
@@ -64,7 +50,7 @@ class PaymentFragment : Fragment() {
     internal var smallstoreViewmodel: SmallstoreViewmodel? = null
     private val mBraintreeFragment: BraintreeFragment? = null
     private val ACCEPT_PAYMENT_REQUEST = 1000
-    internal val paymentKey = "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6VXhNaUo5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRBeU5EYzFMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuX2lXRnExVEN1VThIaFg1SUNDOE5VZUF3bzFCd0EzSzdTN1FQdmc0R1ExNUp2VklKbUFxXy0zMXo4NXdiSWliNi1UdDVKU3A1R0w1N2pMLThNSzR1V3c="
+    internal var paymentKey = ""
     private val viewModelFactory: PaymentViewModelFactory
         get() = PaymentViewModelFactory(this.activity!!.application)
 
@@ -77,7 +63,8 @@ class PaymentFragment : Fragment() {
         activity!!.startService(intent)
         orderModel = arguments!!.getSerializable(ORDER) as OrderModel?
         payment = Payment()
-        auth = "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6VXhNaUo5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRBeU5EYzFMQ0psZUhBaU9qRTJNakl5TlRRd09UZ3NJbkJvWVhOb0lqb2lORGd5WW1WbFpXVTVNemxsTlRFd1lURmlPR0UyWlRkbVl6Y3dOR0k1WmpsbE1tWmtNV1k1TTJVeE5qWTVNVFpsTldRd1kyTTVZell3TnpKbVpESXlNQ0o5Lks2dnFoLTYtWmhiUUNzZEo0aDJ5eG5lazRhZ2ZaejJhN3lIaFVhTXJkN0ZhRHJpYXRvR2xLbm44WDZaN05OYy1QMFJzYU1OX1k2SEoxMV9Sd2kxZ1hB"
+        makePaymentOrderIntegration = MakePaymentOrderIntegration()
+        auth = PreferenceHelper.getPaymentToken()
         integration_id = 1
         assert(orderModel != null)
         orderModel!!.user_id = PreferenceHelper.getUserId()
@@ -130,11 +117,10 @@ class PaymentFragment : Fragment() {
     }
 
     private fun processCardpayment() {
-        payment.amount_cents = Total.toString()
+        payment.amount_cents = (Total).toString()
         payment.auth_token = auth
-        payment.order_id = "11783698"
         payment.currency = "EGP"
-        payment.integration_id = integration_id
+        payment.integration_id = 264489
         var billingModel = BillingData()
         payment.billing_data = (billingModel)
         billingModel.email = "coodesroots@gmail.com"
@@ -152,11 +138,29 @@ class PaymentFragment : Fragment() {
         payment.billing_data!!.shipping_method = "Na"
         payment.billing_data!!.street = "Na"
         payment.billing_data!!.state = "Na"
-        sendpaymentRequest()
-        processpayment()
+        makePaymentOrderIntegration()
+
+
 
     }
+    private fun makePaymentOrderIntegration() {
 
+        var set = HashMap<String, Any>()
+
+        set.put("currency" , "EGP")
+        set.put("amount_cents" ,Total.toString())
+
+        set.put("delivery_needed" , "false")
+        set.put("auth_token" , auth)
+        set.put("items" , ArrayList<String>())
+
+        paymentViewModel.MakePaymentOrderIntegration(set)
+        paymentViewModel.makePaymentOrderIntegration.observe(this, Observer { aBoolean ->
+            sendpaymentRequest(aBoolean.id)
+
+        })
+
+    }
     private fun processpayment() {
         val pay_intent = Intent(activity, PayActivity::class.java)
         putNormalExtras(pay_intent)
@@ -277,8 +281,13 @@ class PaymentFragment : Fragment() {
         paymentViewModel.addOrder(orderModel)
     }
 
-    private fun sendpaymentRequest() {
+    private fun sendpaymentRequest(id: Long?) {
+        payment.order_id = id!!.toString()
         viewModel.PaymentData(payment);
+        viewModel.paymentResponseLD!!.observe(this, Observer { aBoolean ->
+paymentKey = aBoolean.token!!;
+            processpayment()
+        })
     }
 
     private fun showBankDialog() {

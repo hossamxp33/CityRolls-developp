@@ -4,7 +4,8 @@ import android.provider.ContactsContract
 
 data class Token(
         var profile:Profile ? = null,
-        var token: String ? = null
+        var token: String ? = null,
+var api_key:String? = null
 )
 data class Profile(
         val acq_partner: Any ? = null,

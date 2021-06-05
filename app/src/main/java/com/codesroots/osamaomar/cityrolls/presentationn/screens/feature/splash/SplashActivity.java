@@ -21,6 +21,8 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        PreferenceHelper  preferenceHelper = new PreferenceHelper(this);
+
         Log.i("getCurrentLanguage", "onCreateView: "+ Locale.getDefault().getLanguage());
 
         if (ResourceUtil.getCurrentLanguage(SplashActivity.this).matches("ar"))
@@ -29,16 +31,19 @@ public class SplashActivity extends AppCompatActivity {
             ResourceUtil.changeLang("en", SplashActivity.this);
         new Handler().postDelayed(() -> {
 
-            if (PreferenceHelper.getFirstForCountry())
+            if (preferenceHelper.getFirstForCountryy() ==  1 )
             {
+                if (preferenceHelper.getURL_Base() == "1") {
+                    preferenceHelper.setURL_Base("https://system.city-rolls.com/api/");
+                }
                 Intent mainIntent = new Intent(SplashActivity.this, CountriesActivity.class);
-                PreferenceHelper.setFirstForCountry(false);
+                PreferenceHelper.setFirstForCountry(0);
                 startActivity(mainIntent);
                 finish();
             }
             else {
-if (PreferenceHelper.getURL_Base() == "1") {
-    PreferenceHelper.setURL_Base("https://system.city-rolls.com/api/");
+if (preferenceHelper.getURL_Base() == "1") {
+    preferenceHelper.setURL_Base("https://system.city-rolls.com/api/");
 }
                 Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(mainIntent);
