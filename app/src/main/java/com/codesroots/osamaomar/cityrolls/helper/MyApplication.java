@@ -3,8 +3,7 @@ package com.codesroots.osamaomar.cityrolls.helper;
 import android.app.Application;
 import android.content.Context;
 import androidx.multidex.MultiDex;
-import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
+
 
 public class MyApplication extends Application {
 

@@ -40,7 +40,9 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -57,6 +59,7 @@ import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.myo
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.offerfragment.OffersFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.productfragment.ProductsFragment;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
@@ -87,10 +90,15 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         preferenceHelper = new PreferenceHelper(this);
         FirebaseApp.initializeApp(this);
+
+        FirebaseCrashlytics.getInstance();
+
         FirebaseMessaging.getInstance();
         FirebaseMessaging.getInstance().subscribeToTopic("admin");
        initialize();
-      //    setUpToggle();
+
+
+        //    setUpToggle();
         GetLocation();
 //        search.setOnClickListener(v -> {
 //

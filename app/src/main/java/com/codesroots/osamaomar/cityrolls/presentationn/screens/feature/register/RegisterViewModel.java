@@ -84,7 +84,7 @@ public class RegisterViewModel extends ViewModel {
     private boolean validate(User user) {
         if (user.getUsername().matches("")||user.getPassword().matches("")||
                 user.getMobile().matches("")||user.getRepassword().matches("")
-                ||user.getMail().matches("")) {
+                ) {
             errorMessage.postValue(context.getText(R.string.complete).toString());
             return false;
         }

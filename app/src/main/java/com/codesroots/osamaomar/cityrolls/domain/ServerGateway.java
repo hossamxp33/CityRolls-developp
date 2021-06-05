@@ -213,7 +213,7 @@ public interface ServerGateway {
     Observable<Register> userregister(
             @Field("username") String  username,
             @Field("password") String password,
-            @Field("phone") String phone,
+            @Field("mobile") String phone,
             @Field("email") String email,
             @Field("email_verified") int email_verified,
             @Field("active") int active,
