@@ -7,6 +7,16 @@ import java.util.List;
 
 public class OrderModel implements Serializable {
 
+    public int getPaymenttype_id() {
+        return paymenttype_id;
+    }
+
+    public void setPaymenttype_id(int paymenttype_id) {
+        this.paymenttype_id = paymenttype_id;
+    }
+
+    int paymenttype_id;
+
     @SerializedName("user_id")
     int user_id;
     @SerializedName("billing_address_id")

@@ -33,13 +33,13 @@ public class ContactFragment extends Fragment {
 
         phone1 = view.findViewById(R.id.phone1);
         phone2 = view.findViewById(R.id.phone2);
-        mail = view.findViewById(R.id.mail);
+      //  mail = view.findViewById(R.id.mail);
         insta = view.findViewById(R.id.insta);
         whats = view.findViewById(R.id.whats);
 
-        whats.setOnClickListener(v -> ResourceUtil.openWhatsApp("+07735588559",getContext(),getActivity()));
-        phone1.setOnClickListener(v -> ResourceUtil.callNumber("+07735588559",getContext()));
-        phone2.setOnClickListener(v -> ResourceUtil.callNumber("+07735588559",getContext()));
+        whats.setOnClickListener(v -> ResourceUtil.openWhatsApp("+201113445140",getContext(),getActivity()));
+        phone1.setOnClickListener(v -> ResourceUtil.callNumber("01113445140",getContext()));
+        phone2.setOnClickListener(v -> ResourceUtil.callNumber("01021630665",getContext()));
         insta.setOnClickListener(v ->
                 {
                     String url = "https://instagram.com/shopgate_om?igshid=wv1mwpl97rkx";

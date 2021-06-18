@@ -41,7 +41,11 @@ public class ApiClient {
 
                     builder.addHeader("Accept", "application/json");
                     builder.addHeader("Content-Type", "application/json");
-
+                    builder.addHeader("lang", ResourceUtil.getCurrentLanguage(MyApplication.getInstance()));
+                    builder.addHeader(
+                            "Authorization",
+                            "Bearer "+ PreferenceHelper.getToken()
+                    )  ;
                     Request newRequest = builder.build();
                     return chain.proceed(newRequest);
                 })
@@ -68,12 +72,37 @@ public class ApiClient {
                 .baseUrl("https://accept.paymob.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory( RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
-                .client(getOkHttpClient())
+                .client(getOkHttpClientPayment())
                 .build();
 //        }else {
 //
 //            retrofit.baseUrl().url() = "sd";
 //        }
         return retrofit;
+    }
+
+    @NonNull
+    private static OkHttpClient getOkHttpClientPayment() {
+// set your desired log level
+// add your other interceptors …
+// add logging as last interceptor
+        return new OkHttpClient()
+                .newBuilder()
+                .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
+                .readTimeout(TIMEOUT, TimeUnit.SECONDS)
+                .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
+                .cache(null)
+                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .addInterceptor(chain -> {
+                    Request originalRequest = chain.request();
+                    Request.Builder builder = originalRequest.newBuilder();
+
+                    builder.addHeader("Accept", "application/json");
+                    builder.addHeader("Content-Type", "application/json");
+
+                    Request newRequest = builder.build();
+                    return chain.proceed(newRequest);
+                })
+                .build();
     }
 }

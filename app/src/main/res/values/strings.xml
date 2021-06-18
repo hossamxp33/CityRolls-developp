@@ -4,7 +4,7 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="google_maps_key">AIzaSyD7JEsjyD4txA-88_O45mN_PWhrN22gpI0 </string>
+    <string name="google_maps_key">AIzaSyD7JEsjyD4txA-88_O45mN_PWhrN22gpI0</string>
     <string name="more_sale">More Sales</string>
     <string name="deliveryaddress">choice delivery place</string>
     <string name="noaddressfound">No address found</string>
@@ -72,8 +72,9 @@
     <string name="num">Plot</string>
     <string name="offers">Offers</string>
     <string name="order_date">Order Date</string>
-    <string name="order_details">Write here Details of the request in the case of requesting an offer</string>
-    <string name="confirm"> confirm the order </string>
+    <string name="order_details">Details</string>
+    <string name="confirm"> confirm the order Cash </string>
+    <string name="order_notes">Write here Details of the request in the case of requesting an offer</string>
 
     <string name="order_num">Order Id :</string>
     <string name="password">Password</string>

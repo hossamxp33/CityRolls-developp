@@ -49,6 +49,8 @@ class UserLocationsFragment : Fragment(), Locationclick {
         locations = view.findViewById(R.id.oldplaces)
         addLocation = view.findViewById(R.id.addlocation)
         notfound = view.findViewById(R.id.notfond)
+
+
         if (arguments != null)
             orderModel = arguments!!.getSerializable(ORDER) as OrderModel?
 
@@ -91,7 +93,8 @@ class UserLocationsFragment : Fragment(), Locationclick {
     override fun onActivityResult(reqCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(reqCode, resultCode, data)
         mViewModel!!.retrieveUserLocations(PreferenceHelper.getUserId())
-        locationsAdapter.notifyDataSetChanged()
+        if (this.data?.size != 0) {
+        locationsAdapter.notifyDataSetChanged()}
 
     }
 

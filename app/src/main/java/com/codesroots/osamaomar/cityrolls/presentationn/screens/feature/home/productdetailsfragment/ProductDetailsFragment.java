@@ -116,7 +116,7 @@ public class ProductDetailsFragment extends Fragment {
             startActivity(Intent.createChooser(sharingIntent, "Share via"));
 
         });
-
+userid = PreferenceHelper.getUserId();
 
         mViewModel.getData();
 
@@ -138,8 +138,8 @@ public class ProductDetailsFragment extends Fragment {
         addtocart.setOnClickListener(v -> {
             if (userid > 0) {
                 if (PreferenceHelper.retriveCartItemsValue() != null) {
-                    if (!PreferenceHelper.retriveCartItemsValue().contains(sizeid)) {
-                        PreferenceHelper.addItemtoCart(sizeid);
+                    if (!PreferenceHelper.retriveCartItemsValue().contains(String.valueOf(productid))) {
+                        PreferenceHelper.addItemtoCart(productid);
                         PreferenceHelper.addColorstoCart(colorid);
 
                         ((AddorRemoveCallbacks) getActivity()).onAddProduct();
@@ -147,16 +147,17 @@ public class ProductDetailsFragment extends Fragment {
                     } else
                         Toast.makeText(getActivity(), getActivity().getText(R.string.aleady_exists), Toast.LENGTH_SHORT).show();
                 } else {
-                    PreferenceHelper.addItemtoCart(sizeid);
+                    PreferenceHelper.addItemtoCart(productid);
                     PreferenceHelper.addColorstoCart(colorid);
 
                     ((AddorRemoveCallbacks) getActivity()).onAddProduct();
                     Toast.makeText(getActivity(), getActivity().getText(R.string.addtocartsuccess), Toast.LENGTH_SHORT).show();
                 }
-            } else
+            } else {
                 Toast.makeText(getActivity(), getActivity().getText(R.string.loginfirst), Toast.LENGTH_SHORT).show();
-            getActivity().getSupportFragmentManager().beginTransaction().
-                    replace(R.id.mainfram, new LoginFragment()).addToBackStack(null).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().
+                        replace(R.id.mainfram, new LoginFragment()).addToBackStack(null).commit();
+            }
         });
 
 

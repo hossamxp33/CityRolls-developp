@@ -36,7 +36,7 @@ public class RegisterFragment extends Fragment {
         password = view.findViewById(R.id.password);
         repassword = view.findViewById(R.id.repassword);
         phone = view.findViewById(R.id.phone);
-       //mail = view.findViewById(R.id.mail);
+       mail = view.findViewById(R.id.email);
         registerbtn = view.findViewById(R.id.register);
         registerbtn.setOnClickListener(v -> {
             User  user = new User();
@@ -46,7 +46,7 @@ public class RegisterFragment extends Fragment {
             user.setMobile(phone.getText().toString());
             PreferenceHelper.setPhoneNum(phone.getText().toString());
 
-            //   user.setMail(mail.getText().toString());
+              user.setMail(mail.getText().toString());
             mViewModel.addUser(user);
             registerbtn.setText(R.string.wait);
             registerbtn.setEnabled(false);

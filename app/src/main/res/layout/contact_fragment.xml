@@ -44,14 +44,14 @@
         android:id="@+id/img"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/logoo"
         android:scaleType="fitXY"
         android:layout_marginTop="10dp"
         app:layout_constraintWidth_percent="0.5"
         app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.21"
+        app:layout_constraintHeight_percent="0.25"
         />
 
 
@@ -80,7 +80,7 @@
             android:gravity="center"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="+96898075581"
+            android:text="01113445140"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/guidd2"
             app:layout_constraintTop_toTopOf="parent"
@@ -93,7 +93,7 @@
             android:gravity="center"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="+96898075581"
+            android:text="01021630665"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guidd2"
             app:layout_constraintTop_toTopOf="parent"
@@ -149,22 +149,5 @@
 
 
 
-    <TextView
-        android:id="@+id/mail"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/linear_background_contact"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.85"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/black"
-        android:text="sales@shopgate.om"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/guid2"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

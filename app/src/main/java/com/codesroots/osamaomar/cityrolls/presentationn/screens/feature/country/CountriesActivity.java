@@ -70,6 +70,8 @@ public class CountriesActivity extends AppCompatActivity {
                     startActivity(mainIntent);
                     finish();
                 }else {
+                    PreferenceHelper.setURL_Base("https://system.city-rolls.com/api/");
+
                     Intent mainIntent = new Intent(CountriesActivity.this, MainActivity.class);
                     startActivity(mainIntent);
                     finish();

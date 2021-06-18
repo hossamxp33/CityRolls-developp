@@ -68,10 +68,10 @@ class PaymentFragment : Fragment() {
         integration_id = 1
         assert(orderModel != null)
         orderModel!!.user_id = PreferenceHelper.getUserId()
-        //        for (int i = 0; i < orderModel.getOrderdetails().size(); i++)
-        //         Total += Float.valueOf(orderModel.getOrderdetails().get(i).getTotal());
+        for ( i in  orderModel!!.orderdetails)
+        Total += (i.total).toFloat();
 
-        Total += PreferenceHelper.getCurrencyValue()
+        Total += PreferenceHelper.getMIM_CHIPPING()
         paypal.setOnClickListener { v -> processCardpayment() }
         cash.setOnClickListener { v -> showBankDialog() }
         paymentViewModel = ViewModelProviders.of(this, viewModelFactory).get(PaymentViewModel::class.java)
@@ -117,7 +117,7 @@ class PaymentFragment : Fragment() {
     }
 
     private fun processCardpayment() {
-        payment.amount_cents = (Total).toString()
+        payment.amount_cents = (Total  * 100).toString()
         payment.auth_token = auth
         payment.currency = "EGP"
         payment.integration_id = 264489
@@ -245,9 +245,10 @@ class PaymentFragment : Fragment() {
                 ToastMaker.displayShortToast(activity!!, extras!!.getString(IntentConstants.RAW_PAY_RESPONSE))
             } else if (resultCode == IntentConstants.TRANSACTION_SUCCESSFUL) {
                 // User finished their payment successfully
+                ToastMaker.displayShortToast(activity!!, "Token == " + extras!!.getString(SaveCardResponseKeys.ID)!!)
 
                 // Use the static keys declared in PayResponseKeys to extract the fields you want
-                ToastMaker.displayShortToast(activity!!, extras!!.getString(PayResponseKeys.DATA_MESSAGE))
+               // ToastMaker.displayShortToast(activity!!, extras!!.getString(PayResponseKeys.DATA_MESSAGE))
             } else if (resultCode == IntentConstants.TRANSACTION_SUCCESSFUL_PARSING_ISSUE) {
                 // User finished their payment successfully. An error occured while reading the returned JSON.
                 ToastMaker.displayShortToast(activity!!, "TRANSACTION_SUCCESSFUL - Parsing Issue")
@@ -255,7 +256,8 @@ class PaymentFragment : Fragment() {
                 // ToastMaker.displayShortToast(this, extras.getString(IntentConstants.RAW_PAY_RESPONSE));
             } else if (resultCode == IntentConstants.TRANSACTION_SUCCESSFUL_CARD_SAVED) {
                 // User finished their payment successfully and card was saved.
-
+                orderModel!!.paymenttype_id = 4
+              //  sendRequest()
                 // Use the static keys declared in PayResponseKeys to extract the fields you want
                 // Use the static keys declared in SaveCardResponseKeys to extract the fields you want
                 ToastMaker.displayShortToast(activity!!, "Token == " + extras!!.getString(SaveCardResponseKeys.TOKEN)!!)
@@ -286,6 +288,8 @@ class PaymentFragment : Fragment() {
         viewModel.PaymentData(payment);
         viewModel.paymentResponseLD!!.observe(this, Observer { aBoolean ->
 paymentKey = aBoolean.token!!;
+            ToastMaker.displayShortToast(activity!!,"PaymentKey == " + paymentKey)
+
             processpayment()
         })
     }

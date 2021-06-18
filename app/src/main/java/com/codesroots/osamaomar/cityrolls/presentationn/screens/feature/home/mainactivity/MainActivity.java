@@ -168,15 +168,6 @@ private void HiddenKeyboard(View view ){
         return new MainActivityModelFactory(getApplication());
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        if (drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
