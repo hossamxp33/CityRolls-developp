@@ -18,6 +18,7 @@ import com.codesroots.osamaomar.cityrolls.R;
 import com.codesroots.osamaomar.cityrolls.entities.User;
 import com.codesroots.osamaomar.cityrolls.helper.PreferenceHelper;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.MainFragment;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.homeFragment;
 
 public class RegisterFragment extends Fragment {
 
@@ -75,7 +76,7 @@ public class RegisterFragment extends Fragment {
                      for (int i = 0; i < fm.getBackStackEntryCount(); ++i) {
                          fm.popBackStack();
                      }
-                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, new MainFragment()).addToBackStack(null).commit();
+                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, new homeFragment()).addToBackStack(null).commit();
 
                  }
                     else

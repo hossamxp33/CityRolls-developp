@@ -34,7 +34,7 @@ class UserLocations {
         var town_city: String? = null
         var state_country: String? = null
         var post_zip: String? = null
-        var email_address: String? = null
+        var address_details: String? = null
         var phone: String? = null
         var status: Int = 0
         var created_at: String? = null

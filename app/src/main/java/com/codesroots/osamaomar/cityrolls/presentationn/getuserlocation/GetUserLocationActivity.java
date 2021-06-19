@@ -125,8 +125,9 @@ public class GetUserLocationActivity extends AppCompatActivity  implements OnMap
         userLocationsViewModel.addLocationMutableLiveData.observe(this,addLocation ->
                 {
                     try {
-                        if (addLocation.isSuccess())
-                            this.finish();
+                       
+                        if (addLocation.getSuccess())
+                           finish();
                     }catch (Exception e)
                     {}
                 });

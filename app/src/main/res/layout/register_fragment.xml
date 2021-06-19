@@ -113,10 +113,9 @@
         android:background="@drawable/linear_background_for_login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:inputType="phone"
         android:layout_marginTop="15dp"
         app:layout_constraintWidth_percent="0.8"
-        android:hint="@string/phone"
+        android:hint="@string/mail"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/phone"
         />

@@ -38,6 +38,16 @@ public class LoginResponse {
         private String username;
         private String token;
 
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        private String email;
+
         public int getId() {
             return id;
         }

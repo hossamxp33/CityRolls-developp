@@ -7,6 +7,6 @@ class AddLocation {
      * data : []
      */
 
-    var isSuccess: Boolean = false
+    var success: Boolean = false
     var data: List<*>? = null
 }

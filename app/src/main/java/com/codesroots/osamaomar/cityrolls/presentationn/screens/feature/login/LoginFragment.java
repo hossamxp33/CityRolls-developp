@@ -18,6 +18,7 @@ import com.codesroots.osamaomar.cityrolls.R;
 import com.codesroots.osamaomar.cityrolls.entities.User;
 import com.codesroots.osamaomar.cityrolls.helper.PreferenceHelper;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.MainFragment;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.homeFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.register.RegisterFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.register.RegisterViewModel;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.register.RegisterViewModelFactory;
@@ -54,16 +55,18 @@ public class LoginFragment extends Fragment {
                     if (response.isSuccess())
                     {
                         PreferenceHelper.setUserId(response.getData().getId());
+                        PreferenceHelper.setEmail(response.getData().getEmail());
+
                         PreferenceHelper.setUserName(response.getData().getUsername());
                         PreferenceHelper.setToken(response.getData().getToken());
                       //  Toast.makeText(getActivity(),getText(R.string.hello)+" "+response.getData().getUsername(),Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getActivity(),getText(R.string.hello)+" "+response.getData().getId(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),getText(R.string.hello)+" "+response.getData().getUsername(),Toast.LENGTH_SHORT).show();
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         for (int i = 0; i < fm.getBackStackEntryCount(); ++i) {
                             fm.popBackStack();
                         }
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, new MainFragment()).addToBackStack(null).commit();
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, new homeFragment()).addToBackStack(null).commit();
                     }
                     else
                         Toast.makeText(getActivity(),getText(R.string.error_tryagani),Toast.LENGTH_SHORT).show();

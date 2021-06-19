@@ -44,8 +44,8 @@ public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.View
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.location.setText(
-                places.get(position).getState_country() + "," +
-                        places.get(position).getTown_city() + "," + places.get(position).getAddress());
+                places.get(position).getAddress_details()+ "," +
+                        places.get(position).getAddress() );
 
 
               holder.mView.setOnClickListener(v ->

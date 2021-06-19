@@ -123,7 +123,7 @@ class PaymentFragment : Fragment() {
         payment.integration_id = 264489
         var billingModel = BillingData()
         payment.billing_data = (billingModel)
-        billingModel.email = "coodesroots@gmail.com"
+        billingModel.email = PreferenceHelper.getEmail()
         billingModel.first_name = PreferenceHelper.getUserName()
         billingModel.last_name = PreferenceHelper.getUserName()
         billingModel.phone_number = PreferenceHelper.getPhoneNum()

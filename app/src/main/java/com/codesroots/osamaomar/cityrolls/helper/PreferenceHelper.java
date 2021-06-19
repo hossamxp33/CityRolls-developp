@@ -21,6 +21,10 @@ public class PreferenceHelper {
     private static String photo = "photo";
     private static String Token = "token";
     private static String UserId = "userid";
+
+
+    private static String Email = "email";
+
     private static String FirstForCountryy = "FirstForCountryy";
     private static String Language = "language";
     private static String CURRENCY = "CURRENCY";
@@ -310,6 +314,18 @@ public class PreferenceHelper {
 
         return app_prefs.getString(Token,"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImV4cCI6MTU3Mzk2ODg3MH0.w45qrjLBSXaGfHRATa33EwGG-IfPkhKbnZSbflWRLSo");
 
+    }
+    public static String getEmail() {
+
+        return app_prefs.getString(Email,"");
+
+    }
+
+    public static void setEmail(String email) {
+
+        Editor edit = app_prefs.edit();
+        edit.putString(Email, email);
+        edit.commit();
     }
 
     public static int getUserId() {
