@@ -2,11 +2,14 @@ package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.fa
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,7 +66,9 @@ public class AllFavProductsAdapter extends RecyclerView.Adapter<AllFavProductsAd
             holder.price.setText(productsbysubcats.get(position).getProduct().getPrice() + " " +
                     PreferenceHelper.getCurrency());
             holder.name.setText(productsbysubcats.get(position).getProduct().getName());
-            holder.itemdesc.setText(productsbysubcats.get(position).getProduct().getDescription());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                holder.itemdesc.setText(Html.fromHtml(productsbysubcats.get(position).getProduct().getDescription(),Html.FROM_HTML_MODE_COMPACT));
+            }
 
 //            if (productsbysubcats.get(position).getProduct().getTotal_rating() != null)
 //                if (productsbysubcats.get(position).getProduct().getTotal_rating().size() > 0) {

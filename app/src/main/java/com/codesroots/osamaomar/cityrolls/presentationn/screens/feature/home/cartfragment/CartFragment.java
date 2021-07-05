@@ -124,7 +124,6 @@ public class CartFragment extends Fragment implements EditCallbacks {
                    orderModel.setAddress( data.getExtras().getString(FULL_ADDRESS));
                    orderModel.setUser_lat( data.getExtras().getString(USER_LAT));
                    orderModel.setUser_long( data.getExtras().getString(USER_LANG));
-                   orderModel.setNotes(data.getExtras().getString(AddressDetails));
                    bundle.putSerializable(ORDER,orderModel);
                   fragment.setArguments(bundle);
                   getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.mainfram,fragment).addToBackStack(null).commit();

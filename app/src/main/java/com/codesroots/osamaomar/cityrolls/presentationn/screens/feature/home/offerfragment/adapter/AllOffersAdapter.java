@@ -3,11 +3,15 @@ package com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.of
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Paint;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,11 +68,12 @@ public  OffersFragment offersFragments;
                     .into(holder.Image);
 
             holder.name.setText(offersData.get(position).getProduct().getName());
-        holder.desc.setText(offersData.get(position).getProduct().getDescription());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            holder.desc.setText(Html.fromHtml(offersData.get(position).getProduct().getDescription(),Html.FROM_HTML_MODE_COMPACT));
+        }
 
 
-
-       priceafteroffer =Float.valueOf(offersData.get(position).getProduct().getPrice())- Float.valueOf(offersData.get(position).getProduct().getPrice())*
+        priceafteroffer =Float.valueOf(offersData.get(position).getProduct().getPrice())- Float.valueOf(offersData.get(position).getProduct().getPrice())*
                Integer.valueOf(offersData.get(position).getPercentage())/100;
 
 //        holder.discount.setText(context.getText(R.string.disscount)+" "+offersData.get(position).getPercentage()+" "+"%");

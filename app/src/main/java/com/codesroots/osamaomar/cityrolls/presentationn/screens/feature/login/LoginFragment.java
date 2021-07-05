@@ -56,6 +56,7 @@ public class LoginFragment extends Fragment {
                     {
                         PreferenceHelper.setUserId(response.getData().getId());
                         PreferenceHelper.setEmail(response.getData().getEmail());
+                        PreferenceHelper.setPhoneNum(response.getData().getMobile());
 
                         PreferenceHelper.setUserName(response.getData().getUsername());
                         PreferenceHelper.setToken(response.getData().getToken());

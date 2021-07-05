@@ -72,7 +72,7 @@ public class ProductDetailsFragment extends Fragment {
     FrameLayout loading;
     public TextView product_name, description, price, ratecount, amount, addtocart, charege, oldprice;
     RatingBar ratingBar;
-    public ImageView item_img; 
+    public ImageView item_img,item_photo;
     int userid = PreferenceHelper.getUserId(), favid = 0;
     ProductSizesAdapter productSizesAdapter;
 //    ProductImagesAdapter productImagesAdapter;
@@ -97,6 +97,7 @@ public class ProductDetailsFragment extends Fragment {
         //((MainActivity) getActivity()).head_title.setText(getText(R.string.product_details));
         ((MainActivity) getActivity()).logo.setVisibility(View.VISIBLE);
         productid = getArguments().getInt(PRODUCT_ID, 0);
+
         findViewsFromXml(view);
 
         mViewModel = ViewModelProviders.of(this, getViewModelFactory()).get(ProductDetailsViewModel.class);
@@ -216,6 +217,7 @@ userid = PreferenceHelper.getUserId();
 //        textscroll  = view.findViewById(R.id.horizontalScrollView1);
         description = view.findViewById(R.id.description);
         price = view.findViewById(R.id.price);
+        item_photo = view.findViewById(R.id.itemphoto);
 
         ratecount = view.findViewById(R.id.rate_count);
         ratingBar = view.findViewById(R.id.rates);
@@ -238,10 +240,11 @@ userid = PreferenceHelper.getUserId();
     }
 
     private void setDatainViews(ProductDetails productDetails) {
-        recommended_products.setAdapter(new RelatedProductsAdapter(getActivity(),productDetails.
-                getRelated()));
+
         try {
-            if (productDetails.getProductdetails().getItem_photo().size() > 0) {
+            recommended_products.setAdapter(new RelatedProductsAdapter(getActivity(),productDetails.
+                    getRelated()));
+            if (productDetails.getProductdetails().getItem_photo()  != null) {
                 slider.setAdapter(new SliderProductDetailsAdapter(getActivity(), productDetails.getProductdetails().getItem_photo()));
                 indicator.setViewPager(slider);
                 init(productDetails.getProductdetails().getItem_photo().size());
@@ -250,6 +253,11 @@ userid = PreferenceHelper.getUserId();
 
             } else {
                 slider.setVisibility(View.GONE);
+                item_photo.setVisibility(View.VISIBLE);
+                Glide.with(this)
+                        .load(productdetails.getPhoto())
+                        .into(item_photo);
+
             }
         }catch (Exception e){}
 

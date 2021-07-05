@@ -101,6 +101,7 @@ class UserLocationsFragment : Fragment(), Locationclick {
     override fun onlocationchoicw(location: UserLocations.DataBean) {
         if (orderModel != null) {
             orderModel!!.billing_id = location.billing_id
+            PreferenceHelper.setPhoneNum(location.phone)
             val fragment = PaymentFragment()
             val bundle = Bundle()
             bundle.putSerializable(ORDER, orderModel)

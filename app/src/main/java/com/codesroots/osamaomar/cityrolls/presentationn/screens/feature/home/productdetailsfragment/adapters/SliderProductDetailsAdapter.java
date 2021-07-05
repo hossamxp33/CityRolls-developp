@@ -30,7 +30,7 @@ public class SliderProductDetailsAdapter extends PagerAdapter {
         assert layoutInflater != null;
         View view = layoutInflater.inflate(R.layout.viewpagerslide, container, false);
         ImageView im_slider =  view.findViewById(R.id.im_slider);
-
+if (slider.get(position).getPhoto() != null)
         Glide.with(activity.getApplicationContext())
                 .load(slider.get(position).getPhoto())
                 .into(im_slider);

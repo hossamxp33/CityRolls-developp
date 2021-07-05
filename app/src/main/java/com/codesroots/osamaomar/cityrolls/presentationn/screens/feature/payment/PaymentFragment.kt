@@ -30,6 +30,7 @@ import com.paypal.android.sdk.payments.PayPalConfiguration
 import com.paypal.android.sdk.payments.PayPalService
 import com.paypal.android.sdk.payments.PaymentActivity
 import com.paypal.android.sdk.payments.PaymentConfirmation
+import kotlinx.android.synthetic.main.activity_paypal.*
 import org.json.JSONException
 import java.util.*
 import kotlin.collections.ArrayList
@@ -120,7 +121,7 @@ class PaymentFragment : Fragment() {
         payment.amount_cents = (Total  * 100).toString()
         payment.auth_token = auth
         payment.currency = "EGP"
-        payment.integration_id = 264489
+        payment.integration_id = 408709
         var billingModel = BillingData()
         payment.billing_data = (billingModel)
         billingModel.email = PreferenceHelper.getEmail()
@@ -246,7 +247,8 @@ class PaymentFragment : Fragment() {
             } else if (resultCode == IntentConstants.TRANSACTION_SUCCESSFUL) {
                 // User finished their payment successfully
                 ToastMaker.displayShortToast(activity!!, "Token == " + extras!!.getString(SaveCardResponseKeys.ID)!!)
-
+                orderModel!!.paymenttype_id = 4
+                 sendRequest()
                 // Use the static keys declared in PayResponseKeys to extract the fields you want
                // ToastMaker.displayShortToast(activity!!, extras!!.getString(PayResponseKeys.DATA_MESSAGE))
             } else if (resultCode == IntentConstants.TRANSACTION_SUCCESSFUL_PARSING_ISSUE) {
@@ -257,7 +259,7 @@ class PaymentFragment : Fragment() {
             } else if (resultCode == IntentConstants.TRANSACTION_SUCCESSFUL_CARD_SAVED) {
                 // User finished their payment successfully and card was saved.
                 orderModel!!.paymenttype_id = 4
-              //  sendRequest()
+                sendRequest()
                 // Use the static keys declared in PayResponseKeys to extract the fields you want
                 // Use the static keys declared in SaveCardResponseKeys to extract the fields you want
                 ToastMaker.displayShortToast(activity!!, "Token == " + extras!!.getString(SaveCardResponseKeys.TOKEN)!!)
@@ -279,6 +281,7 @@ class PaymentFragment : Fragment() {
     }
 
     private fun sendRequest() {
+        orderModel!!.notes = order_details.text.toString()
         orderModel!!.platform_id = 1
         paymentViewModel.addOrder(orderModel)
     }
@@ -288,7 +291,6 @@ class PaymentFragment : Fragment() {
         viewModel.PaymentData(payment);
         viewModel.paymentResponseLD!!.observe(this, Observer { aBoolean ->
 paymentKey = aBoolean.token!!;
-            ToastMaker.displayShortToast(activity!!,"PaymentKey == " + paymentKey)
 
             processpayment()
         })

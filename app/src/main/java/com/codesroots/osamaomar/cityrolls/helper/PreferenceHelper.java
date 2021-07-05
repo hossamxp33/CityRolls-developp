@@ -99,9 +99,9 @@ public class PreferenceHelper {
 
         return app_prefs.getString(URL_Base,"1");
     }
-    public static void setPhoneNum(String PHONE_NUM) {
+    public static void setPhoneNum(String PHONE_NUMs) {
         Editor edit = app_prefs.edit();
-        edit.putString(PHONE_NUM, PHONE_NUM);
+        edit.putString(PHONE_NUM, PHONE_NUMs);
         edit.commit();
     }
     public static String getPhoneNum() {

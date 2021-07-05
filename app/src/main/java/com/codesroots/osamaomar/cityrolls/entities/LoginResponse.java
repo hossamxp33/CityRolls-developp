@@ -37,6 +37,17 @@ public class LoginResponse {
         private int id;
         private String username;
         private String token;
+        private String email;
+        private String mobile;
+
+        public String getMobile() {
+            return mobile;
+        }
+
+        public void setMobile(String mobile) {
+            this.mobile = mobile;
+        }
+
 
         public String getEmail() {
             return email;
@@ -46,7 +57,6 @@ public class LoginResponse {
             this.email = email;
         }
 
-        private String email;
 
         public int getId() {
             return id;
