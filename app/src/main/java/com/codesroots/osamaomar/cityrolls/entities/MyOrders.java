@@ -41,6 +41,16 @@ public class MyOrders {
         private String type_en;
         private List<OrderdetailsBean> orderdetails;
 
+        public Paymenttype getPaymenttype() {
+            return paymenttype;
+        }
+
+        public void setPaymenttype(Paymenttype paymenttype) {
+            this.paymenttype = paymenttype;
+        }
+
+        private Paymenttype paymenttype;
+
         public int getStatues() {
             return statues;
         }

@@ -63,10 +63,9 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
             holder.orderPrice.setText(orderdata.get(position).getPrice());
             holder.orderdate.setText(getdate(orderdata.get(position).getCreated()));
             holder.ordernum.setText(String.valueOf(orderdata.get(position).getId()));
-            holder.payment.setText(orderdata.get(position).getType());
+            holder.payment.setText(orderdata.get(position).getPaymenttype().getName());
            // holder.productCount.setText(String.valueOf(orderdata.get(position).getOrderdetails().get(position).getAmount()) +" "+ context.getText(R.string.num));
-            holder.productname.setText(orderdata.get(position).getOrderdetails().
-                    get(0).getProductsize().getName());
+
 //
 //           holder.ratecount.setText("("+orderdata.get(position).getOrderdetails().
 //                   get(0).getProductsize().getTotal_rating().get(0).getCount()+")");
@@ -75,17 +74,17 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
 //                   get(0).getProductsize().getTotal_rating().get(0).getStars()/orderdata.get(position).getOrderdetails().
 //                   get(0).getProductsize().getTotal_rating().get(0).getCount());
 
-            if (orderdata.get(position).getOrder_status().matches("2")) {
+            if (orderdata.get(position).getOrder_status().matches("1")) {
                 holder.statues2.setTextColor(R.color.white);
                 holder.statues2.setBackgroundResource(R.drawable.selected_progress);
-            } else if (orderdata.get(position).getOrder_status().matches("3")) {
+            } else if (orderdata.get(position).getOrder_status().matches("2")) {
                 holder.statues2.setTextColor(R.color.white);
                 holder.statues3.setTextColor(R.color.white);
                 holder.statues2.setBackgroundResource(R.drawable.selected_progress);
                 holder.statues3.setBackgroundResource(R.drawable.selected_progress);
             }
 
-            else if (orderdata.get(position).getOrder_status().matches("4")) {
+            else if (orderdata.get(position).getOrder_status().matches("3")) {
                 holder.statues2.setTextColor(R.color.white);
                 holder.statues3.setTextColor(R.color.white);
                 holder.statues4.setTextColor(R.color.white);

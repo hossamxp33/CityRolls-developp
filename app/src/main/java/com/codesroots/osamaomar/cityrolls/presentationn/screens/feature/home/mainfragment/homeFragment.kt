@@ -77,6 +77,7 @@ class homeFragment : Fragment() {
           tokenmodel = Token()
 
         pagers = view!!.slider
+
         TokenviewModel.TokenResponseLD?.observe(this,androidx.lifecycle.Observer {
 
             PreferenceHelper.setPaymentToken(it.token)
@@ -84,6 +85,8 @@ class homeFragment : Fragment() {
             PreferenceHelper.setPaymentMerchatId(it.profile!!.id.toString())
         })
             viewModel.mainViewMutableLiveData?.observe(this, androidx.lifecycle.Observer {
+                datArray.clear()
+
                 adapterr = CatAdapter(context as FragmentActivity, it.items,viewModel)
                 view.departments.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
                 view.departments?.adapter = adapterr
@@ -103,7 +106,7 @@ class homeFragment : Fragment() {
                 datArray.addAll(it.items.get(index).items)
 
                 adapter = SubCatsAdapter(context as FragmentActivity, datArray)
-                view.subcategry_Rec.layoutManager = GridLayoutManager(activity, 3)
+                view.subcategry_Rec.layoutManager = GridLayoutManager(activity, 2)
                 view.subcategry_Rec?.adapter = adapter
             })
 

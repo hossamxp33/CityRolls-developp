@@ -110,9 +110,11 @@ class PaymentFragment : Fragment() {
 
     private fun processCashpayment() {
 
-        orderModel!!.setservice(PreferenceHelper.getCurrencyValue())
+        orderModel!!.setservice(PreferenceHelper.getMIM_CHIPPING())
         orderModel!!.area_id = PreferenceHelper.getCOUNTRY_ID()
         orderModel!!.type = "1"
+        orderModel!!.paymenttype_id = 3
+
         orderModel!!.price = Total.toString()
         sendRequest()
     }

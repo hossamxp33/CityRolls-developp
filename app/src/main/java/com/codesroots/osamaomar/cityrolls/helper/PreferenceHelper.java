@@ -312,7 +312,7 @@ public class PreferenceHelper {
     }
     public static String getToken() {
 
-        return app_prefs.getString(Token,"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImV4cCI6MTU3Mzk2ODg3MH0.w45qrjLBSXaGfHRATa33EwGG-IfPkhKbnZSbflWRLSo");
+        return app_prefs.getString(Token,"");
 
     }
     public static String getEmail() {
