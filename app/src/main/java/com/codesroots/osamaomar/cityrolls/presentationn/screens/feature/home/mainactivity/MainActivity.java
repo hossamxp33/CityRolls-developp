@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,8 +14,10 @@ import android.location.LocationManager;
 import android.os.Bundle;
 
 import com.codesroots.osamaomar.cityrolls.domain.ApiClient;
+import com.codesroots.osamaomar.cityrolls.helper.ResourceUtil;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.mainfragment.homeFragment;
 import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.home.morefragment.MenuFragment;
+import com.codesroots.osamaomar.cityrolls.presentationn.screens.feature.payment.PaymentFragment;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
@@ -31,6 +34,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.MenuInflater;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -76,6 +81,8 @@ public class MainActivity extends AppCompatActivity
     public DrawerLayout drawer;
     public ImageView logo, search;
     public TextView head_title;
+    public FloatingActionButton fab;
+
     private EditText searchName;
     private ArrayList<String> arrayList = new ArrayList<>();
     private PreferenceHelper preferenceHelper;
@@ -117,9 +124,41 @@ public class MainActivity extends AppCompatActivity
 //            return false;
 //        });
          head_title.setVisibility(View.INVISIBLE);
+        fab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(  View view) {
+// custom dialog
+                final Dialog dialog = new Dialog(view.getContext(),R.style.Theme_AppCompat_Dialog);
+                dialog.setContentView(R.layout.call_us_dialog);
+// set the custom dialog components - text, image and button
+                TextView text = (TextView) dialog.findViewById(R.id.factory);
+                text.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(  View view) {
+                        ResourceUtil.callNumber("01113445140",view.getContext());
+                    }
+                });
+                TextView text2 = (TextView) dialog.findViewById(R.id.restaurant);
+                text2.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(  View view) {
+                        ResourceUtil.callNumber("01021630665",view.getContext());
+                    }
+                });
+                dialog.show();
+                //Intent myIntent = new Intent(view.getContext(), agones.class);
+                //startActivityForResult(myIntent, 0);
+
+
+
+
+
+            }
+
+        });
         getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, new homeFragment()).commit();
 
+
+
     }
+
 private void HiddenKeyboard(View view ){
     InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -127,10 +166,10 @@ private void HiddenKeyboard(View view ){
     private void initialize() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
      //   drawer = findViewById(R.id.drawer_layout);
         search = findViewById(R.id.search);
         head_title = findViewById(R.id.head_title);
+        fab = findViewById(R.id.fab);
       //  searchName = findViewById(R.id.searchName);
         toggle = new ActionBarDrawerToggle(
               this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

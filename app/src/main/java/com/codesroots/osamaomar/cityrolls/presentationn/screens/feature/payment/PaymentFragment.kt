@@ -35,7 +35,7 @@ import org.json.JSONException
 import java.util.*
 import kotlin.collections.ArrayList
 
-class PaymentFragment : Fragment() {
+public  class PaymentFragment : Fragment() {
     internal lateinit var paypal: ImageView
     lateinit var viewModel: SmallstoreViewmodel
 
@@ -298,7 +298,7 @@ paymentKey = aBoolean.token!!;
         })
     }
 
-    private fun showBankDialog() {
+    public  fun showBankDialog() {
         //before inflating the custom alert dialog layout, we will get the current activity viewgroup
         val viewGroup = view!!.findViewById<ViewGroup>(android.R.id.content)
         //then we will inflate the custom alert dialog xml that we created
